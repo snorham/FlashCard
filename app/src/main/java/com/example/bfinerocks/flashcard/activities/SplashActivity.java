@@ -1,9 +1,11 @@
-package com.example.bfinerocks.flashcard;
+package com.example.bfinerocks.flashcard.activities;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.example.bfinerocks.flashcard.R;
 
 /**
  * Created by BFineRocks on 12/17/14.
