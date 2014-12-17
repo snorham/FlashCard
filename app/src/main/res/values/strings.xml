@@ -6,8 +6,11 @@
     <string name="action_settings">Settings</string>
     <string name="splash_title">Flash Cards</string>
     <string name="signin_welcome">Welcome to Flash Card!</string>
-    <string name="signin_instructions">You only get one shot at this, so make it good</string>
+    <string name="signin_instructions">You only get one shot at this, \n so make it good</string>
     <string name="hint_user_name_entry">Please Enter Your Username</string>
     <string name="btn_sign_in_done">Flash Me</string>
+    <string name="homepage_welcome">Hey</string>
+    <string name="txt_add_new_list">Click to Create a New Deck</string>
+    <string name="homepage_instructions">Select a deck to start flash card generator or edit the cards</string>
 
 </resources>
