@@ -10,7 +10,7 @@
     <string name="hint_user_name_entry">Please Enter Your Username</string>
     <string name="btn_sign_in_done">Flash Me</string>
     <string name="homepage_welcome">Hey</string>
-    <string name="txt_add_new_list">Click to Create a New Deck</string>
+    <string name="txt_create_new_deck">Click to Create a New Deck</string>
     <string name="homepage_instructions">Select a deck to start flash card generator or edit the cards</string>
 
 </resources>
