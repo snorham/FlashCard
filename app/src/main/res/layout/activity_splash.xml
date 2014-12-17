@@ -12,7 +12,7 @@
 
     <TextView
         android:text="@string/splash_title"
-        android:textSize="30sp"
+        android:textSize="@dimen/txt_large_label"
         android:textColor="@color/green_base"
         android:layout_below="@id/drawable_splash"
         android:layout_centerHorizontal="true"
