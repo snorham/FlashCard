@@ -15,6 +15,16 @@ import com.example.bfinerocks.flashcard.R;
  */
 public class HomepageFragment extends Fragment {
 
+    private static final String SAVED_DECK_KEY = "saved_deck_of_cards";
+
+    public static HomepageFragment newInstance(List<Deck> listOfSavedDecks){
+        Bundle bundle = new Bundle();
+        bundle.putParcelableArrayList(SAVED_DECK_KEY, listOfSavedDecks);
+        HomepageFragment homepageFragment = new HomepageFragment();
+        homepageFragment.setArguments(bundle);
+        return homepageFragment;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_homepage, container, false);
