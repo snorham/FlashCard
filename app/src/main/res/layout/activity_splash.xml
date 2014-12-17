@@ -13,6 +13,7 @@
     <TextView
         android:text="@string/splash_title"
         android:textSize="30sp"
+        android:textColor="@color/green_base"
         android:layout_below="@id/drawable_splash"
         android:layout_centerHorizontal="true"
         android:layout_margin="@dimen/activity_horizontal_margin"
