@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.example.bfinerocks.flashcard.R;
+import com.firebase.client.Firebase;
 
 /**
  * Created by BFineRocks on 12/17/14.
@@ -17,6 +18,7 @@ public class SplashActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        Firebase.setAndroidContext(this);
 
         new Handler().postDelayed(new Runnable() {
             @Override
