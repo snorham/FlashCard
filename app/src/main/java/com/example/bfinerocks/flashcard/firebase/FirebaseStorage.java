@@ -11,7 +11,7 @@ public class FirebaseStorage {
 
     public void createFirebaseReferenceWithUserNameForReference(String userName){
         Firebase refPriorToUser = new Firebase("https://dazzling-heat-5107.firebaseio.com/flash-cards/users");
-        referenceWithUser = refPriorToUser.child(userName);
+        referenceWithUser = refPriorToUser.child(userName).child("decks");
     }
 
     public Firebase getReferenceWithUser(){

@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.bfinerocks.flashcard.R;
 import com.example.bfinerocks.flashcard.firebase.FirebaseStorage;
+import com.firebase.client.Firebase;
 
 /**
  * Created by BFineRocks on 12/17/14.
@@ -32,23 +33,23 @@ public class HomepageFragment extends Fragment {
         TextView welcomeUser = (TextView) rootView.findViewById(R.id.homepage_welcome);
         ListView listOfDecksSaved = (ListView) rootView.findViewById(R.id.homepage_listView);
         TextView linkToCreateNewDeck = (TextView) rootView.findViewById(R.id.txt_create_new_deck);
-  //      getUpdatedSavedDeckFromFirebase();
+
         return rootView;
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        getUpdatedSavedDeckFromFirebase();
     }
 
     public void getUpdatedSavedDeckFromFirebase(){
         String userReference = getArguments().getString(USER_FIREBASE_REFERENCE);
         if(userReference != null){
             FirebaseStorage firebaseStorage = new FirebaseStorage();
-/*            firebaseStorage.createFirebaseReferenceWithUserNameForReference("bfine");
+            firebaseStorage.createFirebaseReferenceWithUserNameForReference(userReference);
             Firebase ref = firebaseStorage.getReferenceWithUser();
-            ref.setValue("words");*/
+          //todo complete this method when firebasestorage set up
         }
     }
 }

@@ -21,9 +21,9 @@ public class MainActivity extends Activity implements FragmentTransitionInterfac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         SharedPreferences sharedPreferences = getSharedPreferences(SignInFragment.USER_NAME_PREFENCE_FILE, Context.MODE_PRIVATE);
-        if(!sharedPreferences.contains(SignInFragment.USER_NAME_PREFERENCE)){
+      //  if(!sharedPreferences.contains(SignInFragment.USER_NAME_PREFERENCE)){
             loadSignInScreen(true);
-        }
+       // }
 
     }
 

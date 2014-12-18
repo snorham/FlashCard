@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.bfinerocks.flashcard.R;
+import com.example.bfinerocks.flashcard.interfaces.FragmentTransitionInterface;
 
 /**
  * Created by BFineRocks on 12/17/14.
@@ -31,6 +32,9 @@ public class SignInFragment extends Fragment {
             public void onClick(View view) {
                 String userNameEntered = userNameEntry.getText().toString().trim();
                 generateSharedPrefWithUserName(userNameEntered);
+                FragmentTransitionInterface fti = (FragmentTransitionInterface) getActivity();
+                HomepageFragment homepageFragment = HomepageFragment.newInstance("user");//todo think about what we are passing
+                fti.onFragmentChange(homepageFragment);                     //will not pass "user" this is a placeholder
             }
         });
         return rootview;
