@@ -32,6 +32,7 @@ public class HomepageFragment extends Fragment {
         TextView welcomeUser = (TextView) rootView.findViewById(R.id.homepage_welcome);
         ListView listOfDecksSaved = (ListView) rootView.findViewById(R.id.homepage_listView);
         TextView linkToCreateNewDeck = (TextView) rootView.findViewById(R.id.txt_create_new_deck);
+  //      getUpdatedSavedDeckFromFirebase();
         return rootView;
     }
 
@@ -45,7 +46,9 @@ public class HomepageFragment extends Fragment {
         String userReference = getArguments().getString(USER_FIREBASE_REFERENCE);
         if(userReference != null){
             FirebaseStorage firebaseStorage = new FirebaseStorage();
-
+/*            firebaseStorage.createFirebaseReferenceWithUserNameForReference("bfine");
+            Firebase ref = firebaseStorage.getReferenceWithUser();
+            ref.setValue("words");*/
         }
     }
 }
