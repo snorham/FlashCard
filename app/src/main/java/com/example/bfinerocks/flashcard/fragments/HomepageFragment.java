@@ -15,11 +15,11 @@ import com.example.bfinerocks.flashcard.R;
  */
 public class HomepageFragment extends Fragment {
 
-    private static final String SAVED_DECK_KEY = "saved_deck_of_cards";
+    private static final String USER_FIREBASE_REFERENCE = "firebase_user_ref";
 
-    public static HomepageFragment newInstance(List<Deck> listOfSavedDecks){
+    public static HomepageFragment newInstance(String user){
         Bundle bundle = new Bundle();
-        bundle.putParcelableArrayList(SAVED_DECK_KEY, listOfSavedDecks);
+        bundle.putString(USER_FIREBASE_REFERENCE, user);
         HomepageFragment homepageFragment = new HomepageFragment();
         homepageFragment.setArguments(bundle);
         return homepageFragment;
@@ -31,7 +31,20 @@ public class HomepageFragment extends Fragment {
         TextView welcomeUser = (TextView) rootView.findViewById(R.id.homepage_welcome);
         ListView listOfDecksSaved = (ListView) rootView.findViewById(R.id.homepage_listView);
         TextView linkToCreateNewDeck = (TextView) rootView.findViewById(R.id.txt_create_new_deck);
-
         return rootView;
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+    }
+
+    public void getUpdatedSavedDeckFromFirebase(){
+        String userReference = getArguments().getString(USER_FIREBASE_REFERENCE);
+        if(userReference != null){
+            FirebaseStorage firebaseStorage = new FirebaseStorage();
+
+        }
     }
 }
