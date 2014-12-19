@@ -96,7 +96,7 @@ public class WordNikAPI {
                mWordNikAPIInterface //todo setup interface
            }
             else{
-               //interface 
+               //interface
            }
         }
     }
