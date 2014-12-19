@@ -4,7 +4,17 @@ import android.net.Uri;
 import android.net.Uri.Builder;
 import android.os.AsyncTask;
 
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 
 /**
  * Created by BFineRocks on 12/18/14.
@@ -58,12 +68,36 @@ public class WordNikAPI {
 
         @Override
         protected JSONObject doInBackground(Uri... uris) {
-            return null;
+            try {
+                return getJSONObjectFromAPI(uris[0]);
+            } catch (IOException e) {
+                return null;
+            } catch (JSONException e) {
+               return null;
+            }
+        }
+
+        private JSONObject getJSONObjectFromAPI(Uri uri) throws IOException, JSONException{
+            URL url = new URL((uri).toString());
+            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+            InputStream inputStream = httpURLConnection.getInputStream();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+            StringBuilder stringBuilder = new StringBuilder();
+            String line;
+            while((line = bufferedReader.readLine()) != null){
+                stringBuilder.append(line);
+            }
+            return new JSONObject(stringBuilder.toString());
         }
 
         @Override
         protected void onPostExecute(JSONObject jsonObject) {
-            super.onPostExecute(jsonObject);
+           if(jsonObject != null){
+               mWordNikAPIInterface //todo setup interface
+           }
+            else{
+               //interface 
+           }
         }
     }
 }
