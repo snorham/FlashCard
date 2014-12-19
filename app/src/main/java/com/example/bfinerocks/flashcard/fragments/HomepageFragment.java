@@ -2,6 +2,7 @@ package com.example.bfinerocks.flashcard.fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,8 +10,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.bfinerocks.flashcard.R;
-import com.example.bfinerocks.flashcard.firebase.FirebaseStorage;
-import com.firebase.client.Firebase;
+import com.example.bfinerocks.flashcard.dictionaryapi.WordNikAPI;
+import com.example.bfinerocks.flashcard.dictionaryapi.WordNikAPIInterface;
+
+import org.json.JSONObject;
 
 /**
  * Created by BFineRocks on 12/17/14.
@@ -33,7 +36,18 @@ public class HomepageFragment extends Fragment {
         TextView welcomeUser = (TextView) rootView.findViewById(R.id.homepage_welcome);
         ListView listOfDecksSaved = (ListView) rootView.findViewById(R.id.homepage_listView);
         TextView linkToCreateNewDeck = (TextView) rootView.findViewById(R.id.txt_create_new_deck);
+        WordNikAPI wordNikAPI = WordNikAPI.getWordNikAPI();
+        wordNikAPI.searchWordDefinition("shoe", new WordNikAPIInterface() {
+            @Override
+            public void onWordNikCallSuccess(JSONObject jsonObject) {
+                Log.i("interfaceSuccessUI" , "working");
+            }
 
+            @Override
+            public void onWordNikCallFailure() {
+
+            }
+        });
         return rootView;
     }
 
@@ -44,12 +58,12 @@ public class HomepageFragment extends Fragment {
     }
 
     public void getUpdatedSavedDeckFromFirebase(){
-        String userReference = getArguments().getString(USER_FIREBASE_REFERENCE);
+/*        String userReference = getArguments().getString(USER_FIREBASE_REFERENCE);
         if(userReference != null){
             FirebaseStorage firebaseStorage = new FirebaseStorage();
             firebaseStorage.createFirebaseReferenceWithUserNameForReference(userReference);
             Firebase ref = firebaseStorage.getReferenceWithUser();
           //todo complete this method when firebasestorage set up
-        }
+        }*/
     }
 }

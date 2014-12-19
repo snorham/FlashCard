@@ -1,9 +1,10 @@
 package com.example.bfinerocks.flashcard.dictionaryapi;
 
 import android.net.Uri;
-import android.net.Uri.Builder;
 import android.os.AsyncTask;
+import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -12,17 +13,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
 
 /**
  * Created by BFineRocks on 12/18/14.
  */
 public class WordNikAPI {
 
-    private static final String WORDNIK_ROOT_URL = "api.wordnik.com/v4/word.json";
-    private static final String WORDNIK_DEFINITION_PATH = "definition";
+    private static final String WORDNIK_ROOT_URL = "api.wordnik.com";
+    private static final String WORDNIK_V4_PATH = "v4";
+    private static final String WORDNIK_WORD_PATH = "word.json";
+    private static final String WORDNIK_DEFINITION_PATH = "definitions";
     private static final String WORDNIK_QUERY_LIMIT = "limit";
     private static final String WORDNIK_QUERY_RELATED = "includeRelated";
     private static final String WORDNIK_QUERY_CANONICAL = "useCanonical";
@@ -33,7 +34,7 @@ public class WordNikAPI {
     private static WordNikAPI sWordNikAPI;
 
     public static WordNikAPI getWordNikAPI(){
-        if(sWordNikAPI != null){
+        if(sWordNikAPI == null){
             sWordNikAPI = new WordNikAPI();
         }
         return sWordNikAPI;
@@ -48,6 +49,8 @@ public class WordNikAPI {
         Uri uri = new Uri.Builder()
                 .scheme("http")
                 .authority(WORDNIK_ROOT_URL)
+                .appendPath(WORDNIK_V4_PATH)
+                .appendPath(WORDNIK_WORD_PATH)
                 .appendPath(wordToDefine)
                 .appendPath(WORDNIK_DEFINITION_PATH)
                 .appendQueryParameter(WORDNIK_QUERY_LIMIT, "1")
@@ -56,6 +59,8 @@ public class WordNikAPI {
                 .appendQueryParameter(WORDNIK_QUERY_TAGS, "false")
                 .appendQueryParameter(WORDNIK_QUERY_API, WORDNIK_API_KEY)
                 .build();
+
+      new GetDefinitionInBackground(wordNikAPIInterface).execute(uri);
     }
 
     private class GetDefinitionInBackground extends AsyncTask<Uri, Void, JSONObject>{
@@ -68,7 +73,7 @@ public class WordNikAPI {
 
         @Override
         protected JSONObject doInBackground(Uri... uris) {
-            try {
+            try {Log.i("doinback", "called");
                 return getJSONObjectFromAPI(uris[0]);
             } catch (IOException e) {
                 return null;
@@ -79,6 +84,7 @@ public class WordNikAPI {
 
         private JSONObject getJSONObjectFromAPI(Uri uri) throws IOException, JSONException{
             URL url = new URL((uri).toString());
+            Log.i("wordNikUri", uri.toString());
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             InputStream inputStream = httpURLConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
@@ -87,16 +93,22 @@ public class WordNikAPI {
             while((line = bufferedReader.readLine()) != null){
                 stringBuilder.append(line);
             }
-            return new JSONObject(stringBuilder.toString());
+
+            JSONArray jsonArray = new JSONArray(stringBuilder.toString());
+            JSONObject jsonObject = jsonArray.getJSONObject(0);
+            Log.i("getJson", jsonObject.toString());
+            return jsonObject;
         }
 
         @Override
         protected void onPostExecute(JSONObject jsonObject) {
+            Log.i("onPost", "called" );
            if(jsonObject != null){
-               mWordNikAPIInterface //todo setup interface
+               this.mWordNikAPIInterface.onWordNikCallSuccess(jsonObject);
+               Log.i("onPostEx", jsonObject.toString());
            }
             else{
-               //interface
+              this.mWordNikAPIInterface.onWordNikCallFailure();
            }
         }
     }

@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.bfinerocks.flashcard.R;
+import com.example.bfinerocks.flashcard.fragments.HomepageFragment;
 import com.example.bfinerocks.flashcard.fragments.SignInFragment;
 import com.example.bfinerocks.flashcard.interfaces.FragmentTransitionInterface;
 
@@ -21,9 +22,13 @@ public class MainActivity extends Activity implements FragmentTransitionInterfac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         SharedPreferences sharedPreferences = getSharedPreferences(SignInFragment.USER_NAME_PREFENCE_FILE, Context.MODE_PRIVATE);
-      //  if(!sharedPreferences.contains(SignInFragment.USER_NAME_PREFERENCE)){
+        if(!sharedPreferences.contains(SignInFragment.USER_NAME_PREFERENCE)){
             loadSignInScreen(true);
-       // }
+        }
+        else{
+            HomepageFragment homepageFragment = HomepageFragment.newInstance("bfine"); //todo get user name from pref file
+            onFragmentChange(homepageFragment);
+        }
 
     }
 

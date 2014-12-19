@@ -45,8 +45,8 @@ public class FirebaseStorage {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 if(dataSnapshot != null){
                     Map<String, Object> deckOfCards = (Map<String,Object>) dataSnapshot.getValue();
-                    StudyShelf myStudyShelf = new StudyShelf();
-                    myStudyShelf.add(deckOfCards);
+                    //StudyShelf myStudyShelf = new StudyShelf();
+                   // myStudyShelf.add(deckOfCards);
                 }
             }
 
