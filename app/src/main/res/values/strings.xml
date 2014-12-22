@@ -13,5 +13,7 @@
     <string name="txt_create_new_deck">Click to Create a New Deck</string>
     <string name="homepage_instructions">Select a deck to start flash card generator or edit the cards</string>
     <string name="hint_create_new_list">Enter the name of your new deck</string>
+    <string name="hint_word">word</string>
+    <string name="hint_definition">definition</string>
 
 </resources>
