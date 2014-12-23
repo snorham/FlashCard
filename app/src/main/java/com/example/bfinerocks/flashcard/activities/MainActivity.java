@@ -10,7 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.bfinerocks.flashcard.R;
-import com.example.bfinerocks.flashcard.fragments.HomepageFragment;
+import com.example.bfinerocks.flashcard.fragments.CreateAndReviewFragment;
 import com.example.bfinerocks.flashcard.fragments.SignInFragment;
 import com.example.bfinerocks.flashcard.interfaces.FragmentTransitionInterface;
 
@@ -26,8 +26,13 @@ public class MainActivity extends Activity implements FragmentTransitionInterfac
             loadSignInScreen(true);
         }
         else{
+/*
             HomepageFragment homepageFragment = HomepageFragment.newInstance("bfine"); //todo get user name from pref file
             onFragmentChange(homepageFragment);
+*/
+
+            CreateAndReviewFragment createAndReviewFragment = CreateAndReviewFragment.newInstance();
+            onFragmentChange(createAndReviewFragment);
         }
 
     }
