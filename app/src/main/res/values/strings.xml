@@ -15,5 +15,7 @@
     <string name="hint_create_new_list">Enter the name of your new deck</string>
     <string name="hint_word">word</string>
     <string name="hint_definition">definition</string>
+    <string name="dialogue_directions">Enter a word for side A of the WordCard</string>
+    <string name="hint_word_to_define">word to define</string>
 
 </resources>
