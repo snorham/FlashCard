@@ -17,6 +17,7 @@
     <string name="hint_definition">definition</string>
     <string name="dialogue_directions">Enter a word for side A of the WordCard</string>
     <string name="hint_word_to_define">word to define</string>
-    
+    <string name="btn_next_word">Next Word</string>
+    <string name="btn_done">Done</string>
 
 </resources>
