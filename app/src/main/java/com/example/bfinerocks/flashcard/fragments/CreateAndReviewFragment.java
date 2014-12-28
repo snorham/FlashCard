@@ -32,12 +32,18 @@ public class CreateAndReviewFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.create_and_review_fragment, container, false);
         EditText deckNameEditText = (EditText) rootView.findViewById(R.id.edtxt_list_title);
         ListView listView = (ListView) rootView.findViewById(R.id.list_view);
+        showWordEntryDialogFragment();
         return rootView;
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+    }
+
+    public void showWordEntryDialogFragment(){
+        DialogFragment wordEntryFragment = new WordEntryDialogFragment();
+        wordEntryFragment.show(getActivity().getFragmentManager(), DIALOG_FRAG_TAG);
     }
 
     public static class WordEntryDialogFragment extends DialogFragment{
