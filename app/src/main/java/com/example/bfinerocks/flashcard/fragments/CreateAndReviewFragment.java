@@ -13,6 +13,8 @@ import android.widget.ListView;
 
 import com.example.bfinerocks.flashcard.R;
 
+import java.util.zip.Inflater;
+
 /**
  * Created by BFineRocks on 12/22/14.
  */
@@ -41,6 +43,10 @@ public class CreateAndReviewFragment extends Fragment {
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getActivity());
+            LayoutInflater inflater = getActivity().getLayoutInflater();
+            alertBuilder.setTitle(R.string.dialog_header);
+            alertBuilder.setView(inflater.inflate(R.layout.fragment_dialogue_word_entry, null));
+            
         }
     }
 }
