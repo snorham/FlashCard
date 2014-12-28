@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +14,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.example.bfinerocks.flashcard.R;
-
-import java.util.zip.Inflater;
 
 /**
  * Created by BFineRocks on 12/22/14.
@@ -46,7 +46,19 @@ public class CreateAndReviewFragment extends Fragment {
             LayoutInflater inflater = getActivity().getLayoutInflater();
             alertBuilder.setTitle(R.string.dialog_header);
             alertBuilder.setView(inflater.inflate(R.layout.fragment_dialogue_word_entry, null));
-            
+            alertBuilder.setPositiveButton(R.string.btn_next_word, new OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                }
+            });
+            alertBuilder.setNegativeButton(R.string.btn_done, new OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i){
+
+                }
+            });
+            return alertBuilder.create();
         }
     }
 }
