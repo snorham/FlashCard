@@ -1,5 +1,7 @@
 package com.example.bfinerocks.flashcard.fragments;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.os.Bundle;
@@ -35,6 +37,10 @@ public class CreateAndReviewFragment extends Fragment {
     }
 
     public static class WordEntryDialogFragment extends DialogFragment{
-        
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getActivity());
+        }
     }
 }
