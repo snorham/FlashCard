@@ -1,5 +1,6 @@
 package com.example.bfinerocks.flashcard.fragments;
 
+import android.app.DialogFragment;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -31,5 +32,9 @@ public class CreateAndReviewFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+    }
+
+    public static class WordEntryDialogFragment extends DialogFragment{
+        
     }
 }
