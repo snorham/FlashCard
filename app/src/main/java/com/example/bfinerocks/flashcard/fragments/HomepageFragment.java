@@ -10,9 +10,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.bfinerocks.flashcard.R;
+import com.example.bfinerocks.flashcard.dictionaryapi.DefinitionParsing;
 import com.example.bfinerocks.flashcard.dictionaryapi.WordNikAPI;
 import com.example.bfinerocks.flashcard.dictionaryapi.WordNikAPIInterface;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -41,6 +43,12 @@ public class HomepageFragment extends Fragment {
             @Override
             public void onWordNikCallSuccess(JSONObject jsonObject) {
                 Log.i("interfaceSuccessUI" , "working");
+                DefinitionParsing definitionParsing = new DefinitionParsing();
+                try {
+                    definitionParsing.parseDefinitionFromDictionaryAPI(jsonObject);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
