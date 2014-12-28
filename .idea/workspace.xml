@@ -64,14 +64,14 @@
       <file leaf-file-name="CreateAndReviewFragment.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/fragments/CreateAndReviewFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.78723407" vertical-offset="372" max-vertical-offset="855">
-              <caret line="60" column="41" selection-start-line="60" selection-start-column="41" selection-end-line="60" selection-end-column="41" />
+            <state vertical-scroll-proportion="0.31914893" vertical-offset="0" max-vertical-offset="885">
+              <caret line="22" column="68" selection-start-line="22" selection-start-column="68" selection-end-line="22" selection-end-column="68" />
               <folding>
-                <element signature="e#659#660#0" expanded="true" />
-                <element signature="e#711#712#0" expanded="true" />
-                <element signature="e#1629#1651#0" expanded="true" />
-                <element signature="e#1794#1816#0" expanded="true" />
-                <element signature="e#2024#2041#0" expanded="true" />
+                <element signature="e#729#730#0" expanded="true" />
+                <element signature="e#781#782#0" expanded="true" />
+                <element signature="e#1699#1721#0" expanded="true" />
+                <element signature="e#1864#1886#0" expanded="true" />
+                <element signature="e#2094#2111#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1678,11 +1678,11 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="585">
           <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
-            <element signature="e#659#660#0" expanded="true" />
-            <element signature="e#711#712#0" expanded="true" />
-            <element signature="e#1629#1651#0" expanded="true" />
-            <element signature="e#1794#1816#0" expanded="true" />
-            <element signature="e#2024#2041#0" expanded="true" />
+            <element signature="e#729#730#0" expanded="true" />
+            <element signature="e#781#782#0" expanded="true" />
+            <element signature="e#1699#1721#0" expanded="true" />
+            <element signature="e#1864#1886#0" expanded="true" />
+            <element signature="e#2094#2111#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1937,14 +1937,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/fragments/CreateAndReviewFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.78723407" vertical-offset="372" max-vertical-offset="855">
-          <caret line="60" column="41" selection-start-line="60" selection-start-column="41" selection-end-line="60" selection-end-column="41" />
+        <state vertical-scroll-proportion="0.31914893" vertical-offset="0" max-vertical-offset="885">
+          <caret line="22" column="68" selection-start-line="22" selection-start-column="68" selection-end-line="22" selection-end-column="68" />
           <folding>
-            <element signature="e#659#660#0" expanded="true" />
-            <element signature="e#711#712#0" expanded="true" />
-            <element signature="e#1629#1651#0" expanded="true" />
-            <element signature="e#1794#1816#0" expanded="true" />
-            <element signature="e#2024#2041#0" expanded="true" />
+            <element signature="e#729#730#0" expanded="true" />
+            <element signature="e#781#782#0" expanded="true" />
+            <element signature="e#1699#1721#0" expanded="true" />
+            <element signature="e#1864#1886#0" expanded="true" />
+            <element signature="e#2094#2111#0" expanded="true" />
           </folding>
         </state>
       </provider>

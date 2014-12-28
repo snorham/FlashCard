@@ -20,6 +20,8 @@ import com.example.bfinerocks.flashcard.R;
  */
 public class CreateAndReviewFragment extends Fragment {
 
+    private static final String DIALOG_FRAG_TAG = "WordEntryDialog";
+
 
     public static CreateAndReviewFragment newInstance(){
         return new CreateAndReviewFragment();
