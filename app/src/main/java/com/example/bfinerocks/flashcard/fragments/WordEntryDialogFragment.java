@@ -30,8 +30,9 @@ public class WordEntryDialogFragment extends DialogFragment {
     private EditText wordText;
 
     public interface WordCardCreatorDialogInterface {
-        public void positiveClickNextWordCard(WordCard wordCard);
-        public void negativeClickNoMoreCards(WordCard wordCard);
+        public void positiveClickNextWordCard();
+        public void negativeClickNoMoreCards();
+        public void wordCardCreated(WordCard wordCard);
     }
 
     static WordCardCreatorDialogInterface wordCardInterface;
@@ -56,7 +57,7 @@ public class WordEntryDialogFragment extends DialogFragment {
             public void onClick(DialogInterface dialogInterface, int i) {
                 wordToDefine = wordText.getText().toString().trim();
                 wordCard = getWordDefinition(wordToDefine);
-                wordCardInterface.positiveClickNextWordCard(wordCard);
+                wordCardInterface.positiveClickNextWordCard();
 
             }
         });
@@ -65,7 +66,7 @@ public class WordEntryDialogFragment extends DialogFragment {
             public void onClick(DialogInterface dialogInterface, int i){
                 wordToDefine = wordText.getText().toString().trim();
                 wordCard = getWordDefinition(wordToDefine);
-                wordCardInterface.negativeClickNoMoreCards(wordCard);
+                wordCardInterface.negativeClickNoMoreCards();
             }
         });
         return alertBuilder.create();
@@ -81,6 +82,8 @@ public class WordEntryDialogFragment extends DialogFragment {
                 try {
                     String definition = parser.parseDefinitionFromDictionaryAPI(jsonObject);
                     wordCard.setDefinitionSide(definition);
+                    wordCardInterface.wordCardCreated(wordCard);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -90,10 +93,10 @@ public class WordEntryDialogFragment extends DialogFragment {
             public void onWordNikCallFailure() {
                 String definitionNotFound = "No definition was found.";
                 wordCard.setDefinitionSide(definitionNotFound);
+                wordCardInterface.wordCardCreated(wordCard);
             }
         });
         return wordCard;
     }
-
 
 }

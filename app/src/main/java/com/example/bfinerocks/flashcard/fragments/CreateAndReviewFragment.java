@@ -3,7 +3,6 @@ package com.example.bfinerocks.flashcard.fragments;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -68,17 +67,6 @@ public class CreateAndReviewFragment extends Fragment implements WordCardCreator
     }
 
     @Override
-    public void positiveClickNextWordCard(WordCard wordCard) {
-        updateAdapterWithNewCards(wordCard);
-        showWordEntryDialogFragment();
-    }
-
-    @Override
-    public void negativeClickNoMoreCards(WordCard wordCard) {
-        updateAdapterWithNewCards(wordCard);
-    }
-
-    @Override
     public void onClick(View view) {
         String deckName = deckNameEditText.getText().toString().trim();
         if(deckName.isEmpty()){
@@ -86,9 +74,22 @@ public class CreateAndReviewFragment extends Fragment implements WordCardCreator
         }
         else{
             Deck myNewDeck = new Deck(deckName);
-            Log.i("listCheck", listOfWordCards.get(0).getWordSide());
             myNewDeck.addListOfWordCardsToDeck(listOfWordCards);
-            Log.i("deck", myNewDeck.toString());
         }
+    }
+
+    @Override
+    public void positiveClickNextWordCard() {
+        showWordEntryDialogFragment();
+    }
+
+    @Override
+    public void negativeClickNoMoreCards() {
+        Toast.makeText(getActivity(), R.string.toast_make_changes, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void wordCardCreated(WordCard wordCard) {
+        updateAdapterWithNewCards(wordCard);
     }
 }
