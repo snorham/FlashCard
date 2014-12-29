@@ -3,6 +3,7 @@ package com.example.bfinerocks.flashcard.fragments;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
@@ -24,29 +25,36 @@ import org.json.JSONObject;
  */
 public class WordEntryDialogFragment extends DialogFragment {
 
-    String wordToDefine;
-    WordCard wordCard;
+    private String wordToDefine;
+    private WordCard wordCard;
+    private EditText wordText;
 
     public interface WordCardCreatorDialogInterface {
         public void positiveClickNextWordCard(WordCard wordCard);
         public void negativeClickNoMoreCards(WordCard wordCard);
     }
 
-    WordCardCreatorDialogInterface wordCardInterface;
+    static WordCardCreatorDialogInterface wordCardInterface;
+
+    public static WordEntryDialogFragment newInstance(Fragment fragmentShowingDialog){
+        WordEntryDialogFragment wordEntryDialogFragment = new WordEntryDialogFragment();
+        wordCardInterface = (WordCardCreatorDialogInterface) fragmentShowingDialog;
+      return wordEntryDialogFragment;
+    }
 
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View layoutView = inflater.inflate(R.layout.fragment_dialogue_word_entry, null, false);
+        View layoutView = inflater.inflate(R.layout.fragment_dialogue_word_entry, null);
         alertBuilder.setTitle(R.string.dialog_header);
-        alertBuilder.setView(inflater.inflate(R.layout.fragment_dialogue_word_entry, null));
-        EditText wordText = (EditText) layoutView.findViewById(R.id.word_to_define);
-        wordToDefine = wordText.getText().toString().trim();
+        alertBuilder.setView(layoutView);
+        wordText = (EditText) layoutView.findViewById(R.id.word_to_define);
         alertBuilder.setPositiveButton(R.string.btn_next_word, new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                wordToDefine = wordText.getText().toString();
                 wordCard = getWordDefinition(wordToDefine);
                 wordCardInterface.positiveClickNextWordCard(wordCard);
 

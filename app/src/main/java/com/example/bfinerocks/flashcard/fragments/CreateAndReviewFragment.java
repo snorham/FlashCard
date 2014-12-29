@@ -48,11 +48,11 @@ public class CreateAndReviewFragment extends Fragment implements WordCardCreator
         listOfWordCards = new ArrayList<WordCard>();
         adapter = new WordCardCreatorCustomAdapter(getActivity(), R.layout.word_definition_item,listOfWordCards);
         listView.setAdapter(adapter);
-
+        showWordEntryDialogFragment();
     }
 
     public void showWordEntryDialogFragment(){
-        DialogFragment wordEntryFragment = new WordEntryDialogFragment();
+        DialogFragment wordEntryFragment = WordEntryDialogFragment.newInstance(this);
         wordEntryFragment.show(getActivity().getFragmentManager(), DIALOG_FRAG_TAG);
     }
 
@@ -64,6 +64,7 @@ public class CreateAndReviewFragment extends Fragment implements WordCardCreator
     @Override
     public void positiveClickNextWordCard(WordCard wordCard) {
         updateAdapterWithNewCards(wordCard);
+        showWordEntryDialogFragment();
     }
 
     @Override

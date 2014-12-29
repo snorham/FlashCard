@@ -32,7 +32,7 @@ public class MainActivity extends Activity implements FragmentTransitionInterfac
 */
 
             CreateAndReviewFragment createAndReviewFragment = CreateAndReviewFragment.newInstance();
-            onFragmentChange(createAndReviewFragment);
+            onFragmentChange(createAndReviewFragment, "createFrag");
         }
 
     }
@@ -62,12 +62,12 @@ public class MainActivity extends Activity implements FragmentTransitionInterfac
 
     public void loadSignInScreen(boolean isUserNameStored){
         if(isUserNameStored){
-            onFragmentChange(new SignInFragment());
+            onFragmentChange(new SignInFragment(), "signIn");
         }
     }
 
     @Override
-    public void onFragmentChange(Fragment fragmentToTransitionTo) {
+    public void onFragmentChange(Fragment fragmentToTransitionTo, String fragmentTag) {
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.container, fragmentToTransitionTo)
