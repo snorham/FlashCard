@@ -24,6 +24,9 @@ import org.json.JSONObject;
  */
 public class WordEntryDialogFragment extends DialogFragment {
 
+    String wordToDefine;
+    WordCard wordCard;
+
     public interface WordCardCreatorDialogInterface {
         public void wordCardCreated(WordCard wordCard);
     }
@@ -39,17 +42,20 @@ public class WordEntryDialogFragment extends DialogFragment {
         alertBuilder.setTitle(R.string.dialog_header);
         alertBuilder.setView(inflater.inflate(R.layout.fragment_dialogue_word_entry, null));
         EditText wordText = (EditText) layoutView.findViewById(R.id.word_to_define);
-        String wordToDefine = wordText.getText().toString().trim();
+        wordToDefine = wordText.getText().toString().trim();
         alertBuilder.setPositiveButton(R.string.btn_next_word, new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-
+                wordCard = getWordDefinition(wordToDefine);
+                wordCardInterface.wordCardCreated(wordCard);
+                
             }
         });
         alertBuilder.setNegativeButton(R.string.btn_done, new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i){
-
+                wordCard = getWordDefinition(wordToDefine);
+                wordCardInterface.wordCardCreated(wordCard);
             }
         });
         return alertBuilder.create();
@@ -72,7 +78,7 @@ public class WordEntryDialogFragment extends DialogFragment {
 
             @Override
             public void onWordNikCallFailure() {
-                String definitionNotFound = "No definition was found";
+                String definitionNotFound = "No definition was found.";
                 wordCard.setDefinitionSide(definitionNotFound);
             }
         });
