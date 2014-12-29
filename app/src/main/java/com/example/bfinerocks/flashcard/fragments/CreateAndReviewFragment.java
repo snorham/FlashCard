@@ -19,7 +19,9 @@ import com.example.bfinerocks.flashcard.models.Deck;
 import com.example.bfinerocks.flashcard.models.WordCard;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by BFineRocks on 12/22/14.
@@ -75,6 +77,8 @@ public class CreateAndReviewFragment extends Fragment implements WordCardCreator
         else{
             Deck myNewDeck = new Deck(deckName);
             myNewDeck.addListOfWordCardsToDeck(listOfWordCards);
+            Map<String, Deck> fireBaseDeck = new HashMap<String, Deck>();
+            fireBaseDeck.put(deckName, myNewDeck);
         }
     }
 
