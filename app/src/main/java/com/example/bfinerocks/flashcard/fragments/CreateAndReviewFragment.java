@@ -13,7 +13,6 @@ import android.widget.ListView;
 import com.example.bfinerocks.flashcard.R;
 import com.example.bfinerocks.flashcard.adapters.WordCardCreatorCustomAdapter;
 import com.example.bfinerocks.flashcard.fragments.WordEntryDialogFragment.WordCardCreatorDialogInterface;
-import com.example.bfinerocks.flashcard.interfaces.WordNikAPIInterface;
 import com.example.bfinerocks.flashcard.models.Deck;
 import com.example.bfinerocks.flashcard.models.WordCard;
 
@@ -29,7 +28,7 @@ public class CreateAndReviewFragment extends Fragment implements WordCardCreator
     public List<WordCard> listOfWordCards;
     private ListView listView;
     private Deck myDeck;
-    public WordNikAPIInterface wordNikInterface;
+    private WordCardCreatorCustomAdapter adapter;
 
     public static CreateAndReviewFragment newInstance(){
         return new CreateAndReviewFragment();
@@ -47,7 +46,7 @@ public class CreateAndReviewFragment extends Fragment implements WordCardCreator
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         listOfWordCards = new ArrayList<WordCard>();
-        WordCardCreatorCustomAdapter adapter = new WordCardCreatorCustomAdapter(getActivity(), R.layout.word_definition_item,listOfWordCards);
+        adapter = new WordCardCreatorCustomAdapter(getActivity(), R.layout.word_definition_item,listOfWordCards);
         listView.setAdapter(adapter);
 
     }
@@ -57,13 +56,18 @@ public class CreateAndReviewFragment extends Fragment implements WordCardCreator
         wordEntryFragment.show(getActivity().getFragmentManager(), DIALOG_FRAG_TAG);
     }
 
+    public void updateAdapterWithNewCards(WordCard wordCard){
+        listOfWordCards.add(wordCard);
+        adapter.notifyDataSetChanged();
+    }
+
     @Override
     public void positiveClickNextWordCard(WordCard wordCard) {
-        
+        updateAdapterWithNewCards(wordCard);
     }
 
     @Override
     public void negativeClickNoMoreCards(WordCard wordCard) {
-
+        updateAdapterWithNewCards(wordCard);
     }
 }
