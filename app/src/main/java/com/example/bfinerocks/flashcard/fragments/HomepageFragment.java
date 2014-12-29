@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.example.bfinerocks.flashcard.R;
 import com.example.bfinerocks.flashcard.dictionaryapi.DefinitionParsing;
 import com.example.bfinerocks.flashcard.dictionaryapi.WordNikAPI;
-import com.example.bfinerocks.flashcard.dictionaryapi.WordNikAPIInterface;
+import com.example.bfinerocks.flashcard.interfaces.WordNikAPIInterface;
 
 import org.json.JSONException;
 import org.json.JSONObject;

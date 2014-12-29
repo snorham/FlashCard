@@ -16,6 +16,7 @@ import android.widget.ListView;
 
 import com.example.bfinerocks.flashcard.R;
 import com.example.bfinerocks.flashcard.adapters.WordCardCreatorCustomAdapter;
+import com.example.bfinerocks.flashcard.interfaces.WordCardCreatorDialogInterface;
 import com.example.bfinerocks.flashcard.models.Deck;
 import com.example.bfinerocks.flashcard.models.WordCard;
 
@@ -31,7 +32,7 @@ public class CreateAndReviewFragment extends Fragment {
     private List<WordCard> listOfWordCards;
     private ListView listView;
     private Deck myDeck;
-
+    private WordCardCreatorDialogInterface wordCardInterface;
 
     public static CreateAndReviewFragment newInstance(){
         return new CreateAndReviewFragment();
@@ -55,16 +56,13 @@ public class CreateAndReviewFragment extends Fragment {
     }
 
     public void showWordEntryDialogFragment(){
-        DialogFragment wordEntryFragment = new WordEntryDialogFragment();
+        DialogFragment wordEntryFragment = new WordEntryDialogFragment(wordCardInterface);
         wordEntryFragment.show(getActivity().getFragmentManager(), DIALOG_FRAG_TAG);
     }
 
     public static class WordEntryDialogFragment extends DialogFragment{
 
-        public interface WordEntryListener{
-            public void 
-        }
-
+        public static WordCardCreatorDialogInterface wordCardInterface;
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -85,6 +83,10 @@ public class CreateAndReviewFragment extends Fragment {
                 }
             });
             return alertBuilder.create();
+        }
+
+        public void setWordCardInterface(WordCardCreatorDialogInterface wordCardInterface){
+            wordCardInterface = wordCardInterface;
         }
     }
 }
