@@ -12,6 +12,7 @@ import android.widget.ListView;
 
 import com.example.bfinerocks.flashcard.R;
 import com.example.bfinerocks.flashcard.adapters.WordCardCreatorCustomAdapter;
+import com.example.bfinerocks.flashcard.fragments.WordEntryDialogFragment.WordCardCreatorDialogInterface;
 import com.example.bfinerocks.flashcard.interfaces.WordNikAPIInterface;
 import com.example.bfinerocks.flashcard.models.Deck;
 import com.example.bfinerocks.flashcard.models.WordCard;
@@ -22,7 +23,7 @@ import java.util.List;
 /**
  * Created by BFineRocks on 12/22/14.
  */
-public class CreateAndReviewFragment extends Fragment  {
+public class CreateAndReviewFragment extends Fragment implements WordCardCreatorDialogInterface {
 
     private static final String DIALOG_FRAG_TAG = "WordEntryDialog";
     public List<WordCard> listOfWordCards;
@@ -57,4 +58,8 @@ public class CreateAndReviewFragment extends Fragment  {
     }
 
 
+    @Override
+    public void wordCardCreated(WordCard wordCard) {
+
+    }
 }

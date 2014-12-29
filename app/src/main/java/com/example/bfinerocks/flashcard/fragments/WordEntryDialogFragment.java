@@ -24,12 +24,12 @@ import org.json.JSONObject;
  */
 public class WordEntryDialogFragment extends DialogFragment {
 
-    public interface WordCardCreatorDialogInterface extends com.example.bfinerocks.flashcard.interfaces.WordCardCreatorDialogInterface {
-        public void onDialogClick(String wordEntered);
+    public interface WordCardCreatorDialogInterface {
+        public void wordCardCreated(WordCard wordCard);
     }
 
+    WordCardCreatorDialogInterface wordCardInterface;
 
-    com.example.bfinerocks.flashcard.interfaces.WordCardCreatorDialogInterface wordCardInterface;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
