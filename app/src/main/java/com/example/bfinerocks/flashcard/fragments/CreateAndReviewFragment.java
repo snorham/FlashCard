@@ -3,6 +3,7 @@ package com.example.bfinerocks.flashcard.fragments;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -85,7 +86,9 @@ public class CreateAndReviewFragment extends Fragment implements WordCardCreator
         }
         else{
             Deck myNewDeck = new Deck(deckName);
+            Log.i("listCheck", listOfWordCards.get(0).getWordSide());
             myNewDeck.addListOfWordCardsToDeck(listOfWordCards);
+            Log.i("deck", myNewDeck.toString());
         }
     }
 }

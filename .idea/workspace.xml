@@ -61,18 +61,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CreateAndReviewFragment.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="CreateAndReviewFragment.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/fragments/CreateAndReviewFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7606383" vertical-offset="1079" max-vertical-offset="1455">
-              <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1124" max-vertical-offset="1500">
+              <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1278#1279#0" expanded="true" />
-                <element signature="e#1330#1331#0" expanded="true" />
-                <element signature="e#2808#2809#0" expanded="true" />
-                <element signature="e#2859#2860#0" expanded="true" />
-                <element signature="e#3059#3088#0" expanded="true" />
+                <element signature="e#1303#1304#0" expanded="true" />
+                <element signature="e#1355#1356#0" expanded="true" />
+                <element signature="e#2833#2834#0" expanded="true" />
+                <element signature="e#2884#2885#0" expanded="true" />
+                <element signature="e#3084#3113#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -97,25 +97,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Deck.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Deck.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/models/Deck.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="172" max-vertical-offset="975">
-              <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.3723404" vertical-offset="100" max-vertical-offset="1005">
+              <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#297#298#0" expanded="true" />
-                <element signature="e#337#338#0" expanded="true" />
-                <element signature="e#392#393#0" expanded="true" />
-                <element signature="e#428#429#0" expanded="true" />
-                <element signature="e#499#500#0" expanded="true" />
-                <element signature="e#541#542#0" expanded="true" />
-                <element signature="e#599#600#0" expanded="true" />
-                <element signature="e#644#645#0" expanded="true" />
-                <element signature="e#829#830#0" expanded="true" />
-                <element signature="e#858#859#0" expanded="true" />
-                <element signature="e#909#910#0" expanded="true" />
-                <element signature="e#933#934#0" expanded="true" />
+                <element signature="e#464#465#0" expanded="true" />
+                <element signature="e#500#501#0" expanded="true" />
+                <element signature="e#571#572#0" expanded="true" />
+                <element signature="e#613#614#0" expanded="true" />
+                <element signature="e#671#672#0" expanded="true" />
+                <element signature="e#716#717#0" expanded="true" />
+                <element signature="e#901#902#0" expanded="true" />
+                <element signature="e#930#931#0" expanded="true" />
+                <element signature="e#981#982#0" expanded="true" />
+                <element signature="e#1005#1006#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -955,8 +953,8 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/fragments/SignInFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/fragments/WordEntryDialogFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/models/Deck.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/fragments/CreateAndReviewFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/models/Deck.java" />
       </list>
     </option>
   </component>
@@ -1732,7 +1730,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="6" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/fragments/CreateAndReviewFragment.java</url>
+          <line>87</line>
+          <properties />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="8" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -1742,11 +1748,11 @@
           <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1278#1279#0" expanded="true" />
-            <element signature="e#1330#1331#0" expanded="true" />
-            <element signature="e#2808#2809#0" expanded="true" />
-            <element signature="e#2859#2860#0" expanded="true" />
-            <element signature="e#3059#3088#0" expanded="true" />
+            <element signature="e#1303#1304#0" expanded="true" />
+            <element signature="e#1355#1356#0" expanded="true" />
+            <element signature="e#2833#2834#0" expanded="true" />
+            <element signature="e#2884#2885#0" expanded="true" />
+            <element signature="e#3084#3113#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1765,18 +1771,16 @@
           <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#297#298#0" expanded="true" />
-            <element signature="e#337#338#0" expanded="true" />
-            <element signature="e#392#393#0" expanded="true" />
-            <element signature="e#428#429#0" expanded="true" />
-            <element signature="e#499#500#0" expanded="true" />
-            <element signature="e#541#542#0" expanded="true" />
-            <element signature="e#599#600#0" expanded="true" />
-            <element signature="e#644#645#0" expanded="true" />
-            <element signature="e#829#830#0" expanded="true" />
-            <element signature="e#858#859#0" expanded="true" />
-            <element signature="e#909#910#0" expanded="true" />
-            <element signature="e#933#934#0" expanded="true" />
+            <element signature="e#464#465#0" expanded="true" />
+            <element signature="e#500#501#0" expanded="true" />
+            <element signature="e#571#572#0" expanded="true" />
+            <element signature="e#613#614#0" expanded="true" />
+            <element signature="e#671#672#0" expanded="true" />
+            <element signature="e#716#717#0" expanded="true" />
+            <element signature="e#901#902#0" expanded="true" />
+            <element signature="e#930#931#0" expanded="true" />
+            <element signature="e#981#982#0" expanded="true" />
+            <element signature="e#1005#1006#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2056,39 +2060,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/models/Deck.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/fragments/CreateAndReviewFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="172" max-vertical-offset="975">
-          <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1124" max-vertical-offset="1500">
+          <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#297#298#0" expanded="true" />
-            <element signature="e#337#338#0" expanded="true" />
-            <element signature="e#392#393#0" expanded="true" />
-            <element signature="e#428#429#0" expanded="true" />
-            <element signature="e#499#500#0" expanded="true" />
-            <element signature="e#541#542#0" expanded="true" />
-            <element signature="e#599#600#0" expanded="true" />
-            <element signature="e#644#645#0" expanded="true" />
-            <element signature="e#829#830#0" expanded="true" />
-            <element signature="e#858#859#0" expanded="true" />
-            <element signature="e#909#910#0" expanded="true" />
-            <element signature="e#933#934#0" expanded="true" />
+            <element signature="e#1303#1304#0" expanded="true" />
+            <element signature="e#1355#1356#0" expanded="true" />
+            <element signature="e#2833#2834#0" expanded="true" />
+            <element signature="e#2884#2885#0" expanded="true" />
+            <element signature="e#3084#3113#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/fragments/CreateAndReviewFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/models/Deck.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7606383" vertical-offset="1079" max-vertical-offset="1455">
-          <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.3723404" vertical-offset="100" max-vertical-offset="1005">
+          <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1278#1279#0" expanded="true" />
-            <element signature="e#1330#1331#0" expanded="true" />
-            <element signature="e#2808#2809#0" expanded="true" />
-            <element signature="e#2859#2860#0" expanded="true" />
-            <element signature="e#3059#3088#0" expanded="true" />
+            <element signature="e#464#465#0" expanded="true" />
+            <element signature="e#500#501#0" expanded="true" />
+            <element signature="e#571#572#0" expanded="true" />
+            <element signature="e#613#614#0" expanded="true" />
+            <element signature="e#671#672#0" expanded="true" />
+            <element signature="e#716#717#0" expanded="true" />
+            <element signature="e#901#902#0" expanded="true" />
+            <element signature="e#930#931#0" expanded="true" />
+            <element signature="e#981#982#0" expanded="true" />
+            <element signature="e#1005#1006#0" expanded="true" />
           </folding>
         </state>
       </provider>

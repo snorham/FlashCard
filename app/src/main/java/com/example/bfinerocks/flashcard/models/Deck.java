@@ -2,6 +2,7 @@ package com.example.bfinerocks.flashcard.models;
 
 import android.os.Parcel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,6 +14,7 @@ public class Deck implements android.os.Parcelable {
 
     public Deck(String deckName){
         this.deckName = deckName;
+        myDeck = new ArrayList<WordCard>();
     }
 
     public void addWordCardToDeck(WordCard wordCard){
