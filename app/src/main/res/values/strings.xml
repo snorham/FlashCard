@@ -12,8 +12,14 @@
     <string name="homepage_welcome">Hey</string>
     <string name="txt_create_new_deck">Click to Create a New Deck</string>
     <string name="homepage_instructions">Select a deck to start flash card generator or edit the cards</string>
+    <string name="btn_create_finished">Save</string>
     <string name="hint_create_new_list">Enter the name of your new deck</string>
     <string name="hint_word">word</string>
     <string name="hint_definition">definition</string>
+    <string name="dialog_header">Word Card Builder</string>
+    <string name="dialogue_directions">Enter a word for side A of the WordCard</string>
+    <string name="hint_word_to_define">word to define</string>
+    <string name="btn_next_word">Next Word</string>
+    <string name="btn_done">Done</string>
 
 </resources>

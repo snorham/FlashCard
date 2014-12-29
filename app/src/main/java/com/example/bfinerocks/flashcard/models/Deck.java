@@ -31,7 +31,6 @@ public class Deck implements android.os.Parcelable {
         return myDeck;
     }
 
-
     @Override
     public int describeContents() {
         return 0;

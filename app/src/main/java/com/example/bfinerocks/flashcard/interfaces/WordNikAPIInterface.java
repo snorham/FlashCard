@@ -1,4 +1,4 @@
-package com.example.bfinerocks.flashcard.dictionaryapi;
+package com.example.bfinerocks.flashcard.interfaces;
 
 import org.json.JSONObject;
 
