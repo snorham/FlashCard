@@ -19,6 +19,10 @@ public class Deck implements android.os.Parcelable {
         myDeck.add(wordCard);
     }
 
+    public void addListOfWordCardsToDeck(List<WordCard> listOfCards){
+        myDeck.addAll(listOfCards);
+    }
+
     public WordCard getWordCardFromDeck(int cardNumber){
         return myDeck.get(cardNumber);
     }
