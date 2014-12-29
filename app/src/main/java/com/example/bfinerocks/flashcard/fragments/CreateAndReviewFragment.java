@@ -57,9 +57,13 @@ public class CreateAndReviewFragment extends Fragment implements WordCardCreator
         wordEntryFragment.show(getActivity().getFragmentManager(), DIALOG_FRAG_TAG);
     }
 
+    @Override
+    public void positiveClickNextWordCard(WordCard wordCard) {
+        
+    }
 
     @Override
-    public void wordCardCreated(WordCard wordCard) {
+    public void negativeClickNoMoreCards(WordCard wordCard) {
 
     }
 }

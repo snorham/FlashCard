@@ -62,11 +62,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CreateAndReviewFragment.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="CreateAndReviewFragment.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/fragments/CreateAndReviewFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="433" max-vertical-offset="1065">
-              <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.8813291" vertical-offset="358" max-vertical-offset="1125">
+              <caret line="61" column="8" selection-start-line="61" selection-start-column="8" selection-end-line="61" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1212#1213#0" expanded="true" />
@@ -76,10 +76,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WordEntryDialogFragment.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="WordEntryDialogFragment.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/fragments/WordEntryDialogFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.60465115" vertical-offset="480" max-vertical-offset="1440">
+            <state vertical-scroll-proportion="0.0" vertical-offset="480" max-vertical-offset="1440">
               <caret line="58" column="67" selection-start-line="58" selection-start-column="67" selection-end-line="58" selection-end-column="67" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -926,8 +926,8 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/adapters/WordCardCreatorCustomAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/models/WordCard.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/interfaces/WordCardCreatorDialogInterface.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/fragments/CreateAndReviewFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/fragments/WordEntryDialogFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/fragments/CreateAndReviewFragment.java" />
       </list>
     </option>
   </component>
@@ -2000,21 +2000,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/fragments/CreateAndReviewFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="328" max-vertical-offset="1065">
-          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1212#1213#0" expanded="true" />
-            <element signature="e#1264#1265#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/fragments/WordEntryDialogFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.60465115" vertical-offset="480" max-vertical-offset="1440">
+        <state vertical-scroll-proportion="0.0" vertical-offset="480" max-vertical-offset="1440">
           <caret line="58" column="67" selection-start-line="58" selection-start-column="67" selection-end-line="58" selection-end-column="67" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -2025,6 +2013,18 @@
             <element signature="e#2140#2157#0" expanded="true" />
             <element signature="e#2159#2431#0" expanded="true" />
             <element signature="e#2420#2421#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/fragments/CreateAndReviewFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8813291" vertical-offset="358" max-vertical-offset="1125">
+          <caret line="61" column="8" selection-start-line="61" selection-start-column="8" selection-end-line="61" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1212#1213#0" expanded="true" />
+            <element signature="e#1264#1265#0" expanded="true" />
           </folding>
         </state>
       </provider>
