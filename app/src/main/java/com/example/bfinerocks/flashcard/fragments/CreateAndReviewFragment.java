@@ -16,9 +16,15 @@ import android.widget.ListView;
 
 import com.example.bfinerocks.flashcard.R;
 import com.example.bfinerocks.flashcard.adapters.WordCardCreatorCustomAdapter;
-import com.example.bfinerocks.flashcard.interfaces.WordCardCreatorDialogInterface;
+import com.example.bfinerocks.flashcard.dictionaryapi.DefinitionParsing;
+import com.example.bfinerocks.flashcard.dictionaryapi.WordNikAPI;
+import com.example.bfinerocks.flashcard.fragments.CreateAndReviewFragment.WordEntryDialogFragment.WordCardCreatorDialogInterface;
+import com.example.bfinerocks.flashcard.interfaces.WordNikAPIInterface;
 import com.example.bfinerocks.flashcard.models.Deck;
 import com.example.bfinerocks.flashcard.models.WordCard;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,13 +32,13 @@ import java.util.List;
 /**
  * Created by BFineRocks on 12/22/14.
  */
-public class CreateAndReviewFragment extends Fragment {
+public class CreateAndReviewFragment extends Fragment  {
 
     private static final String DIALOG_FRAG_TAG = "WordEntryDialog";
-    private List<WordCard> listOfWordCards;
+    public List<WordCard> listOfWordCards;
     private ListView listView;
     private Deck myDeck;
-    private WordCardCreatorDialogInterface wordCardInterface;
+    public WordNikAPIInterface wordNikInterface;
 
     public static CreateAndReviewFragment newInstance(){
         return new CreateAndReviewFragment();
@@ -56,20 +62,38 @@ public class CreateAndReviewFragment extends Fragment {
     }
 
     public void showWordEntryDialogFragment(){
-        DialogFragment wordEntryFragment = new WordEntryDialogFragment(wordCardInterface);
+        DialogFragment wordEntryFragment = new WordEntryDialogFragment();
         wordEntryFragment.show(getActivity().getFragmentManager(), DIALOG_FRAG_TAG);
     }
 
+    public void getWordCardFromInterface(){
+        WordCardCreatorDialogInterface cardInterface = new WordCardCreatorDialogInterface() {
+            @Override
+            public void onDialogClick(WordCard wordCard) {
+
+            }
+        };
+    }
+
+
     public static class WordEntryDialogFragment extends DialogFragment{
 
-        public static WordCardCreatorDialogInterface wordCardInterface;
+        public interface WordCardCreatorDialogInterface {
+            public void onDialogClick(String wordEntered);
+        }
+
+
+        WordCardCreatorDialogInterface wordCardInterface;
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getActivity());
             LayoutInflater inflater = getActivity().getLayoutInflater();
+            View layoutView = inflater.inflate(R.layout.fragment_dialogue_word_entry, null, false);
             alertBuilder.setTitle(R.string.dialog_header);
             alertBuilder.setView(inflater.inflate(R.layout.fragment_dialogue_word_entry, null));
+            EditText wordText = (EditText) layoutView.findViewById(R.id.word_to_define);
+            String wordToDefine = wordText.getText().toString().trim();
             alertBuilder.setPositiveButton(R.string.btn_next_word, new OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
@@ -85,8 +109,30 @@ public class CreateAndReviewFragment extends Fragment {
             return alertBuilder.create();
         }
 
-        public void setWordCardInterface(WordCardCreatorDialogInterface wordCardInterface){
-            wordCardInterface = wordCardInterface;
+        public WordCard getWordDefinition(String wordToDefine){
+            final WordCard wordCard = new WordCard(wordToDefine);
+            WordNikAPI wordNikAPI = WordNikAPI.getWordNikAPI();
+            wordNikAPI.searchWordDefinition(wordToDefine, new WordNikAPIInterface() {
+                @Override
+                public void onWordNikCallSuccess(JSONObject jsonObject) {
+                    DefinitionParsing parser = new DefinitionParsing();
+                    try {
+                       String definition = parser.parseDefinitionFromDictionaryAPI(jsonObject);
+                        wordCard.setDefinitionSide(definition);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                @Override
+                public void onWordNikCallFailure() {
+                    String definitionNotFound = "No definition was found";
+                    wordCard.setDefinitionSide(definitionNotFound);
+                }
+            });
+            return wordCard;
         }
+
+
     }
 }
