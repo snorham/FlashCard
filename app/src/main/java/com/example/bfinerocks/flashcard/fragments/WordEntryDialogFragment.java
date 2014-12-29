@@ -28,7 +28,8 @@ public class WordEntryDialogFragment extends DialogFragment {
     WordCard wordCard;
 
     public interface WordCardCreatorDialogInterface {
-        public void wordCardCreated(WordCard wordCard);
+        public void positiveClickNextWordCard(WordCard wordCard);
+        public void negativeClickNoMoreCards(WordCard wordCard);
     }
 
     WordCardCreatorDialogInterface wordCardInterface;
@@ -47,15 +48,15 @@ public class WordEntryDialogFragment extends DialogFragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 wordCard = getWordDefinition(wordToDefine);
-                wordCardInterface.wordCardCreated(wordCard);
-                
+                wordCardInterface.positiveClickNextWordCard(wordCard);
+
             }
         });
         alertBuilder.setNegativeButton(R.string.btn_done, new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i){
                 wordCard = getWordDefinition(wordToDefine);
-                wordCardInterface.wordCardCreated(wordCard);
+                wordCardInterface.negativeClickNoMoreCards(wordCard);
             }
         });
         return alertBuilder.create();
