@@ -80,17 +80,17 @@
       <file leaf-file-name="WordEntryDialogFragment.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/fragments/WordEntryDialogFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.35904256" vertical-offset="645" max-vertical-offset="1560">
-              <caret line="52" column="75" selection-start-line="52" selection-start-column="75" selection-end-line="52" selection-end-column="75" />
+            <state vertical-scroll-proportion="0.082446806" vertical-offset="809" max-vertical-offset="1575">
+              <caret line="56" column="68" selection-start-line="56" selection-start-column="68" selection-end-line="56" selection-end-column="68" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1877#1899#0" expanded="true" />
                 <element signature="e#2059#2081#0" expanded="true" />
-                <element signature="e#2083#2420#0" expanded="true" />
-                <element signature="e#2409#2410#0" expanded="true" />
-                <element signature="e#2462#2479#0" expanded="true" />
-                <element signature="e#2481#2753#0" expanded="true" />
-                <element signature="e#2742#2743#0" expanded="true" />
+                <element signature="e#2083#2427#0" expanded="true" />
+                <element signature="e#2416#2417#0" expanded="true" />
+                <element signature="e#2469#2486#0" expanded="true" />
+                <element signature="e#2488#2829#0" expanded="true" />
+                <element signature="e#2818#2819#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1719,7 +1719,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/fragments/WordEntryDialogFragment.java</url>
-          <line>73</line>
+          <line>74</line>
           <properties />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
@@ -2033,17 +2033,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/fragments/WordEntryDialogFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35904256" vertical-offset="645" max-vertical-offset="1560">
-          <caret line="52" column="75" selection-start-line="52" selection-start-column="75" selection-end-line="52" selection-end-column="75" />
+        <state vertical-scroll-proportion="0.082446806" vertical-offset="809" max-vertical-offset="1575">
+          <caret line="56" column="68" selection-start-line="56" selection-start-column="68" selection-end-line="56" selection-end-column="68" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1877#1899#0" expanded="true" />
             <element signature="e#2059#2081#0" expanded="true" />
-            <element signature="e#2083#2420#0" expanded="true" />
-            <element signature="e#2409#2410#0" expanded="true" />
-            <element signature="e#2462#2479#0" expanded="true" />
-            <element signature="e#2481#2753#0" expanded="true" />
-            <element signature="e#2742#2743#0" expanded="true" />
+            <element signature="e#2083#2427#0" expanded="true" />
+            <element signature="e#2416#2417#0" expanded="true" />
+            <element signature="e#2469#2486#0" expanded="true" />
+            <element signature="e#2488#2829#0" expanded="true" />
+            <element signature="e#2818#2819#0" expanded="true" />
           </folding>
         </state>
       </provider>

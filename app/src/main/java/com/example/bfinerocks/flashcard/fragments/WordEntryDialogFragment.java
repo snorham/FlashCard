@@ -54,7 +54,7 @@ public class WordEntryDialogFragment extends DialogFragment {
         alertBuilder.setPositiveButton(R.string.btn_next_word, new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                wordToDefine = wordText.getText().toString();
+                wordToDefine = wordText.getText().toString().trim();
                 wordCard = getWordDefinition(wordToDefine);
                 wordCardInterface.positiveClickNextWordCard(wordCard);
 
@@ -63,6 +63,7 @@ public class WordEntryDialogFragment extends DialogFragment {
         alertBuilder.setNegativeButton(R.string.btn_done, new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i){
+                wordToDefine = wordText.getText().toString().trim();
                 wordCard = getWordDefinition(wordToDefine);
                 wordCardInterface.negativeClickNoMoreCards(wordCard);
             }
