@@ -12,10 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.example.bfinerocks.flashcard.R;
+import com.example.bfinerocks.flashcard.adapters.WordCardCreatorCustomAdapter;
 import com.example.bfinerocks.flashcard.models.Deck;
 import com.example.bfinerocks.flashcard.models.WordCard;
 
@@ -29,7 +29,6 @@ public class CreateAndReviewFragment extends Fragment {
 
     private static final String DIALOG_FRAG_TAG = "WordEntryDialog";
     private List<WordCard> listOfWordCards;
-    private ListAdapter listAdapter;
     private ListView listView;
     private Deck myDeck;
 
@@ -50,8 +49,9 @@ public class CreateAndReviewFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         listOfWordCards = new ArrayList<WordCard>();
+        WordCardCreatorCustomAdapter adapter = new WordCardCreatorCustomAdapter(getActivity(), R.layout.word_definition_item,listOfWordCards);
+        listView.setAdapter(adapter);
 
-        super.onViewCreated(view, savedInstanceState);
     }
 
     public void showWordEntryDialogFragment(){
@@ -60,6 +60,11 @@ public class CreateAndReviewFragment extends Fragment {
     }
 
     public static class WordEntryDialogFragment extends DialogFragment{
+
+        public interface WordEntryListener{
+            public void 
+        }
+
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
