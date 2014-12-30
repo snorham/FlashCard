@@ -43,10 +43,10 @@ public class FirebaseStorage {
         getReferenceToUsersDeckLevel().addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                if(dataSnapshot != null){
-                    Map<String, Object> deckOfCards = (Map<String,Object>) dataSnapshot.getValue();
+                if (dataSnapshot != null) {
+                    Map<String, Object> deckOfCards = (Map<String, Object>) dataSnapshot.getValue();
                     //StudyShelf myStudyShelf = new StudyShelf();
-                   // myStudyShelf.add(deckOfCards);
+                    // myStudyShelf.add(deckOfCards);
                 }
             }
 
@@ -71,4 +71,5 @@ public class FirebaseStorage {
             }
         });
     }
+
 }

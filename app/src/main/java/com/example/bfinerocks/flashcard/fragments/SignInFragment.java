@@ -34,7 +34,7 @@ public class SignInFragment extends Fragment {
                 generateSharedPrefWithUserName(userNameEntered);
                 FragmentTransitionInterface fti = (FragmentTransitionInterface) getActivity();
                 HomepageFragment homepageFragment = HomepageFragment.newInstance("user");//todo think about what we are passing
-                fti.onFragmentChange(homepageFragment, "homepage");                     //will not pass "user" this is a placeholder
+                fti.onFragmentChange(homepageFragment);                     //will not pass "user" this is a placeholder
             }
         });
         return rootview;

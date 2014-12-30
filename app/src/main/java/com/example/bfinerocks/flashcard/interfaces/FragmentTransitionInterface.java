@@ -7,5 +7,5 @@ import android.app.Fragment;
  */
 public interface FragmentTransitionInterface {
 
-    public void onFragmentChange(Fragment fragmentToTransitionTo, String fragmentTag);
+    public void onFragmentChange(Fragment fragmentToTransitionTo);
 }

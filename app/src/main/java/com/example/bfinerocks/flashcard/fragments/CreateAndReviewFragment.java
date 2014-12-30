@@ -14,12 +14,15 @@ import android.widget.Toast;
 
 import com.example.bfinerocks.flashcard.R;
 import com.example.bfinerocks.flashcard.adapters.WordCardCreatorCustomAdapter;
+import com.example.bfinerocks.flashcard.firebase.FirebaseStorage;
 import com.example.bfinerocks.flashcard.fragments.WordEntryDialogFragment.WordCardCreatorDialogInterface;
 import com.example.bfinerocks.flashcard.models.Deck;
 import com.example.bfinerocks.flashcard.models.WordCard;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by BFineRocks on 12/22/14.
@@ -32,6 +35,7 @@ public class CreateAndReviewFragment extends Fragment implements WordCardCreator
     private WordCardCreatorCustomAdapter adapter;
     private Button saveListButton;
     private EditText deckNameEditText;
+    private FirebaseStorage firebaseStorage;
 
     public static CreateAndReviewFragment newInstance(){
         return new CreateAndReviewFragment();
@@ -52,6 +56,7 @@ public class CreateAndReviewFragment extends Fragment implements WordCardCreator
         adapter = new WordCardCreatorCustomAdapter(getActivity(), R.layout.word_definition_item,listOfWordCards);
         listView.setAdapter(adapter);
         saveListButton.setOnClickListener(this);
+
         showWordEntryDialogFragment();
 
     }
@@ -75,7 +80,17 @@ public class CreateAndReviewFragment extends Fragment implements WordCardCreator
         else{
             Deck myNewDeck = new Deck(deckName);
             myNewDeck.addListOfWordCardsToDeck(listOfWordCards);
+            sendDeckToFirebase(deckName, myNewDeck);
         }
+    }
+
+    public void sendDeckToFirebase(String deckName, Object deck){
+        Map<String, Object> fireBaseDeck = new HashMap<String, Object>();
+        fireBaseDeck.put(deckName, deck);
+        FirebaseStorage firebaseStorage = new FirebaseStorage();
+        firebaseStorage.createFirebaseReferenceWithUserNameForReference("test");
+        firebaseStorage.appendFirebaseReferenceWithDeckLevelReference();
+        firebaseStorage.addNewDeckToFirebaseUserReference(fireBaseDeck);
     }
 
     @Override
