@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.bfinerocks.flashcard.R;
 import com.example.bfinerocks.flashcard.constants.ConstantsForReference;
+import com.example.bfinerocks.flashcard.firebase.FirebaseStorage;
 import com.example.bfinerocks.flashcard.interfaces.FragmentTransitionInterface;
 
 /**
@@ -47,13 +48,14 @@ public class HomepageFragment extends Fragment implements OnClickListener{
     }
 
     public void getUpdatedSavedDeckFromFirebase(){
-/*        String userReference = getArguments().getString(USER_FIREBASE_REFERENCE);
-        if(userReference != null){
+        String userReference = getArguments().getString(ConstantsForReference.USER_FIREBASE_REFERENCE);
+            if(userReference != null){
             FirebaseStorage firebaseStorage = new FirebaseStorage();
             firebaseStorage.createFirebaseReferenceWithUserNameForReference(userReference);
-            Firebase ref = firebaseStorage.getReferenceWithUser();
-          //todo complete this method when firebasestorage set up
-        }*/
+            firebaseStorage.appendFirebaseReferenceWithDeckLevelReference();
+               firebaseStorage.getUsersDecksFromFirebase();
+
+        }
     }
 
     @Override

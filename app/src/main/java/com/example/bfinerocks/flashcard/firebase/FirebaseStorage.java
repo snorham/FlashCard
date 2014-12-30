@@ -1,5 +1,7 @@
 package com.example.bfinerocks.flashcard.firebase;
 
+import android.util.Log;
+
 import com.example.bfinerocks.flashcard.models.WordCard;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
@@ -49,9 +51,8 @@ public class FirebaseStorage {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 if (dataSnapshot != null) {
-                    Map<String, Object> deckOfCards = (Map<String, Object>) dataSnapshot.getValue();
-                    //StudyShelf myStudyShelf = new StudyShelf();
-                    // myStudyShelf.add(deckOfCards);
+                    Map<String, Object> mapTest = (Map<String, Object>) dataSnapshot.getValue();
+                    Log.i("mapTest", mapTest.toString());
                 }
             }
 
