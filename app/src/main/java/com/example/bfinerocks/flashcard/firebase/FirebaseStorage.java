@@ -2,6 +2,7 @@ package com.example.bfinerocks.flashcard.firebase;
 
 import android.util.Log;
 
+import com.example.bfinerocks.flashcard.models.Deck;
 import com.example.bfinerocks.flashcard.models.WordCard;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
@@ -57,6 +58,8 @@ public class FirebaseStorage {
                 if (dataSnapshot != null) {
                     Map<String, Object> mapTest = (Map<String, Object>) dataSnapshot.getValue();
                     Log.i("mapTest", mapTest.get("deckname").toString());
+                    Deck deckTest = new Deck(mapTest.get("deckname").toString());
+                    Log.i("deckTest", deckTest.toString());
                 }
             }
 
