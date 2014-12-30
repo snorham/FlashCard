@@ -1,10 +1,12 @@
 package com.example.bfinerocks.flashcard.firebase;
 
+import com.example.bfinerocks.flashcard.models.WordCard;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -34,9 +36,16 @@ public class FirebaseStorage {
         return referenceToUsersDeckLevel;
     }
 
+
     //the object in this map is a Deck object not yet create //todo create deck object
     public void addNewDeckToFirebaseUserReference(Map<String,Object> deckOfCards){
         getReferenceToUsersDeckLevel().push().setValue(deckOfCards);
+    }
+
+    public void addNewDeckToFirebaseUserReference(String userName, String listName, List<WordCard> listOfCards){
+        createFirebaseReferenceWithUserNameForReference(userName);
+        appendFirebaseReferenceWithDeckLevelReference();
+        getReferenceToUsersDeckLevel().push().child(listName).setValue(listOfCards);
     }
 
     public void getUsersDecksFromFirebase(){

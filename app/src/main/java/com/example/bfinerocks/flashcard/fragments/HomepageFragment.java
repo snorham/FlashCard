@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.bfinerocks.flashcard.R;
+import com.example.bfinerocks.flashcard.constants.ConstantsForReference;
 import com.example.bfinerocks.flashcard.interfaces.FragmentTransitionInterface;
 
 /**
@@ -17,12 +18,13 @@ import com.example.bfinerocks.flashcard.interfaces.FragmentTransitionInterface;
  */
 public class HomepageFragment extends Fragment implements OnClickListener{
 
-    private static final String USER_FIREBASE_REFERENCE = "firebase_user_ref";
+   // private static final String USER_FIREBASE_REFERENCE = "firebase_user_ref";
     private TextView linkToCreateNewDeck;
+
 
     public static HomepageFragment newInstance(String user){
         Bundle bundle = new Bundle();
-        bundle.putString(USER_FIREBASE_REFERENCE, user);
+        bundle.putString(ConstantsForReference.USER_FIREBASE_REFERENCE, user);
         HomepageFragment homepageFragment = new HomepageFragment();
         homepageFragment.setArguments(bundle);
         return homepageFragment;
