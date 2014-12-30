@@ -2,27 +2,23 @@ package com.example.bfinerocks.flashcard.fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.bfinerocks.flashcard.R;
-import com.example.bfinerocks.flashcard.dictionaryapi.DefinitionParsing;
-import com.example.bfinerocks.flashcard.dictionaryapi.WordNikAPI;
-import com.example.bfinerocks.flashcard.interfaces.WordNikAPIInterface;
-
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.example.bfinerocks.flashcard.interfaces.FragmentTransitionInterface;
 
 /**
  * Created by BFineRocks on 12/17/14.
  */
-public class HomepageFragment extends Fragment {
+public class HomepageFragment extends Fragment implements OnClickListener{
 
     private static final String USER_FIREBASE_REFERENCE = "firebase_user_ref";
+    private TextView linkToCreateNewDeck;
 
     public static HomepageFragment newInstance(String user){
         Bundle bundle = new Bundle();
@@ -37,31 +33,14 @@ public class HomepageFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_homepage, container, false);
         TextView welcomeUser = (TextView) rootView.findViewById(R.id.homepage_welcome);
         ListView listOfDecksSaved = (ListView) rootView.findViewById(R.id.homepage_listView);
-        TextView linkToCreateNewDeck = (TextView) rootView.findViewById(R.id.txt_create_new_deck);
-        WordNikAPI wordNikAPI = WordNikAPI.getWordNikAPI();
-        wordNikAPI.searchWordDefinition("shoe", new WordNikAPIInterface() {
-            @Override
-            public void onWordNikCallSuccess(JSONObject jsonObject) {
-                Log.i("interfaceSuccessUI" , "working");
-                DefinitionParsing definitionParsing = new DefinitionParsing();
-                try {
-                    definitionParsing.parseDefinitionFromDictionaryAPI(jsonObject);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onWordNikCallFailure() {
-
-            }
-        });
+        linkToCreateNewDeck = (TextView) rootView.findViewById(R.id.txt_create_new_deck);
         return rootView;
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        linkToCreateNewDeck.setOnClickListener(this);
         getUpdatedSavedDeckFromFirebase();
     }
 
@@ -73,5 +52,12 @@ public class HomepageFragment extends Fragment {
             Firebase ref = firebaseStorage.getReferenceWithUser();
           //todo complete this method when firebasestorage set up
         }*/
+    }
+
+    @Override
+    public void onClick(View view) {
+        FragmentTransitionInterface fti = (FragmentTransitionInterface) getActivity();
+        CreateAndReviewFragment createAndReviewFragment = CreateAndReviewFragment.newInstance();
+        fti.onFragmentChange(createAndReviewFragment);
     }
 }
