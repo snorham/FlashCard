@@ -8,6 +8,7 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -42,7 +43,10 @@ public class FirebaseStorage {
     public void addNewDeckToFirebaseUserReference(String userName, String listName, List<WordCard> listOfCards){
         createFirebaseReferenceWithUserNameForReference(userName);
         appendFirebaseReferenceWithDeckLevelReference();
-        getReferenceToUsersDeckLevel().push().child(listName).setValue(listOfCards);
+        Map<String, Object> deck = new HashMap<String, Object>();
+        deck.put("cards", listOfCards);
+        deck.put("deckname", listName);
+        getReferenceToUsersDeckLevel().push().setValue(deck);
 
     }
 
@@ -52,7 +56,7 @@ public class FirebaseStorage {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 if (dataSnapshot != null) {
                     Map<String, Object> mapTest = (Map<String, Object>) dataSnapshot.getValue();
-                    Log.i("mapTest", mapTest.toString());
+                    Log.i("mapTest", mapTest.get("deckname").toString());
                 }
             }
 

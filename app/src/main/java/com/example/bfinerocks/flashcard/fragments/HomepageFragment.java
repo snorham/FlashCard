@@ -3,6 +3,8 @@ package com.example.bfinerocks.flashcard.fragments;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,6 +16,10 @@ import com.example.bfinerocks.flashcard.R;
 import com.example.bfinerocks.flashcard.constants.ConstantsForReference;
 import com.example.bfinerocks.flashcard.firebase.FirebaseStorage;
 import com.example.bfinerocks.flashcard.interfaces.FragmentTransitionInterface;
+import com.example.bfinerocks.flashcard.models.Deck;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by BFineRocks on 12/17/14.
@@ -23,6 +29,7 @@ public class HomepageFragment extends Fragment implements OnClickListener{
    // private static final String USER_FIREBASE_REFERENCE = "firebase_user_ref";
     private TextView linkToCreateNewDeck;
     private Handler uiHandler;
+    private List<Deck> listOfDecks;
 
 
     public static HomepageFragment newInstance(String user){
@@ -32,6 +39,7 @@ public class HomepageFragment extends Fragment implements OnClickListener{
         homepageFragment.setArguments(bundle);
         return homepageFragment;
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,7 +54,9 @@ public class HomepageFragment extends Fragment implements OnClickListener{
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         linkToCreateNewDeck.setOnClickListener(this);
+        listOfDecks = new ArrayList<Deck>();
         getUpdatedSavedDeckFromFirebase();
+
     }
 
     public void getUpdatedSavedDeckFromFirebase(){
@@ -65,5 +75,14 @@ public class HomepageFragment extends Fragment implements OnClickListener{
         FragmentTransitionInterface fti = (FragmentTransitionInterface) getActivity();
         CreateAndReviewFragment createAndReviewFragment = CreateAndReviewFragment.newInstance();
         fti.onFragmentChange(createAndReviewFragment);
+    }
+
+    public void updateUIWithHandler(){
+        uiHandler = new Handler(Looper.getMainLooper()){
+            @Override
+            public void handleMessage(Message msg) {
+
+            }
+        };
     }
 }
