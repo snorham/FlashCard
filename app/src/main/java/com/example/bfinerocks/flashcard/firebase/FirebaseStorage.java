@@ -1,5 +1,7 @@
 package com.example.bfinerocks.flashcard.firebase;
 
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 
 import com.example.bfinerocks.flashcard.models.Deck;
@@ -21,6 +23,14 @@ public class FirebaseStorage {
     private Firebase referenceWithUser = null;
     private Firebase referenceToUsersDeckLevel = null;
     private final static String DECK_LEVL_REF_KEY = "study-shelf";
+    private Handler handler;
+
+    public FirebaseStorage(){
+
+    }
+    public FirebaseStorage(Handler handler){
+        this.handler = handler;
+    }
 
 
     public void createFirebaseReferenceWithUserNameForReference(String userName){
@@ -53,7 +63,7 @@ public class FirebaseStorage {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 if (dataSnapshot != null) {
-                    getDeckFromFirebase(dataSnapshot);
+                  sendMessageToUIHandler(getDeckFromFirebase(dataSnapshot));
                 }
             }
 
@@ -95,6 +105,13 @@ public class FirebaseStorage {
             Log.i("forLoop", deck.getWordCardFromDeck(i).getDefinitionSide());
         }
         return deck;
+    }
+
+    public void sendMessageToUIHandler(Deck deck){
+        Message message = new Message();
+        message.obj = deck;
+        handler.sendMessage(message);
+        Log.i("mesSent", message.toString());
     }
 
 }

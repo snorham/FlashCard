@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -40,7 +41,6 @@ public class HomepageFragment extends Fragment implements OnClickListener{
         return homepageFragment;
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_homepage, container, false);
@@ -55,6 +55,13 @@ public class HomepageFragment extends Fragment implements OnClickListener{
         super.onViewCreated(view, savedInstanceState);
         linkToCreateNewDeck.setOnClickListener(this);
         listOfDecks = new ArrayList<Deck>();
+        uiHandler = new Handler(Looper.getMainLooper()){
+            @Override
+            public void handleMessage(Message msg) {
+                Log.i("messRec", msg.obj.toString());
+                Deck deck = (Deck) msg.obj;
+            }
+        };
         getUpdatedSavedDeckFromFirebase();
 
     }
@@ -62,7 +69,7 @@ public class HomepageFragment extends Fragment implements OnClickListener{
     public void getUpdatedSavedDeckFromFirebase(){
         String userReference = getArguments().getString(ConstantsForReference.USER_FIREBASE_REFERENCE);
             if(userReference != null){
-            FirebaseStorage firebaseStorage = new FirebaseStorage();
+            FirebaseStorage firebaseStorage = new FirebaseStorage(uiHandler);
             firebaseStorage.createFirebaseReferenceWithUserNameForReference(userReference);
             firebaseStorage.appendFirebaseReferenceWithDeckLevelReference();
                firebaseStorage.getUsersDecksFromFirebase();
@@ -77,12 +84,4 @@ public class HomepageFragment extends Fragment implements OnClickListener{
         fti.onFragmentChange(createAndReviewFragment);
     }
 
-    public void updateUIWithHandler(){
-        uiHandler = new Handler(Looper.getMainLooper()){
-            @Override
-            public void handleMessage(Message msg) {
-
-            }
-        };
-    }
 }
