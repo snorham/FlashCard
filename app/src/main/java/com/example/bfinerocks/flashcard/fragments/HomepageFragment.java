@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -31,6 +32,7 @@ public class HomepageFragment extends Fragment implements OnClickListener{
     private TextView linkToCreateNewDeck;
     private Handler uiHandler;
     private List<Deck> listOfDecks;
+    private ArrayAdapter adapter;
 
 
     public static HomepageFragment newInstance(String user){
@@ -55,11 +57,14 @@ public class HomepageFragment extends Fragment implements OnClickListener{
         super.onViewCreated(view, savedInstanceState);
         linkToCreateNewDeck.setOnClickListener(this);
         listOfDecks = new ArrayList<Deck>();
+        adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1,listOfDecks);
         uiHandler = new Handler(Looper.getMainLooper()){
             @Override
             public void handleMessage(Message msg) {
                 Log.i("messRec", msg.obj.toString());
                 Deck deck = (Deck) msg.obj;
+                listOfDecks.add(deck);
+                adapter.notifyDataSetChanged();
             }
         };
         getUpdatedSavedDeckFromFirebase();

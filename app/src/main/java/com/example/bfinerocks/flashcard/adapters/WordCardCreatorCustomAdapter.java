@@ -17,18 +17,16 @@ import java.util.List;
  */
 public class WordCardCreatorCustomAdapter extends ArrayAdapter<WordCard> {
 
-    static class ViewHolder{
+    private static class ViewHolder{
         EditText wordEntered;
         EditText wordDefinition;
     }
 
     private int layoutResource;
-    private List<WordCard> wordCardObjects;
 
     public WordCardCreatorCustomAdapter(Context context, int resource, List<WordCard> objects) {
         super(context, resource, objects);
         this.layoutResource = resource;
-        this.wordCardObjects = objects;
     }
 
     @Override
@@ -45,7 +43,7 @@ public class WordCardCreatorCustomAdapter extends ArrayAdapter<WordCard> {
         else{
             holder = (ViewHolder) convertView.getTag();
         }
-        WordCard wordCard = wordCardObjects.get(position);
+        WordCard wordCard = getItem(position);
         if(wordCard != null){
             holder.wordEntered.setText(wordCard.getWordSide());
             holder.wordDefinition.setText(wordCard.getDefinitionSide());
