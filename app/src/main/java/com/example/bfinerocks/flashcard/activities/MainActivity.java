@@ -3,9 +3,9 @@ package com.example.bfinerocks.flashcard.activities;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -21,7 +21,7 @@ public class MainActivity extends Activity implements FragmentTransitionInterfac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        SharedPreferences sharedPreferences = getSharedPreferences(SignInFragment.USER_NAME_PREFENCE_FILE, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         if(!sharedPreferences.contains(SignInFragment.USER_NAME_PREFERENCE)){
             loadSignInScreen(true);
         }

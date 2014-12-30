@@ -37,15 +37,11 @@ public class FirebaseStorage {
     }
 
 
-    //the object in this map is a Deck object not yet create //todo create deck object
-    public void addNewDeckToFirebaseUserReference(Map<String,Object> deckOfCards){
-        getReferenceToUsersDeckLevel().push().setValue(deckOfCards);
-    }
-
     public void addNewDeckToFirebaseUserReference(String userName, String listName, List<WordCard> listOfCards){
         createFirebaseReferenceWithUserNameForReference(userName);
         appendFirebaseReferenceWithDeckLevelReference();
         getReferenceToUsersDeckLevel().push().child(listName).setValue(listOfCards);
+
     }
 
     public void getUsersDecksFromFirebase(){

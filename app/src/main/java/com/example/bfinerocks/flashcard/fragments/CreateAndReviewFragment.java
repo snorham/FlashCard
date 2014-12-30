@@ -2,6 +2,7 @@ package com.example.bfinerocks.flashcard.fragments;
 
 import android.app.DialogFragment;
 import android.app.Fragment;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
@@ -78,28 +79,17 @@ public class CreateAndReviewFragment extends Fragment implements WordCardCreator
             Toast.makeText(getActivity(), R.string.toast_need_deck_name, Toast.LENGTH_SHORT).show();
         }
         else{
-        //    Deck myNewDeck = new Deck(deckName); //todo change this to a list instead of object map
-          //  myNewDeck.addListOfWordCardsToDeck(listOfWordCards);
-           // sendDeckToFirebase(deckName, myNewDeck);
             sendDeckToFirebase(deckName, listOfWordCards);
         }
     }
 
-/*    public void sendDeckToFirebase(String deckName, Object deck){
-        Map<String, Object> fireBaseDeck = new HashMap<String, Object>();
-        fireBaseDeck.put(deckName, deck);
-        FirebaseStorage firebaseStorage = new FirebaseStorage();
-        firebaseStorage.createFirebaseReferenceWithUserNameForReference("test");
-        firebaseStorage.appendFirebaseReferenceWithDeckLevelReference();
-        firebaseStorage.addNewDeckToFirebaseUserReference(fireBaseDeck);
-    }*/
 
     public void sendDeckToFirebase(String deckName, List<WordCard> listOfCards){
         FirebaseStorage firebaseStorage = new FirebaseStorage();
-        String userName = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString(ConstantsForReference.USER_FIREBASE_REFERENCE, "user");
-  //      if(!userName.equals("user")){
-            firebaseStorage.addNewDeckToFirebaseUserReference(userName, deckName, listOfCards);
-     //   }
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String userName = sharedPreferences.getString(ConstantsForReference.USER_NAME_PREFERENCE, "user");
+        firebaseStorage.addNewDeckToFirebaseUserReference(userName, deckName, listOfCards);
+
     }
 
     @Override
