@@ -2,6 +2,7 @@ package com.example.bfinerocks.flashcard.fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -21,6 +22,7 @@ public class HomepageFragment extends Fragment implements OnClickListener{
 
    // private static final String USER_FIREBASE_REFERENCE = "firebase_user_ref";
     private TextView linkToCreateNewDeck;
+    private Handler uiHandler;
 
 
     public static HomepageFragment newInstance(String user){
