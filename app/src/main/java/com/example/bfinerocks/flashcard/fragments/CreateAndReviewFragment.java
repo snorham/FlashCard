@@ -19,6 +19,7 @@ import com.example.bfinerocks.flashcard.adapters.WordCardCreatorCustomAdapter;
 import com.example.bfinerocks.flashcard.constants.ConstantsForReference;
 import com.example.bfinerocks.flashcard.firebase.FirebaseStorage;
 import com.example.bfinerocks.flashcard.fragments.WordEntryDialogFragment.WordCardCreatorDialogInterface;
+import com.example.bfinerocks.flashcard.models.Deck;
 import com.example.bfinerocks.flashcard.models.WordCard;
 
 import java.util.ArrayList;
@@ -79,16 +80,18 @@ public class CreateAndReviewFragment extends Fragment implements WordCardCreator
             Toast.makeText(getActivity(), R.string.toast_need_deck_name, Toast.LENGTH_SHORT).show();
         }
         else{
-            sendDeckToFirebase(deckName, listOfWordCards);
+            Deck deckOfCards = new Deck(deckName);
+            deckOfCards.addListOfWordCardsToDeck(listOfWordCards);
+            sendDeckToFirebase(deckOfCards);
         }
     }
 
 
-    public void sendDeckToFirebase(String deckName, List<WordCard> listOfCards){
+    public void sendDeckToFirebase(Deck deckOfCards){
         FirebaseStorage firebaseStorage = new FirebaseStorage();
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         String userName = sharedPreferences.getString(ConstantsForReference.USER_NAME_PREFERENCE, "user");
-        firebaseStorage.addNewDeckToFirebaseUserReference(userName, deckName, listOfCards);
+        firebaseStorage.addNewDeckToFirebaseUserReference(userName, deckOfCards);
 
     }
 

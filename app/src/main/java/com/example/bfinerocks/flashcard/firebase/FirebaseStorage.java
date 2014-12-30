@@ -1,17 +1,10 @@
 package com.example.bfinerocks.flashcard.firebase;
 
-import android.util.Log;
-
 import com.example.bfinerocks.flashcard.models.Deck;
-import com.example.bfinerocks.flashcard.models.WordCard;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by BFineRocks on 12/17/14.
@@ -41,12 +34,9 @@ public class FirebaseStorage {
     }
 
 
-    public void addNewDeckToFirebaseUserReference(String userName, String listName, List<WordCard> listOfCards){
+    public void addNewDeckToFirebaseUserReference(String userName, Deck deck){
         createFirebaseReferenceWithUserNameForReference(userName);
         appendFirebaseReferenceWithDeckLevelReference();
-        Map<String, Object> deck = new HashMap<String, Object>();
-        deck.put("cards", listOfCards);
-        deck.put("deckname", listName);
         getReferenceToUsersDeckLevel().push().setValue(deck);
 
     }
@@ -56,10 +46,13 @@ public class FirebaseStorage {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 if (dataSnapshot != null) {
-                    Map<String, Object> mapTest = (Map<String, Object>) dataSnapshot.getValue();
+/*                    Map<String, Object> mapTest = (Map<String, Object>) dataSnapshot.getValue();
                     Log.i("mapTest", mapTest.get("deckname").toString());
                     Deck deckTest = new Deck(mapTest.get("deckname").toString());
-                    Log.i("deckTest", deckTest.toString());
+                    Log.i("deckTest", deckTest.getDeckName());
+                    Object cards = mapTest.get("cards");
+                    Log.i("cardTest", cards.toString());*/
+
                 }
             }
 
