@@ -3,12 +3,14 @@ package com.example.bfinerocks.flashcard.firebase;
 import android.util.Log;
 
 import com.example.bfinerocks.flashcard.models.Deck;
+import com.example.bfinerocks.flashcard.models.WordCard;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -42,8 +44,6 @@ public class FirebaseStorage {
     public void addNewDeckToFirebaseUserReference(String userName, Deck deck){
         createFirebaseReferenceWithUserNameForReference(userName);
         appendFirebaseReferenceWithDeckLevelReference();
-        Map<String, Deck> deckMap = new HashMap<String, Deck>();
-        deckMap.put("deck", deck);
         getReferenceToUsersDeckLevel().push().setValue(deck);
 
     }
@@ -53,11 +53,7 @@ public class FirebaseStorage {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 if (dataSnapshot != null) {
-                    Map<String, Object> deckMap = (Map<String, Object>)dataSnapshot.getValue();
-                    Log.i("deckObject", dataSnapshot.getValue().toString());
-                    Log.i("deckMap", deckMap.get("myDeck").toString());
-                    Log.i("deckMapName", deckMap.get("deckName").toString());
-
+                    getDeckFromFirebase(dataSnapshot);
                 }
             }
 
@@ -81,6 +77,24 @@ public class FirebaseStorage {
 
             }
         });
+    }
+
+    public Deck getDeckFromFirebase(DataSnapshot dataSnapshot){
+        Map<String, Object> deckMap = (Map<String, Object>)dataSnapshot.getValue();
+        String deckName = deckMap.get("deckName").toString();
+        Deck deck = new Deck(deckName);
+        List<Object> list = (List<Object>) deckMap.get("myDeck");
+
+        for(int i = 0; i < list.size(); i++){
+            HashMap<String, String> map = (HashMap) list.get(i);
+            String word = map.get("wordSide");
+            String def = map.get("definitionSide");
+            WordCard wordCard1 = new WordCard(word);
+            wordCard1.setDefinitionSide(def);
+            deck.addWordCardToDeck(wordCard1);
+            Log.i("forLoop", deck.getWordCardFromDeck(i).getDefinitionSide());
+        }
+        return deck;
     }
 
 }
