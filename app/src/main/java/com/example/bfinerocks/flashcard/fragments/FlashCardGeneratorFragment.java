@@ -1,9 +1,7 @@
 package com.example.bfinerocks.flashcard.fragments;
 
 import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -26,9 +24,11 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Intent intent = getActivity().getIntent();
-        deck = intent.getParcelableExtra("deckSelected");
-        Log.i("deck", intent.toString());
+/*        Bundle bundle = getActivity().getIntent().getExtras();
+        deck = (Deck) bundle.getParcelable("com.example.bfinerocks.flashcard.models.Deck");
+  //      Bundle bundle = getArguments();
+  //      Deck deck1 = (Deck) bundle.getParcelable("com.example.bfinerocks.flashcard.models.Deck");
+        Log.i("deck", deck.toString());*/
         View rootView = inflater.inflate(R.layout.fragment_card_view, container, false);
         cardText = (TextView) rootView.findViewById(R.id.card_text);
         cardText.setOnClickListener(this);
