@@ -78,10 +78,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Deck.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Deck.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/models/Deck.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5460993" vertical-offset="714" max-vertical-offset="1170">
+            <state vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="1170">
               <caret line="68" column="53" selection-start-line="68" selection-start-column="53" selection-end-line="68" selection-end-column="53" />
               <folding>
                 <element signature="e#475#476#0" expanded="true" />
@@ -122,11 +122,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FlashCardGeneratorFragment.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="FlashCardGeneratorFragment.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/fragments/FlashCardGeneratorFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="264" max-vertical-offset="885">
-              <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.71631205" vertical-offset="282" max-vertical-offset="1125">
+              <caret line="39" column="66" selection-start-line="39" selection-start-column="66" selection-end-line="39" selection-end-column="66" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -162,8 +162,8 @@
       <file leaf-file-name="HomepageFragment.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/fragments/HomepageFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1047" max-vertical-offset="1500">
-              <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1500">
+              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="48" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -952,12 +952,12 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_flash_card_generator.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/activities/WordCardGeneratorActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/fragments/FlashCardGenerator.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/fragments/FlashCardGeneratorFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/deck_item.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/models/WordCard.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/fragments/HomepageFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/activities/FlashCardGeneratorActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/models/Deck.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/fragments/FlashCardGeneratorFragment.java" />
       </list>
     </option>
   </component>
@@ -2201,24 +2201,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/fragments/FlashCardGeneratorFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="264" max-vertical-offset="885">
-          <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/fragments/HomepageFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1047" max-vertical-offset="1500">
-          <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/activities/FlashCardGeneratorActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="54" max-vertical-offset="540">
@@ -2231,7 +2213,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/models/Deck.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5460993" vertical-offset="714" max-vertical-offset="1170">
+        <state vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="1170">
           <caret line="68" column="53" selection-start-line="68" selection-start-column="53" selection-end-line="68" selection-end-column="53" />
           <folding>
             <element signature="e#475#476#0" expanded="true" />
@@ -2247,6 +2229,24 @@
             <element signature="e#1730#1731#0" expanded="true" />
             <element signature="e#1774#1775#0" expanded="true" />
             <element signature="e#1819#1820#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/fragments/HomepageFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1500">
+          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="48" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/fragments/FlashCardGeneratorFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.71631205" vertical-offset="282" max-vertical-offset="1125">
+          <caret line="39" column="66" selection-start-line="39" selection-start-column="66" selection-end-line="39" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

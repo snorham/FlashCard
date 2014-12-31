@@ -21,22 +21,33 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
     private Button backButton;
     private Button nextButton;
     private Deck deck;
+    private int currentCard;
+
+    public static FlashCardGeneratorFragment newInstance(Deck currentDeck){
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("deckSent", currentDeck);
+        FlashCardGeneratorFragment flashCardGeneratorFragment = new FlashCardGeneratorFragment();
+        flashCardGeneratorFragment.setArguments(bundle);
+        return flashCardGeneratorFragment;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-/*        Bundle bundle = getActivity().getIntent().getExtras();
-        deck = (Deck) bundle.getParcelable("com.example.bfinerocks.flashcard.models.Deck");
-  //      Bundle bundle = getArguments();
-  //      Deck deck1 = (Deck) bundle.getParcelable("com.example.bfinerocks.flashcard.models.Deck");
-        Log.i("deck", deck.toString());*/
         View rootView = inflater.inflate(R.layout.fragment_card_view, container, false);
+        deck = getDeckFromBundle();
         cardText = (TextView) rootView.findViewById(R.id.card_text);
         cardText.setOnClickListener(this);
+        cardText.setText(deck.getWordCardFromDeck(0).getWordSide());
         backButton = (Button) rootView.findViewById(R.id.btn_back);
         backButton.setOnClickListener(this);
         nextButton = (Button) rootView.findViewById(R.id.btn_next);
         nextButton.setOnClickListener(this);
         return rootView;
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
     }
 
     @Override
@@ -49,5 +60,10 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
             case R.id.btn_next:
                 break;
         }
+    }
+
+    public Deck getDeckFromBundle(){
+        Bundle bundle = getArguments();
+        return bundle.getParcelable("deckSent");
     }
 }
