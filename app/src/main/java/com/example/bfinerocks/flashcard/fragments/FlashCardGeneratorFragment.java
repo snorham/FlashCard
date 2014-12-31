@@ -1,7 +1,9 @@
 package com.example.bfinerocks.flashcard.fragments;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -10,18 +12,23 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.bfinerocks.flashcard.R;
+import com.example.bfinerocks.flashcard.models.Deck;
 
 /**
  * Created by BFineRocks on 12/30/14.
  */
-public class FlashCardGenerator extends Fragment implements OnClickListener {
+public class FlashCardGeneratorFragment extends Fragment implements OnClickListener {
 
-    TextView cardText;
-    Button backButton;
-    Button nextButton;
+    private TextView cardText;
+    private Button backButton;
+    private Button nextButton;
+    private Deck deck;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Intent intent = getActivity().getIntent();
+        deck = intent.getParcelableExtra("deckSelected");
+        Log.i("deck", intent.toString());
         View rootView = inflater.inflate(R.layout.fragment_card_view, container, false);
         cardText = (TextView) rootView.findViewById(R.id.card_text);
         cardText.setOnClickListener(this);

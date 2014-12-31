@@ -22,7 +22,7 @@
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".activities.WordCardGeneratorActivity"
+            android:name=".activities.FlashCardGeneratorActivity"
             android:label="FlashCard">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

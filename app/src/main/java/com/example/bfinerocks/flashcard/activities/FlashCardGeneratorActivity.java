@@ -5,12 +5,12 @@ import android.app.FragmentManager;
 import android.os.Bundle;
 
 import com.example.bfinerocks.flashcard.R;
-import com.example.bfinerocks.flashcard.fragments.FlashCardGenerator;
+import com.example.bfinerocks.flashcard.fragments.FlashCardGeneratorFragment;
 
 /**
  * Created by BFineRocks on 12/30/14.
  */
-public class WordCardGeneratorActivity extends Activity {
+public class FlashCardGeneratorActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +18,7 @@ public class WordCardGeneratorActivity extends Activity {
         setContentView(R.layout.activity_flash_card_generator);
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
-                .add(R.id.container, new FlashCardGenerator())
+                .add(R.id.container, new FlashCardGeneratorFragment())
                 .commit();
     }
 }

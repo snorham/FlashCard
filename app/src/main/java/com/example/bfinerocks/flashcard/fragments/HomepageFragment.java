@@ -17,7 +17,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.bfinerocks.flashcard.R;
-import com.example.bfinerocks.flashcard.activities.WordCardGeneratorActivity;
+import com.example.bfinerocks.flashcard.activities.FlashCardGeneratorActivity;
 import com.example.bfinerocks.flashcard.adapters.DeckListCustomAdapter;
 import com.example.bfinerocks.flashcard.constants.ConstantsForReference;
 import com.example.bfinerocks.flashcard.firebase.FirebaseStorage;
@@ -100,7 +100,7 @@ public class HomepageFragment extends Fragment implements OnClickListener, OnIte
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         Deck deckSelected = (Deck) adapterView.getSelectedItem();
-        Intent cardGeneratorIntent = new Intent(getActivity(), WordCardGeneratorActivity.class);
+        Intent cardGeneratorIntent = new Intent(getActivity(), FlashCardGeneratorActivity.class);
         cardGeneratorIntent.putExtra("deckSelected", deckSelected);
         startActivity(cardGeneratorIntent);
     }
