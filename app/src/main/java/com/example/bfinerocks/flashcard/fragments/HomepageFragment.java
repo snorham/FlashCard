@@ -10,11 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.bfinerocks.flashcard.R;
+import com.example.bfinerocks.flashcard.adapters.DeckListCustomAdapter;
 import com.example.bfinerocks.flashcard.constants.ConstantsForReference;
 import com.example.bfinerocks.flashcard.firebase.FirebaseStorage;
 import com.example.bfinerocks.flashcard.interfaces.FragmentTransitionInterface;
@@ -32,7 +32,8 @@ public class HomepageFragment extends Fragment implements OnClickListener{
     private TextView linkToCreateNewDeck;
     private Handler uiHandler;
     private List<Deck> listOfDecks;
-    private ArrayAdapter adapter;
+    private DeckListCustomAdapter deckAdapter;
+    private ListView listOfDecksSaved;
 
 
     public static HomepageFragment newInstance(String user){
@@ -47,7 +48,7 @@ public class HomepageFragment extends Fragment implements OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_homepage, container, false);
         TextView welcomeUser = (TextView) rootView.findViewById(R.id.homepage_welcome);
-        ListView listOfDecksSaved = (ListView) rootView.findViewById(R.id.homepage_listView);
+        listOfDecksSaved = (ListView) rootView.findViewById(R.id.homepage_listView);
         linkToCreateNewDeck = (TextView) rootView.findViewById(R.id.txt_create_new_deck);
         return rootView;
     }
@@ -57,14 +58,15 @@ public class HomepageFragment extends Fragment implements OnClickListener{
         super.onViewCreated(view, savedInstanceState);
         linkToCreateNewDeck.setOnClickListener(this);
         listOfDecks = new ArrayList<Deck>();
-        adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1,listOfDecks);
+        deckAdapter = new DeckListCustomAdapter(getActivity(), R.layout.deck_item, listOfDecks);
+        listOfDecksSaved.setAdapter(deckAdapter);
         uiHandler = new Handler(Looper.getMainLooper()){
             @Override
             public void handleMessage(Message msg) {
                 Log.i("messRec", msg.obj.toString());
                 Deck deck = (Deck) msg.obj;
                 listOfDecks.add(deck);
-                adapter.notifyDataSetChanged();
+                deckAdapter.notifyDataSetChanged();
             }
         };
         getUpdatedSavedDeckFromFirebase();

@@ -1,6 +1,7 @@
 package com.example.bfinerocks.flashcard.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,7 @@ public class DeckListCustomAdapter extends ArrayAdapter<Deck> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        Log.i("viewCalled", "view Called");
         ViewHolder holder;
         if(convertView == null) {
             LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
