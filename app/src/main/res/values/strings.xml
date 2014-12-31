@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">FlashCard</string>
+    <string name="flash_card_generator_name">FlashCardGenerator</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="splash_title">Flash Cards</string>

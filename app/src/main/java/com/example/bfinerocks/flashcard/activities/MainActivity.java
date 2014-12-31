@@ -13,6 +13,7 @@ import com.example.bfinerocks.flashcard.R;
 import com.example.bfinerocks.flashcard.fragments.HomepageFragment;
 import com.example.bfinerocks.flashcard.fragments.SignInFragment;
 import com.example.bfinerocks.flashcard.interfaces.FragmentTransitionInterface;
+import com.firebase.client.Firebase;
 
 
 public class MainActivity extends Activity implements FragmentTransitionInterface{
@@ -21,6 +22,7 @@ public class MainActivity extends Activity implements FragmentTransitionInterfac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Firebase.setAndroidContext(getApplicationContext());
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         if(!sharedPreferences.contains(SignInFragment.USER_NAME_PREFERENCE)){
             loadSignInScreen(true);

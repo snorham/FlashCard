@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.bfinerocks.flashcard.R;
 import com.example.bfinerocks.flashcard.models.Deck;
+import com.example.bfinerocks.flashcard.models.WordCard;
 
 /**
  * Created by BFineRocks on 12/30/14.
@@ -22,6 +23,7 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
     private Button nextButton;
     private Deck deck;
     private int currentCard;
+    private int deckSize;
     private boolean displayWordSide;
 
     public static FlashCardGeneratorFragment newInstance(Deck currentDeck){
@@ -36,13 +38,14 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_card_view, container, false);
         deck = getDeckFromBundle();
+        deckSize = deck.getMyDeck().size();
         cardText = (TextView) rootView.findViewById(R.id.card_text);
         cardText.setOnClickListener(this);
         backButton = (Button) rootView.findViewById(R.id.btn_back);
         backButton.setOnClickListener(this);
         nextButton = (Button) rootView.findViewById(R.id.btn_next);
         nextButton.setOnClickListener(this);
-        changeCardOnScreen(0);
+        changeCardOnScreen();
         currentCard = 0;
         displayWordSide = true;
         return rootView;
@@ -58,7 +61,7 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
 
                 break;
             case R.id.btn_next:
-                changeCardOnScreen(currentCard++);
+                changeCardOnScreen();
                 break;
         }
     }
@@ -68,17 +71,28 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
         return bundle.getParcelable("deckSent");
     }
 
-    public void changeCardOnScreen(int cardToDisplay){
-        cardText.setText(deck.getWordCardFromDeck(cardToDisplay).getWordSide());
+    public WordCard getWordCardFromDeck(){
+      return deck.getWordCardFromDeck(currentCard);
+    }
+
+    public void changeCardOnScreen(){
+        if(currentCard < deckSize) {
+            cardText.setText(getWordCardFromDeck().getWordSide());
+            currentCard++;
+        }
+        else{
+            currentCard = 0;
+            cardText.setText(getWordCardFromDeck().getWordSide());
+        }
     }
 
     public void changeViewOnScreenClick(){
         if(displayWordSide){
-            cardText.setText(deck.getWordCardFromDeck(currentCard).getDefinitionSide());
+            cardText.setText(getWordCardFromDeck().getDefinitionSide());
             displayWordSide = false;
         }
         else{
-            cardText.setText(deck.getWordCardFromDeck(currentCard).getWordSide());
+            cardText.setText(getWordCardFromDeck().getWordSide());
             displayWordSide = true;
         }
     }
