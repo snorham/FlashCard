@@ -1,6 +1,7 @@
 package com.example.bfinerocks.flashcard.fragments;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -10,10 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.bfinerocks.flashcard.R;
+import com.example.bfinerocks.flashcard.activities.WordCardGeneratorActivity;
 import com.example.bfinerocks.flashcard.adapters.DeckListCustomAdapter;
 import com.example.bfinerocks.flashcard.constants.ConstantsForReference;
 import com.example.bfinerocks.flashcard.firebase.FirebaseStorage;
@@ -26,7 +30,7 @@ import java.util.List;
 /**
  * Created by BFineRocks on 12/17/14.
  */
-public class HomepageFragment extends Fragment implements OnClickListener{
+public class HomepageFragment extends Fragment implements OnClickListener, OnItemClickListener{
 
    // private static final String USER_FIREBASE_REFERENCE = "firebase_user_ref";
     private TextView linkToCreateNewDeck;
@@ -58,6 +62,7 @@ public class HomepageFragment extends Fragment implements OnClickListener{
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         linkToCreateNewDeck.setOnClickListener(this);
+        listOfDecksSaved.setOnClickListener(this);
         listOfDecks = new ArrayList<Deck>();
         deckAdapter = new DeckListCustomAdapter(getActivity(), R.layout.deck_item, listOfDecks);
         listOfDecksSaved.setAdapter(deckAdapter);
@@ -92,4 +97,10 @@ public class HomepageFragment extends Fragment implements OnClickListener{
         fti.onFragmentChange(createAndReviewFragment);
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Deck deckSelected = (Deck) adapterView.getSelectedItem();
+        Intent cardGeneratorIntent = new Intent(getActivity(), WordCardGeneratorActivity.class);
+        cardGeneratorIntent.putExtra("deckSelected", deckSelected);
+    }
 }

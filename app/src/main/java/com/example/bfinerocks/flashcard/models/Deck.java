@@ -47,23 +47,7 @@ public class Deck implements android.os.Parcelable {
     }
 
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeTypedList(myDeck);
-        dest.writeString(this.deckName);
+    public void writeToParcel(Parcel parcel, int i) {
+
     }
-
-    private Deck(Parcel in) {
-        in.readTypedList(myDeck, WordCard.CREATOR);
-        this.deckName = in.readString();
-    }
-
-    public static final Creator<Deck> CREATOR = new Creator<Deck>() {
-        public Deck createFromParcel(Parcel source) {
-            return new Deck(source);
-        }
-
-        public Deck[] newArray(int size) {
-            return new Deck[size];
-        }
-    };
 }
