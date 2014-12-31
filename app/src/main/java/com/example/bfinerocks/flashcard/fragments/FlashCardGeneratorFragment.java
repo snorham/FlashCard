@@ -22,6 +22,7 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
     private Button nextButton;
     private Deck deck;
     private int currentCard;
+    private boolean displayWordSide;
 
     public static FlashCardGeneratorFragment newInstance(Deck currentDeck){
         Bundle bundle = new Bundle();
@@ -37,27 +38,31 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
         deck = getDeckFromBundle();
         cardText = (TextView) rootView.findViewById(R.id.card_text);
         cardText.setOnClickListener(this);
-        cardText.setText(deck.getWordCardFromDeck(1).getWordSide());
         backButton = (Button) rootView.findViewById(R.id.btn_back);
         backButton.setOnClickListener(this);
         nextButton = (Button) rootView.findViewById(R.id.btn_next);
         nextButton.setOnClickListener(this);
+        currentCard = 0;
+        displayWordSide = true;
         return rootView;
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+        cardText.setText(deck.getWordCardFromDeck(currentCard).getWordSide());
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.card_text:
+                changeViewOnScreenClick();
                 break;
             case R.id.btn_back:
+
                 break;
             case R.id.btn_next:
+                currentCard++;
                 break;
         }
     }
@@ -65,5 +70,16 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
     public Deck getDeckFromBundle(){
         Bundle bundle = getArguments();
         return bundle.getParcelable("deckSent");
+    }
+
+    public void changeViewOnScreenClick(){
+        if(displayWordSide){
+            cardText.setText(deck.getWordCardFromDeck(currentCard).getDefinitionSide());
+            displayWordSide = false;
+        }
+        else{
+            cardText.setText(deck.getWordCardFromDeck(currentCard).getWordSide());
+            displayWordSide = true;
+        }
     }
 }
