@@ -42,14 +42,10 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
         backButton.setOnClickListener(this);
         nextButton = (Button) rootView.findViewById(R.id.btn_next);
         nextButton.setOnClickListener(this);
+        changeCardOnScreen(0);
         currentCard = 0;
         displayWordSide = true;
         return rootView;
-    }
-
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        cardText.setText(deck.getWordCardFromDeck(currentCard).getWordSide());
     }
 
     @Override
@@ -62,7 +58,7 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
 
                 break;
             case R.id.btn_next:
-                currentCard++;
+                changeCardOnScreen(currentCard++);
                 break;
         }
     }
@@ -70,6 +66,10 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
     public Deck getDeckFromBundle(){
         Bundle bundle = getArguments();
         return bundle.getParcelable("deckSent");
+    }
+
+    public void changeCardOnScreen(int cardToDisplay){
+        cardText.setText(deck.getWordCardFromDeck(cardToDisplay).getWordSide());
     }
 
     public void changeViewOnScreenClick(){
