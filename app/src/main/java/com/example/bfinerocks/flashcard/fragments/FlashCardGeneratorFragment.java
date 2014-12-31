@@ -37,7 +37,7 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
         deck = getDeckFromBundle();
         cardText = (TextView) rootView.findViewById(R.id.card_text);
         cardText.setOnClickListener(this);
-        cardText.setText(deck.getWordCardFromDeck(0).getWordSide());
+        cardText.setText(deck.getWordCardFromDeck(1).getWordSide());
         backButton = (Button) rootView.findViewById(R.id.btn_back);
         backButton.setOnClickListener(this);
         nextButton = (Button) rootView.findViewById(R.id.btn_next);
