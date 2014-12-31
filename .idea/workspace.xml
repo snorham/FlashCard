@@ -91,11 +91,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HomepageFragment.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="HomepageFragment.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/fragments/HomepageFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.75177306" vertical-offset="852" max-vertical-offset="1305">
-              <caret line="103" column="67" selection-start-line="103" selection-start-column="67" selection-end-line="103" selection-end-column="67" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="552" max-vertical-offset="1320">
+              <caret line="64" column="52" selection-start-line="64" selection-start-column="52" selection-end-line="64" selection-end-column="52" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="105">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6028369" vertical-offset="45" max-vertical-offset="615">
+              <caret line="20" column="51" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -126,34 +146,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WordCardCreatorCustomAdapter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/adapters/WordCardCreatorCustomAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="327" max-vertical-offset="750">
-              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="strings.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-11.72" vertical-offset="82" max-vertical-offset="510">
               <caret line="25" column="47" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DeckListCustomAdapter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/adapters/DeckListCustomAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="930">
-              <caret line="33" column="43" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -919,7 +917,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/firebase/Firebase.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/firebase/FirebaseClass.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_homepage.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/activities/SplashActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/Application.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/dictionaryapi/WordNikAPIInterface.java" />
@@ -946,6 +943,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/activities/WordCardGeneratorActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/models/Deck.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/fragments/HomepageFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       </list>
     </option>
   </component>
@@ -1929,25 +1927,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="645">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-16.8" vertical-offset="0" max-vertical-offset="510">
           <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
-          <caret line="4" column="65" selection-start-line="4" selection-start-column="65" selection-end-line="4" selection-end-column="65" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2239,8 +2222,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/bfinerocks/flashcard/fragments/HomepageFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.75177306" vertical-offset="852" max-vertical-offset="1305">
-          <caret line="103" column="67" selection-start-line="103" selection-start-column="67" selection-end-line="103" selection-end-column="67" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="552" max-vertical-offset="1320">
+          <caret line="64" column="52" selection-start-line="64" selection-start-column="52" selection-end-line="64" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="105">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6028369" vertical-offset="45" max-vertical-offset="615">
+          <caret line="20" column="51" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="51" />
           <folding />
         </state>
       </provider>

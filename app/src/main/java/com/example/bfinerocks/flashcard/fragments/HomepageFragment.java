@@ -62,7 +62,7 @@ public class HomepageFragment extends Fragment implements OnClickListener, OnIte
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         linkToCreateNewDeck.setOnClickListener(this);
-        listOfDecksSaved.setOnClickListener(this);
+        listOfDecksSaved.setOnItemClickListener(this);
         listOfDecks = new ArrayList<Deck>();
         deckAdapter = new DeckListCustomAdapter(getActivity(), R.layout.deck_item, listOfDecks);
         listOfDecksSaved.setAdapter(deckAdapter);
@@ -102,5 +102,6 @@ public class HomepageFragment extends Fragment implements OnClickListener, OnIte
         Deck deckSelected = (Deck) adapterView.getSelectedItem();
         Intent cardGeneratorIntent = new Intent(getActivity(), WordCardGeneratorActivity.class);
         cardGeneratorIntent.putExtra("deckSelected", deckSelected);
+        startActivity(cardGeneratorIntent);
     }
 }
