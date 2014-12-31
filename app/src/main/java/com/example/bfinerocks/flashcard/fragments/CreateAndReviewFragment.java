@@ -44,7 +44,7 @@ public class CreateAndReviewFragment extends Fragment implements WordCardCreator
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.create_and_review_fragment, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_create_and_review, container, false);
         deckNameEditText = (EditText) rootView.findViewById(R.id.edtxt_list_title);
         listView = (ListView) rootView.findViewById(R.id.list_view);
         saveListButton = (Button) rootView.findViewById(R.id.save_button);
