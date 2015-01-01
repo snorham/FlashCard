@@ -58,7 +58,7 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
                 changeViewOnScreenClick();
                 break;
             case R.id.btn_back:
-
+                displayPriorCardOnScreen();
                 break;
             case R.id.btn_next:
                 displayNextCardOnScreen();
