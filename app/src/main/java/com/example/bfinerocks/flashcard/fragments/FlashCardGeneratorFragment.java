@@ -23,7 +23,7 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
     private Button nextButton;
     private Deck deck;
     private int currentCard;
-    private int deckSize;
+    private int numOfCardsInDeck;
     private boolean displayWordSide;
 
     public static FlashCardGeneratorFragment newInstance(Deck currentDeck){
@@ -38,14 +38,14 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_card_view, container, false);
         deck = getDeckFromBundle();
-        deckSize = deck.getMyDeck().size();
+        numOfCardsInDeck = deck.getMyDeck().size()-1;
         cardText = (TextView) rootView.findViewById(R.id.card_text);
         cardText.setOnClickListener(this);
         backButton = (Button) rootView.findViewById(R.id.btn_back);
         backButton.setOnClickListener(this);
         nextButton = (Button) rootView.findViewById(R.id.btn_next);
         nextButton.setOnClickListener(this);
-        changeCardOnScreen();
+        displayNextCardOnScreen();
         currentCard = 0;
         displayWordSide = true;
         return rootView;
@@ -61,7 +61,7 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
 
                 break;
             case R.id.btn_next:
-                changeCardOnScreen();
+                displayNextCardOnScreen();
                 break;
         }
     }
@@ -75,13 +75,25 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
       return deck.getWordCardFromDeck(currentCard);
     }
 
-    public void changeCardOnScreen(){
-        if(currentCard < deckSize) {
+    public void displayNextCardOnScreen(){
+        if(currentCard <= numOfCardsInDeck) {
             cardText.setText(getWordCardFromDeck().getWordSide());
             currentCard++;
         }
         else{
             currentCard = 0;
+            cardText.setText(getWordCardFromDeck().getWordSide());
+            currentCard++;
+        }
+    }
+
+    public void displayPriorCardOnScreen(){
+        if(currentCard > 0){
+            currentCard--;
+            cardText.setText(getWordCardFromDeck().getWordSide());
+        }
+        else{
+            currentCard = numOfCardsInDeck;
             cardText.setText(getWordCardFromDeck().getWordSide());
         }
     }
