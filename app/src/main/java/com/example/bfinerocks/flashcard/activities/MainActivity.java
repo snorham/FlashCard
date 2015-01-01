@@ -25,14 +25,11 @@ public class MainActivity extends Activity implements FragmentTransitionInterfac
         Firebase.setAndroidContext(getApplicationContext());
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         if(!sharedPreferences.contains(SignInFragment.USER_NAME_PREFERENCE)){
-            loadSignInScreen(true);
+            onFragmentChange(new SignInFragment());
         }
         else{
             HomepageFragment homepageFragment = HomepageFragment.newInstance("bfine"); //todo get user name from pref file
             onFragmentChange(homepageFragment);
-
-/*            CreateAndReviewFragment createAndReviewFragment = CreateAndReviewFragment.newInstance();
-            onFragmentChange(createAndReviewFragment, "createFrag");*/
         }
 
     }
@@ -58,12 +55,6 @@ public class MainActivity extends Activity implements FragmentTransitionInterfac
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void loadSignInScreen(boolean isUserNameStored){
-        if(isUserNameStored){
-            onFragmentChange(new SignInFragment());
-        }
     }
 
     @Override
