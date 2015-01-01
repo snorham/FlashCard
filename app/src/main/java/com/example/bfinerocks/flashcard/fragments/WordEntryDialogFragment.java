@@ -98,8 +98,7 @@ public class WordEntryDialogFragment extends DialogFragment {
 
             @Override
             public void onWordNikCallFailure() {
-                String definitionNotFound = "No definition was found.";
-                wordCard.setDefinitionSide(definitionNotFound);
+                wordCard.setDefinitionSide(null);
                 wordCardInterface.wordCardCreated(wordCard);
             }
         });
