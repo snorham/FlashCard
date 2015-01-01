@@ -56,11 +56,8 @@ public class CreateAndReviewFragment extends Fragment implements WordCardCreator
         listOfWordCards = new ArrayList<WordCard>();
         adapter = new WordCardCreatorCustomAdapter(getActivity(), R.layout.word_definition_item,listOfWordCards);
         listView.setAdapter(adapter);
-
         saveListButton.setOnClickListener(this);
-
         showWordEntryDialogFragment();
-
     }
 
     public void showWordEntryDialogFragment(){
@@ -92,7 +89,6 @@ public class CreateAndReviewFragment extends Fragment implements WordCardCreator
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         String userName = sharedPreferences.getString(ConstantsForReference.USER_NAME_PREFERENCE, "user");
         firebaseStorage.addNewDeckToFirebaseUserReference(userName, deckOfCards);
-
     }
 
     @Override

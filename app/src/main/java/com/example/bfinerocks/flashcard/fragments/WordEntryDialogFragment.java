@@ -55,7 +55,7 @@ public class WordEntryDialogFragment extends DialogFragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 wordToDefine = wordText.getText().toString().trim();
-                wordCard = getWordDefinition(wordToDefine);
+                sendNewWordCardToHostFragment(wordToDefine);
                 wordCardInterface.positiveClickNextWordCard();
 
                 //todo handle pos click to restart frag
@@ -66,7 +66,7 @@ public class WordEntryDialogFragment extends DialogFragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i){
                 wordToDefine = wordText.getText().toString().trim();
-                wordCard = getWordDefinition(wordToDefine);
+                sendNewWordCardToHostFragment(wordToDefine);
                 wordCardInterface.negativeClickNoMoreCards();
 
                 //todo handle neg click to dismiss frag
@@ -75,8 +75,12 @@ public class WordEntryDialogFragment extends DialogFragment {
         return alertBuilder.create();
     }
 
-    public WordCard getWordDefinition(String wordToDefine){
+    public void sendNewWordCardToHostFragment(String wordToDefine){
         final WordCard wordCard = new WordCard(wordToDefine);
+        getDefinitionFromDictionary(wordCard);
+    }
+
+    public void getDefinitionFromDictionary(final WordCard wordCard){
         WordNikAPI wordNikAPI = WordNikAPI.getWordNikAPI();
         wordNikAPI.searchWordDefinition(wordToDefine, new WordNikAPIInterface() {
             @Override
@@ -99,7 +103,6 @@ public class WordEntryDialogFragment extends DialogFragment {
                 wordCardInterface.wordCardCreated(wordCard);
             }
         });
-        return wordCard;
     }
 
 }
