@@ -31,14 +31,9 @@ public class WordCardCreatorCustomAdapter extends ArrayAdapter<WordCard> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder;
+        ViewHolder holder = new ViewHolder();
         if(convertView == null) {
-            LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(layoutResource, parent, false);
-            holder = new ViewHolder();
-            holder.wordEntered = (EditText) convertView.findViewById(R.id.word);
-            holder.wordDefinition = (EditText) convertView.findViewById(R.id.definition);
-            convertView.setTag(holder);
+            convertView = convertTheView(holder, parent);
         }
         else{
             holder = (ViewHolder) convertView.getTag();
@@ -49,6 +44,15 @@ public class WordCardCreatorCustomAdapter extends ArrayAdapter<WordCard> {
             holder.wordDefinition.setText(wordCard.getDefinitionSide());
         }
         return convertView;
+    }
+
+    private View convertTheView(ViewHolder holder, ViewGroup parent){
+        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(layoutResource, parent, false);
+        holder.wordEntered = (EditText) view.findViewById(R.id.word);
+        holder.wordDefinition = (EditText) view.findViewById(R.id.definition);
+        view.setTag(holder);
+        return view;
     }
 
 }
