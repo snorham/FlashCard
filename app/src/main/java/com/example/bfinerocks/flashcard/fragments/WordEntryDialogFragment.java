@@ -63,7 +63,7 @@ public class WordEntryDialogFragment extends DialogFragment {
                 }
                 else{
                     sendNewWordCardToHostFragment(wordToDefine);
-                }                
+                }
                 wordCardInterface.positiveClickNextWordCard();
 
                 //todo handle pos click to restart frag

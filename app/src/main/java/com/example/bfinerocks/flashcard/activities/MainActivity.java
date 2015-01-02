@@ -55,6 +55,7 @@ public class MainActivity extends Activity implements FragmentTransitionInterfac
         if (id == R.id.action_settings) {
             getFragmentManager().beginTransaction()
                     .replace(R.id.container, new FlashCardSettingsFragment())
+                    .addToBackStack(null)
                     .commit();
             return true;
         }
