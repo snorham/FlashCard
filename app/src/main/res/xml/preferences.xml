@@ -13,7 +13,13 @@
 
     <PreferenceCategory
         android:title="@string/pref_category_color_settings">
-
+        <ListPreference
+            android:key="text_color_preference"
+            android:title=""
+            android:summary=""
+            android:entries=""
+            android:entryValues=""
+            android:defaultValue=""/>
 
         </PreferenceCategory>
 
