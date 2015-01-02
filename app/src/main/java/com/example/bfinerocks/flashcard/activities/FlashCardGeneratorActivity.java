@@ -2,6 +2,7 @@ package com.example.bfinerocks.flashcard.activities;
 
 import android.app.Activity;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -38,7 +39,7 @@ public class FlashCardGeneratorActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_flash, menu);
         return true;
     }
 
@@ -50,8 +51,9 @@ public class FlashCardGeneratorActivity extends Activity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.flash_stop) {
+            Intent stopIntent = new Intent(this, MainActivity.class);
+            startActivity(stopIntent);
         }
 
         return super.onOptionsItemSelected(item);
