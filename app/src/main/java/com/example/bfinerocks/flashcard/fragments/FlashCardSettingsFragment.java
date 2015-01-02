@@ -3,6 +3,8 @@ package com.example.bfinerocks.flashcard.fragments;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
 
+import com.example.bfinerocks.flashcard.R;
+
 /**
  * Created by BFineRocks on 1/2/15.
  */
