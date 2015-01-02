@@ -10,7 +10,19 @@
         <item>@string/color_green</item>
         <item>@string/color_white</item>
     </string-array>
-    <string-array name="color_values">
+
+    <string-array name="text_color_values">
+        <item>@string/color_black</item>
+        <item>@string/color_blue</item>
+        <item>@string/color_purple</item>
+        <item>@string/color_red</item>
+        <item>@string/color_orange</item>
+        <item>@string/color_yellow</item>
+        <item>@string/color_green</item>
+        <item>@string/color_white</item>
+    </string-array>
+
+    <array name="color_values">
         <item>@color/black</item>
         <item>@color/blue_base</item>
         <item>@color/purple_dark</item>
@@ -19,5 +31,5 @@
         <item>@color/yellow_base</item>
         <item>@color/green_base</item>
         <item>@color/white</item>
-    </string-array>
+    </array>
 </resources>
