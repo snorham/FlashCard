@@ -14,10 +14,16 @@
     <PreferenceCategory
         android:title="@string/pref_category_color_settings">
 
+
         </PreferenceCategory>
 
     <PreferenceCategory
         android:title="@string/pref_category_word_card_order_settings">
+        <CheckBoxPreference
+            android:key="random_order_preference"
+            android:title="@string/pref_random_order_title"
+            android:summary="@string/pref_random_order_summary"
+            android:defaultValue="false"/>
 
         </PreferenceCategory>
 

@@ -34,5 +34,7 @@
     <string name="pref_category_word_card_creation_settings">Word Card Creator Settings</string>
     <string name="pref_auto_definition_title">Definition Generator</string>
     <string name="pref_auto_definition_summary">Do not auto generate definitions</string>
+    <string name="pref_random_order_title">Card Shuffle</string>
+    <string name="pref_random_order_summary">Display cards in random order</string>
 
 </resources>
