@@ -104,4 +104,9 @@ public class WordEntryDialogFragment extends DialogFragment {
         });
     }
 
+    public void sendNewWordCardWithWithoutDefinition(String wordEntered){
+        WordCard wordCardWithOutDef = new WordCard(wordEntered);
+        wordCardInterface.wordCardCreated(wordCardWithOutDef);
+    }
+
 }
