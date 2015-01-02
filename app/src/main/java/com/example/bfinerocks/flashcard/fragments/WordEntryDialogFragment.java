@@ -58,7 +58,12 @@ public class WordEntryDialogFragment extends DialogFragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 wordToDefine = wordText.getText().toString().trim();
-                sendNewWordCardToHostFragment(wordToDefine);
+                if(userPrefForAutoDefinition()){
+                    sendNewWordCardWithWithoutDefinition(wordToDefine);
+                }
+                else{
+                    sendNewWordCardToHostFragment(wordToDefine);
+                }                
                 wordCardInterface.positiveClickNextWordCard();
 
                 //todo handle pos click to restart frag
@@ -69,7 +74,12 @@ public class WordEntryDialogFragment extends DialogFragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i){
                 wordToDefine = wordText.getText().toString().trim();
-                sendNewWordCardToHostFragment(wordToDefine);
+                if(userPrefForAutoDefinition()){
+                    sendNewWordCardWithWithoutDefinition(wordToDefine);
+                }
+                else{
+                    sendNewWordCardToHostFragment(wordToDefine);
+                }
                 wordCardInterface.negativeClickNoMoreCards();
 
                 //todo handle neg click to dismiss frag
