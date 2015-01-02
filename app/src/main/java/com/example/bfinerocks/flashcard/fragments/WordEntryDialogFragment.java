@@ -5,12 +5,15 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 
 import com.example.bfinerocks.flashcard.R;
+import com.example.bfinerocks.flashcard.constants.ConstantsForPreferenceFile;
 import com.example.bfinerocks.flashcard.dictionaryapi.DefinitionParsing;
 import com.example.bfinerocks.flashcard.dictionaryapi.WordNikAPI;
 import com.example.bfinerocks.flashcard.interfaces.WordNikAPIInterface;
@@ -107,6 +110,11 @@ public class WordEntryDialogFragment extends DialogFragment {
     public void sendNewWordCardWithWithoutDefinition(String wordEntered){
         WordCard wordCardWithOutDef = new WordCard(wordEntered);
         wordCardInterface.wordCardCreated(wordCardWithOutDef);
+    }
+
+    public boolean userPrefForAutoDefinition(){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        return sharedPreferences.getBoolean(ConstantsForPreferenceFile.PREF_AUTO_DEF_KEY, false);
     }
 
 }
