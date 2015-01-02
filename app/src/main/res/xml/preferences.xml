@@ -8,7 +8,6 @@
             android:title="@string/pref_auto_definition_title"
             android:summary="@string/pref_auto_definition_summary"
             android:defaultValue="false"/>
-
         </PreferenceCategory>
 
     <PreferenceCategory
@@ -19,7 +18,7 @@
             android:summary="@string/pref_text_color_summary"
             android:entries="@array/text_color_entries"
             android:entryValues="@array/text_color_values"
-            android:defaultValue=""/>
+            android:defaultValue="@string/color_black"/>
         </PreferenceCategory>
 
     <PreferenceCategory
@@ -29,7 +28,6 @@
             android:title="@string/pref_random_order_title"
             android:summary="@string/pref_random_order_summary"
             android:defaultValue="false"/>
-
         </PreferenceCategory>
 
 

@@ -25,6 +25,7 @@ public class MainActivity extends Activity implements FragmentTransitionInterfac
         setContentView(R.layout.activity_main);
         Firebase.setAndroidContext(getApplicationContext());
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
         if(!sharedPreferences.contains(SignInFragment.USER_NAME_PREFERENCE)){
             onFragmentChange(new SignInFragment());
         }
