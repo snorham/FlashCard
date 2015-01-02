@@ -29,8 +29,8 @@
     <string name="btn_next">Next</string>
     <string name="menu_flash_stop_flash">Stop Flash Card</string>
     <string name="pref_category_heading">FlashCard App User Preferences</string>
-    <string name="pref_category_color_settings">Display Settings</string>
-    <string name="pref_category_word_card_display_settings">Flash Card View Settings</string>
+    <string name="pref_category_color_settings">Display and Color Settings</string>
+    <string name="pref_category_word_card_order_settings">Flash Card View Settings</string>
     <string name="pref_category_word_card_creation_settings">Word Card Creator Settings</string>
 
 </resources>
