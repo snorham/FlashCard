@@ -3,6 +3,11 @@
 
     <PreferenceCategory
         android:title="@string/pref_category_word_card_creation_settings">
+        <CheckBoxPreference
+            android:key="auto_define_preference"
+            android:title="@string/pref_auto_definition_title"
+            android:summary="@string/pref_auto_definition_summary"
+            android:defaultValue="false"/>
 
         </PreferenceCategory>
 

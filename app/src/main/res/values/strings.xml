@@ -32,5 +32,7 @@
     <string name="pref_category_color_settings">Display and Color Settings</string>
     <string name="pref_category_word_card_order_settings">Flash Card View Settings</string>
     <string name="pref_category_word_card_creation_settings">Word Card Creator Settings</string>
+    <string name="pref_auto_definition_title">Definition Generator</string>
+    <string name="pref_auto_definition_summary">Do not auto generate definitions</string>
 
 </resources>
