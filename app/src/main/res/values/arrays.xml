@@ -10,4 +10,14 @@
         <item>@string/color_green</item>
         <item>@string/color_white</item>
     </string-array>
+    <string-array name="color_values">
+        <item>@color/black</item>
+        <item>@color/blue_base</item>
+        <item>@color/purple_dark</item>
+        <item>@color/red_base</item>
+        <item>@color/orange_base</item>
+        <item>@color/yellow_base</item>
+        <item>@color/green_base</item>
+        <item>@color/white</item>
+    </string-array>
 </resources>
