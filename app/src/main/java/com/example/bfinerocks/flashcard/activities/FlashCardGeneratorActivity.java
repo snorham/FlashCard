@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.PreferenceFragment;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -60,11 +59,4 @@ public class FlashCardGeneratorActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public static class FlashCardSettingsFragment extends PreferenceFragment{
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            addPreferencesFromResource();
-        }
-    }
 }
