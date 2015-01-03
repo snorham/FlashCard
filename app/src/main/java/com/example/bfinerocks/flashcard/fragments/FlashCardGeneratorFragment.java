@@ -1,7 +1,10 @@
 package com.example.bfinerocks.flashcard.fragments;
 
 import android.app.Fragment;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -10,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.bfinerocks.flashcard.R;
+import com.example.bfinerocks.flashcard.constants.ConstantsForPreferenceFile;
 import com.example.bfinerocks.flashcard.models.Deck;
 import com.example.bfinerocks.flashcard.models.WordCard;
 
@@ -40,6 +44,7 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
         deck = getDeckFromBundle();
         numOfCardsInDeck = deck.getMyDeck().size()-1;
         cardText = (TextView) rootView.findViewById(R.id.card_text);
+        setTextColorBasedOnUserPreference();
         cardText.setOnClickListener(this);
         backButton = (Button) rootView.findViewById(R.id.btn_back);
         backButton.setOnClickListener(this);
@@ -107,5 +112,35 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
             cardText.setText(getWordCardFromDeck().getWordSide());
             displayWordSide = true;
         }
+    }
+    public void setTextColorBasedOnUserPreference(){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String valueOfTextColor = sharedPreferences.getString(ConstantsForPreferenceFile.PREF_TEXT_COLOR_KEY, "");
+        Log.i("textPref", valueOfTextColor);
+        if(valueOfTextColor.equals(getString(R.string.color_black))){
+            cardText.setText(getResources().getColor(R.color.black));
+        }
+        else if(valueOfTextColor.equals(getString(R.string.color_blue))){
+            cardText.setTextColor(getResources().getColor(R.color.blue_base));
+        }
+        else if(valueOfTextColor.equals(getString(R.string.color_purple))){
+            cardText.setTextColor(getResources().getColor(R.color.purple_dark));
+        }
+        else if(valueOfTextColor.equals(getString(R.string.color_red))){
+            cardText.setTextColor(getResources().getColor(R.color.red_base));
+        }
+        else if(valueOfTextColor.equals(getString(R.string.color_orange))){
+            cardText.setTextColor(getResources().getColor(R.color.orange_base));
+        }
+        else if(valueOfTextColor.equals(getString(R.string.color_yellow))){
+            cardText.setTextColor(getResources().getColor(R.color.yellow_base));
+        }
+        else if(valueOfTextColor.equals(getString(R.string.color_green))){
+            cardText.setTextColor(getResources().getColor(R.color.green_base));
+        }
+        else if(valueOfTextColor.equals(getString(R.string.color_white))){
+            cardText.setTextColor(getResources().getColor(R.color.white));
+        }
+
     }
 }
