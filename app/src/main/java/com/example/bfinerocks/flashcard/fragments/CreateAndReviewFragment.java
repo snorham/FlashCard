@@ -105,4 +105,5 @@ public class CreateAndReviewFragment extends Fragment implements WordCardCreator
     public void wordCardCreated(WordCard wordCard) {
         updateAdapterWithNewCards(wordCard);
     }
+
 }
