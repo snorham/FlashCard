@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="text_color_entries">
+    <string-array name="color_entries">
         <item>@string/color_black</item>
         <item>@string/color_blue</item>
         <item>@string/color_purple</item>
@@ -11,7 +11,7 @@
         <item>@string/color_white</item>
     </string-array>
 
-    <string-array name="text_color_values">
+    <string-array name="color_values">
         <item>@string/color_black</item>
         <item>@string/color_blue</item>
         <item>@string/color_purple</item>
@@ -22,7 +22,9 @@
         <item>@string/color_white</item>
     </string-array>
 
-    <array name="color_values">
+
+
+    <array name="colors">
         <item>@color/black</item>
         <item>@color/blue_base</item>
         <item>@color/purple_dark</item>

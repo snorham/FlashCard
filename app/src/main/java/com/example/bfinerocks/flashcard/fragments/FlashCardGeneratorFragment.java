@@ -45,6 +45,7 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
         numOfCardsInDeck = deck.getMyDeck().size()-1;
         cardText = (TextView) rootView.findViewById(R.id.card_text);
         setTextColorBasedOnUserPreference();
+        setBackgroundColorBasedOnUserPreference();
         cardText.setOnClickListener(this);
         backButton = (Button) rootView.findViewById(R.id.btn_back);
         backButton.setOnClickListener(this);
@@ -140,6 +141,37 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
         }
         else if(valueOfTextColor.equals(getString(R.string.color_white))){
             cardText.setTextColor(getResources().getColor(R.color.white));
+        }
+
+    }
+
+    public void setBackgroundColorBasedOnUserPreference(){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String valueOfTextColor = sharedPreferences.getString(ConstantsForPreferenceFile.PREF_BACKGROUND_COLOR_KEY, "");
+        Log.i("textPref", valueOfTextColor);
+        if(valueOfTextColor.equals(getString(R.string.color_black))){
+            cardText.setBackgroundColor(getResources().getColor(R.color.black));
+        }
+        else if(valueOfTextColor.equals(getString(R.string.color_blue))){
+            cardText.setBackgroundColor(getResources().getColor(R.color.blue_base));
+        }
+        else if(valueOfTextColor.equals(getString(R.string.color_purple))){
+            cardText.setBackgroundColor(getResources().getColor(R.color.purple_dark));
+        }
+        else if(valueOfTextColor.equals(getString(R.string.color_red))){
+            cardText.setBackgroundColor(getResources().getColor(R.color.red_base));
+        }
+        else if(valueOfTextColor.equals(getString(R.string.color_orange))){
+            cardText.setBackgroundColor(getResources().getColor(R.color.orange_base));
+        }
+        else if(valueOfTextColor.equals(getString(R.string.color_yellow))){
+            cardText.setBackgroundColor(getResources().getColor(R.color.yellow_base));
+        }
+        else if(valueOfTextColor.equals(getString(R.string.color_green))){
+            cardText.setBackgroundColor(getResources().getColor(R.color.green_base));
+        }
+        else if(valueOfTextColor.equals(getString(R.string.color_white))){
+            cardText.setBackgroundColor(getResources().getColor(R.color.white));
         }
 
     }
