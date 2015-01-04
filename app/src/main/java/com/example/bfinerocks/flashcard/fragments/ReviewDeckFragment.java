@@ -57,12 +57,8 @@ public class ReviewDeckFragment extends Fragment implements OnClickListener {
         listOfWordCards = new ArrayList<WordCard>();
         adapter = new WordCardCreatorCustomAdapter(getActivity(), R.layout.word_definition_item,listOfWordCards);
         listView.setAdapter(adapter);
+        updateListViewWithSelectedDeck();
         saveListButton.setOnClickListener(this);
-    }
-
-    public void updateAdapterWithNewCards(WordCard wordCard){
-        listOfWordCards.add(wordCard);
-        adapter.notifyDataSetChanged();
     }
 
     @Override
@@ -84,5 +80,16 @@ public class ReviewDeckFragment extends Fragment implements OnClickListener {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         String userName = sharedPreferences.getString(ConstantsForReference.USER_NAME_PREFERENCE, "user");
         firebaseStorage.addNewDeckToFirebaseUserReference(userName, deckOfCards);
+    }
+
+    public void updateListViewWithSelectedDeck(){
+        Deck deck = getArguments().getParcelable(ConstantsForReference.SELECTED_DECK_TO_REVIEW);
+        if(deck != null){
+            listOfWordCards = deck.getMyDeck();
+            deckNameEditText.setText(deck.getDeckName());
+        }
+        else{
+            throw new IllegalStateException("Must supply a selected Deck to ReviewDeckFragment");
+        }
     }
 }
