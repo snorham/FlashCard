@@ -28,7 +28,7 @@ import java.util.List;
 /**
  * Created by BFineRocks on 12/22/14.
  */
-public class CreateAndReviewFragment extends Fragment implements WordCardCreatorDialogInterface, OnClickListener {
+public class CreateNewDeckFragment extends Fragment implements WordCardCreatorDialogInterface, OnClickListener {
 
     private static final String DIALOG_FRAG_TAG = "WordEntryDialog";
     public List<WordCard> listOfWordCards;
@@ -37,9 +37,9 @@ public class CreateAndReviewFragment extends Fragment implements WordCardCreator
     private Button saveListButton;
     private EditText deckNameEditText;
 
-    public static CreateAndReviewFragment newInstance(){
+    public static CreateNewDeckFragment newInstance(){
 
-        return new CreateAndReviewFragment();
+        return new CreateNewDeckFragment();
     }
 
     @Override

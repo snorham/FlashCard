@@ -94,15 +94,15 @@ public class HomepageFragment extends Fragment implements OnClickListener, OnIte
     @Override
     public void onClick(View view) {
         FragmentTransitionInterface fti = (FragmentTransitionInterface) getActivity();
-        CreateAndReviewFragment createAndReviewFragment = CreateAndReviewFragment.newInstance();
-        fti.onFragmentChange(createAndReviewFragment);
+        CreateNewDeckFragment createNewDeckFragment = CreateNewDeckFragment.newInstance();
+        fti.onFragmentChange(createNewDeckFragment);
     }
 
     public void transitionToCreateAndReviewFragment(){
         try {
             FragmentTransitionInterface fti = (FragmentTransitionInterface) getActivity();
-            CreateAndReviewFragment createAndReviewFragment = CreateAndReviewFragment.newInstance();
-            fti.onFragmentChange(createAndReviewFragment);
+            CreateNewDeckFragment createNewDeckFragment = CreateNewDeckFragment.newInstance();
+            fti.onFragmentChange(createNewDeckFragment);
         } catch (ClassCastException e){
             throw new IllegalStateException("HomepageFragment must be created with an activity that implements FragmentTransitionInterface", e);
         }
