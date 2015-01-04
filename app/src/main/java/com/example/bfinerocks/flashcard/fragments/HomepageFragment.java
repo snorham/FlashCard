@@ -64,6 +64,7 @@ public class HomepageFragment extends Fragment implements OnClickListener, OnIte
         super.onViewCreated(view, savedInstanceState);
         linkToCreateNewDeck.setOnClickListener(this);
         listOfDecksSaved.setOnItemClickListener(this);
+        listOfDecksSaved.setOnItemLongClickListener(this);
         listOfDecks = new ArrayList<Deck>();
         deckAdapter = new DeckListCustomAdapter(getActivity(), R.layout.deck_item, listOfDecks);
         listOfDecksSaved.setAdapter(deckAdapter);
@@ -131,6 +132,9 @@ public class HomepageFragment extends Fragment implements OnClickListener, OnIte
     @Override
     public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
         Deck deckSelected = (Deck) adapterView.getItemAtPosition(i);
+        FragmentTransitionInterface fti = (FragmentTransitionInterface) getActivity();
+        ReviewDeckFragment reviewDeckFragment = ReviewDeckFragment.newInstance(deckSelected);
+        fti.onFragmentChange(reviewDeckFragment);
         return false;
     }
 }
