@@ -13,6 +13,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -30,7 +31,7 @@ import java.util.List;
 /**
  * Created by BFineRocks on 12/17/14.
  */
-public class HomepageFragment extends Fragment implements OnClickListener, OnItemClickListener{
+public class HomepageFragment extends Fragment implements OnClickListener, OnItemClickListener, OnItemLongClickListener{
 
    // private static final String USER_FIREBASE_REFERENCE = "firebase_user_ref";
     private TextView linkToCreateNewDeck;
@@ -97,6 +98,16 @@ public class HomepageFragment extends Fragment implements OnClickListener, OnIte
         fti.onFragmentChange(createAndReviewFragment);
     }
 
+    public void transitionToCreateAndReviewFragment(){
+        try {
+            FragmentTransitionInterface fti = (FragmentTransitionInterface) getActivity();
+            CreateAndReviewFragment createAndReviewFragment = CreateAndReviewFragment.newInstance();
+            fti.onFragmentChange(createAndReviewFragment);
+        } catch (ClassCastException e){
+            throw new IllegalStateException("HomepageFragment must be created with an activity that implements FragmentTransitionInterface", e);
+        }
+    }
+
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         Deck deckSelected = (Deck) adapterView.getItemAtPosition(i);
@@ -115,5 +126,11 @@ public class HomepageFragment extends Fragment implements OnClickListener, OnIte
                 .commit();*/
 
 
+    }
+
+    @Override
+    public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Deck deckSelected = (Deck) adapterView.getItemAtPosition(i);
+        return false;
     }
 }
