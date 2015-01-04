@@ -17,6 +17,8 @@ import com.example.bfinerocks.flashcard.constants.ConstantsForPreferenceFile;
 import com.example.bfinerocks.flashcard.models.Deck;
 import com.example.bfinerocks.flashcard.models.WordCard;
 
+import java.util.Random;
+
 /**
  * Created by BFineRocks on 12/30/14.
  */
@@ -29,6 +31,7 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
     private int currentCard;
     private int numOfCardsInDeck;
     private boolean displayWordSide;
+    private boolean setCardDisplayRandom;
 
     public static FlashCardGeneratorFragment newInstance(Deck currentDeck){
         Bundle bundle = new Bundle();
@@ -54,6 +57,8 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
         displayNextCardOnScreen();
         currentCard = 0;
         displayWordSide = true;
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        setCardDisplayRandom = sharedPreferences.getBoolean(ConstantsForPreferenceFile.PREF_RANDOM_ORDER_KEY, false);
         return rootView;
     }
 
@@ -82,16 +87,27 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
     }
 
     public void displayNextCardOnScreen(){
-        if(currentCard <= numOfCardsInDeck) {
+        if(setCardDisplayRandom){
+            setRandomNumberForCardDisplayScreen();
             cardText.setText(getWordCardFromDeck().getWordSide());
-            currentCard++;
         }
-        else{
-            currentCard = 0;
-            cardText.setText(getWordCardFromDeck().getWordSide());
-            currentCard++;
+        else {
+            if (currentCard <= numOfCardsInDeck) {
+                cardText.setText(getWordCardFromDeck().getWordSide());
+                currentCard++;
+            } else {
+                currentCard = 0;
+                cardText.setText(getWordCardFromDeck().getWordSide());
+                currentCard++;
+            }
         }
     }
+
+    public void setRandomNumberForCardDisplayScreen(){
+        Random randomCard = new Random();
+        currentCard = randomCard.nextInt(deck.getMyDeck().size());
+    }
+
 
     public void displayPriorCardOnScreen(){
         if(currentCard > 0){
