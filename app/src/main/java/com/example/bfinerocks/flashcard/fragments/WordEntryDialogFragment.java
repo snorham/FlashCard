@@ -90,10 +90,10 @@ public class WordEntryDialogFragment extends DialogFragment {
 
     public void sendNewWordCardToHostFragment(String wordToDefine){
         final WordCard wordCard = new WordCard(wordToDefine);
-        getDefinitionFromDictionary(wordCard);
+        updateWordCardWithDefinitionFromDictionary(wordCard);
     }
 
-    public void getDefinitionFromDictionary(final WordCard wordCard){
+    public void updateWordCardWithDefinitionFromDictionary(final WordCard wordCard){
         WordNikAPI wordNikAPI = WordNikAPI.getWordNikAPI();
         wordNikAPI.searchWordDefinition(wordToDefine, new WordNikAPIInterface() {
             @Override
@@ -111,7 +111,7 @@ public class WordEntryDialogFragment extends DialogFragment {
 
             @Override
             public void onWordNikCallFailure() {
-                wordCard.setDefinitionSide(null);
+                wordCard.setNoDefinitionFound();
                 wordCardInterface.wordCardCreated(wordCard);
             }
         });

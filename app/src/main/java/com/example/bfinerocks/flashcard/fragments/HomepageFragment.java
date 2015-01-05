@@ -13,6 +13,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -30,7 +31,7 @@ import java.util.List;
 /**
  * Created by BFineRocks on 12/17/14.
  */
-public class HomepageFragment extends Fragment implements OnClickListener, OnItemClickListener{
+public class HomepageFragment extends Fragment implements OnClickListener, OnItemClickListener, OnItemLongClickListener{
 
    // private static final String USER_FIREBASE_REFERENCE = "firebase_user_ref";
     private TextView linkToCreateNewDeck;
@@ -63,6 +64,7 @@ public class HomepageFragment extends Fragment implements OnClickListener, OnIte
         super.onViewCreated(view, savedInstanceState);
         linkToCreateNewDeck.setOnClickListener(this);
         listOfDecksSaved.setOnItemClickListener(this);
+        listOfDecksSaved.setOnItemLongClickListener(this);
         listOfDecks = new ArrayList<Deck>();
         deckAdapter = new DeckListCustomAdapter(getActivity(), R.layout.deck_item, listOfDecks);
         listOfDecksSaved.setAdapter(deckAdapter);
@@ -93,8 +95,18 @@ public class HomepageFragment extends Fragment implements OnClickListener, OnIte
     @Override
     public void onClick(View view) {
         FragmentTransitionInterface fti = (FragmentTransitionInterface) getActivity();
-        CreateAndReviewFragment createAndReviewFragment = CreateAndReviewFragment.newInstance();
-        fti.onFragmentChange(createAndReviewFragment);
+        CreateNewDeckFragment createNewDeckFragment = CreateNewDeckFragment.newInstance();
+        fti.onFragmentChange(createNewDeckFragment);
+    }
+
+    public void transitionToCreateAndReviewFragment(){
+        try {
+            FragmentTransitionInterface fti = (FragmentTransitionInterface) getActivity();
+            CreateNewDeckFragment createNewDeckFragment = CreateNewDeckFragment.newInstance();
+            fti.onFragmentChange(createNewDeckFragment);
+        } catch (ClassCastException e){
+            throw new IllegalStateException("HomepageFragment must be created with an activity that implements FragmentTransitionInterface", e);
+        }
     }
 
     @Override
@@ -105,7 +117,7 @@ public class HomepageFragment extends Fragment implements OnClickListener, OnIte
         Bundle bundle = new Bundle();
 /*        bundle.putParcelableArrayList("com.example.bfinerocks.flashcard.models.Deck",(ArrayList) deckSelected.getMyDeck());
         bundle.putString("title", deckSelected.getDeckName());*/
-       cardGeneratorIntent.putExtra("com.example.bfinerocks.flashcard.models.Deck", deckSelected);
+       cardGeneratorIntent.putExtra(ConstantsForReference.DECK_TO_FLASH, deckSelected);
        cardGeneratorIntent.putExtras(bundle);
         startActivity(cardGeneratorIntent);
 /*        FlashCardGeneratorFragment fg = new FlashCardGeneratorFragment();
@@ -115,5 +127,14 @@ public class HomepageFragment extends Fragment implements OnClickListener, OnIte
                 .commit();*/
 
 
+    }
+
+    @Override
+    public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Deck deckSelected = (Deck) adapterView.getItemAtPosition(i);
+        FragmentTransitionInterface fti = (FragmentTransitionInterface) getActivity();
+        ReviewDeckFragment reviewDeckFragment = ReviewDeckFragment.newInstance(deckSelected);
+        fti.onFragmentChange(reviewDeckFragment);
+        return false;
     }
 }

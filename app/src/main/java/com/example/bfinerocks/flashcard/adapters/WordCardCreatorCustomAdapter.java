@@ -1,8 +1,6 @@
 package com.example.bfinerocks.flashcard.adapters;
 
 import android.content.Context;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,69 +51,11 @@ public class WordCardCreatorCustomAdapter extends ArrayAdapter<WordCard> {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(layoutResource, parent, false);
         holder.wordEntered = (EditText) view.findViewById(R.id.word);
-        holder.wordEntered.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                wordCard.setWordSide(holder.wordDefinition.getText().toString());
-            }
-        });
         holder.wordDefinition = (EditText) view.findViewById(R.id.definition);
-        holder.wordDefinition.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                wordCard.setDefinitionSide(holder.wordDefinition.getText().toString());
-            }
-        });
+        holder.wordDefinition = (EditText) view.findViewById(R.id.definition);
         view.setTag(holder);
         return view;
     }
-
-/*    public TextWatcher updateWordCard(final EditText editTextChanged){
-        TextWatcher textWatcher = new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if(editTextChanged.getId() == R.id.word){
-                    wordCard.setWordSide(editTextChanged.getText().toString());
-                    Log.i("editTextChange", editable.toString());
-                }
-                else{
-                    wordCard.setDefinitionSide(editTextChanged.getText().toString());
-                    Log.i("editTextChange", editTextChanged.getText().toString());
-                }
-            }
-        };
-        return textWatcher;*/
-   // }
 
 
 }

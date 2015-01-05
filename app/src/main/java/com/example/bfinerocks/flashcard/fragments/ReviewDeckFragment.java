@@ -1,10 +1,10 @@
 package com.example.bfinerocks.flashcard.fragments;
 
-import android.app.DialogFragment;
 import android.app.Fragment;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,7 +18,6 @@ import com.example.bfinerocks.flashcard.R;
 import com.example.bfinerocks.flashcard.adapters.WordCardCreatorCustomAdapter;
 import com.example.bfinerocks.flashcard.constants.ConstantsForReference;
 import com.example.bfinerocks.flashcard.firebase.FirebaseStorage;
-import com.example.bfinerocks.flashcard.fragments.WordEntryDialogFragment.WordCardCreatorDialogInterface;
 import com.example.bfinerocks.flashcard.models.Deck;
 import com.example.bfinerocks.flashcard.models.WordCard;
 
@@ -28,7 +27,7 @@ import java.util.List;
 /**
  * Created by BFineRocks on 12/22/14.
  */
-public class CreateAndReviewFragment extends Fragment implements WordCardCreatorDialogInterface, OnClickListener {
+public class ReviewDeckFragment extends Fragment implements OnClickListener {
 
     private static final String DIALOG_FRAG_TAG = "WordEntryDialog";
     public List<WordCard> listOfWordCards;
@@ -37,9 +36,12 @@ public class CreateAndReviewFragment extends Fragment implements WordCardCreator
     private Button saveListButton;
     private EditText deckNameEditText;
 
-    public static CreateAndReviewFragment newInstance(){
-
-        return new CreateAndReviewFragment();
+    public static ReviewDeckFragment newInstance(Deck deck){
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(ConstantsForReference.SELECTED_DECK_TO_REVIEW, deck);
+        ReviewDeckFragment reviewDeckFragment = new ReviewDeckFragment();
+        reviewDeckFragment.setArguments(bundle);
+        return reviewDeckFragment;
     }
 
     @Override
@@ -56,18 +58,8 @@ public class CreateAndReviewFragment extends Fragment implements WordCardCreator
         listOfWordCards = new ArrayList<WordCard>();
         adapter = new WordCardCreatorCustomAdapter(getActivity(), R.layout.word_definition_item,listOfWordCards);
         listView.setAdapter(adapter);
+        updateListViewWithSelectedDeck();
         saveListButton.setOnClickListener(this);
-        showWordEntryDialogFragment();
-    }
-
-    public void showWordEntryDialogFragment(){
-        DialogFragment wordEntryFragment = WordEntryDialogFragment.newInstance(this);
-        wordEntryFragment.show(getActivity().getFragmentManager(), DIALOG_FRAG_TAG);
-    }
-
-    public void updateAdapterWithNewCards(WordCard wordCard){
-        listOfWordCards.add(wordCard);
-        adapter.notifyDataSetChanged();
     }
 
     @Override
@@ -91,19 +83,17 @@ public class CreateAndReviewFragment extends Fragment implements WordCardCreator
         firebaseStorage.addNewDeckToFirebaseUserReference(userName, deckOfCards);
     }
 
-    @Override
-    public void positiveClickNextWordCard() {
-        showWordEntryDialogFragment();
+    public void updateListViewWithSelectedDeck(){
+        Deck deck = getArguments().getParcelable(ConstantsForReference.SELECTED_DECK_TO_REVIEW);
+        if(deck != null){
+            listOfWordCards = deck.getMyDeck();
+            deckNameEditText.setText(deck.getDeckName());
+            Log.i("wordCard", deck.getWordCardFromDeck(0).getWordSide());
+            adapter.addAll(listOfWordCards);
+            adapter.notifyDataSetChanged();
+        }
+        else{
+            throw new IllegalStateException("Must supply a selected Deck to ReviewDeckFragment");
+        }
     }
-
-    @Override
-    public void negativeClickNoMoreCards() {
-        Toast.makeText(getActivity(), R.string.toast_make_changes, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void wordCardCreated(WordCard wordCard) {
-        updateAdapterWithNewCards(wordCard);
-    }
-
 }

@@ -58,6 +58,12 @@ public class FirebaseStorage {
 
     }
 
+/*    public void updateFirebaseWithUpdatedDeck(String userName, Deck deckUpdated){
+        createFirebaseReferenceWithUserNameForReference(userName);
+        appendFirebaseReferenceWithDeckLevelReference();
+        getReferenceToUsersDeckLevel().updateChildren(deckUpdated);
+    }*/
+
     public void getUsersDecksFromFirebase(){
         getReferenceToUsersDeckLevel().addChildEventListener(new ChildEventListener() {
             @Override
@@ -69,7 +75,9 @@ public class FirebaseStorage {
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
+                if(dataSnapshot != null){
+                    sendMessageToUIHandler(getDeckFromFirebase(dataSnapshot));
+                }
             }
 
             @Override
