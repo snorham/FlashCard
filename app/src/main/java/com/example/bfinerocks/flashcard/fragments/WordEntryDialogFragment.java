@@ -111,7 +111,7 @@ public class WordEntryDialogFragment extends DialogFragment {
 
             @Override
             public void onWordNikCallFailure() {
-                wordCard.setDefinitionSide(null);
+                wordCard.setNoDefinitionFound();
                 wordCardInterface.wordCardCreated(wordCard);
             }
         });
