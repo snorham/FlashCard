@@ -110,7 +110,7 @@ public class FirebaseStorage {
             WordCard wordCard1 = new WordCard(word);
             wordCard1.setDefinitionSide(def);
             deck.addWordCardToDeck(wordCard1);
-            Log.i("forLoop", deck.getWordCardFromDeck(i).getDefinitionSide());
+//            Log.i("forLoop", deck.getWordCardFromDeck(i).getDefinitionSide());
         }
         return deck;
     }
