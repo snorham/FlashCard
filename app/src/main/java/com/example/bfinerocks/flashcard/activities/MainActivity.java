@@ -33,7 +33,7 @@ public class MainActivity extends Activity implements FragmentTransitionInterfac
         }
         else{
 
-            HomepageFragment homepageFragment = HomepageFragment.newInstance(userName); 
+            HomepageFragment homepageFragment = HomepageFragment.newInstance(userName);
             onFragmentChange(homepageFragment);
         }
 

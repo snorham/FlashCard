@@ -31,12 +31,11 @@ public class WordCard implements android.os.Parcelable {
     }
 
     public void setDefinitionSide(String definitionSide) {
-        if(definitionSide == null){
-            this.definitionSide = "There was no definition found.";
-        }
-        else {
-            this.definitionSide = definitionSide;
-        }
+        this.definitionSide = definitionSide;
+    }
+
+    public void setNoDefinitionFound(){
+        this.definitionSide = "There was no definition found.";
     }
 
 
