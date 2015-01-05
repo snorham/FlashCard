@@ -58,6 +58,7 @@ public class CreateNewDeckFragment extends Fragment implements WordCardCreatorDi
         listOfWordCards = new ArrayList<WordCard>();
         adapter = new WordCardCreatorCustomAdapter(getActivity(), R.layout.word_definition_item,listOfWordCards);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(this);
         saveListButton.setOnClickListener(this);
         showWordEntryDialogFragment();
     }
@@ -110,6 +111,8 @@ public class CreateNewDeckFragment extends Fragment implements WordCardCreatorDi
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+        WordCard wordCard = (WordCard) adapterView.getItemAtPosition(i);
+        WordCardEditDialog wordCardEditDialog = WordCardEditDialog.newInstance(wordCard);
+        wordCardEditDialog.show(getActivity().getFragmentManager(), "Editor");
     }
 }
