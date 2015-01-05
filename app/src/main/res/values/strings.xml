@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">FlashCard</string>
+    <string name="flash_card_generator_name">FlashCardGenerator</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="splash_title">Flash Cards</string>
@@ -23,5 +24,8 @@
     <string name="btn_done">Done</string>
     <string name="toast_need_deck_name">Oops! Looks like you forgot to name your Deck!</string>
     <string name="toast_make_changes">You can edit your words or definitions before saving</string>
+    <string name="deck_list_header">Saved Decks</string>
+    <string name="btn_back">Back</string>
+    <string name="btn_next">Next</string>
 
 </resources>

@@ -14,6 +14,10 @@ public class WordCard implements android.os.Parcelable {
         this.wordSide = word;
     }
 
+    public WordCard(){
+
+    }
+
     public String getWordSide() {
         return wordSide;
     }

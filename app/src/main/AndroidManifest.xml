@@ -21,6 +21,18 @@
             android:name=".activities.MainActivity"
             android:label="@string/app_name" >
         </activity>
+        <activity
+            android:name=".activities.FlashCardGeneratorActivity"
+            android:label="@string/flash_card_generator_name">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.bfinerocks.flashcard.MainActivity"/>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+                  </activity>
+
     </application>
 
 </manifest>

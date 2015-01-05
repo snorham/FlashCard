@@ -3,7 +3,6 @@ package com.example.bfinerocks.flashcard.fragments;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
-import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
@@ -35,11 +34,11 @@ public class WordEntryDialogFragment extends DialogFragment {
         public void wordCardCreated(WordCard wordCard);
     }
 
-    static WordCardCreatorDialogInterface wordCardInterface;
+    private WordCardCreatorDialogInterface wordCardInterface;
 
-    public static WordEntryDialogFragment newInstance(Fragment fragmentShowingDialog){
+    public static WordEntryDialogFragment newInstance(WordCardCreatorDialogInterface fragmentShowingDialog){
         WordEntryDialogFragment wordEntryDialogFragment = new WordEntryDialogFragment();
-        wordCardInterface = (WordCardCreatorDialogInterface) fragmentShowingDialog;
+        wordEntryDialogFragment.wordCardInterface = fragmentShowingDialog;
       return wordEntryDialogFragment;
     }
 
@@ -59,6 +58,8 @@ public class WordEntryDialogFragment extends DialogFragment {
                 wordCard = getWordDefinition(wordToDefine);
                 wordCardInterface.positiveClickNextWordCard();
 
+                //todo handle pos click to restart frag
+
             }
         });
         alertBuilder.setNegativeButton(R.string.btn_done, new OnClickListener() {
@@ -67,6 +68,8 @@ public class WordEntryDialogFragment extends DialogFragment {
                 wordToDefine = wordText.getText().toString().trim();
                 wordCard = getWordDefinition(wordToDefine);
                 wordCardInterface.negativeClickNoMoreCards();
+
+                //todo handle neg click to dismiss frag
             }
         });
         return alertBuilder.create();

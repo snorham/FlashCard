@@ -1,10 +1,10 @@
 package com.example.bfinerocks.flashcard.fragments;
 
 import android.app.Fragment;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -24,7 +24,7 @@ public class SignInFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootview = inflater.inflate(R.layout.signin_fragment, container, false);
+        View rootview = inflater.inflate(R.layout.fragment_signin, container, false);
         final EditText userNameEntry = (EditText) rootview.findViewById(R.id.edtxt_user_name_entry);
         Button signInDone = (Button) rootview.findViewById(R.id.btn_sign_in_done);
         signInDone.setOnClickListener(new OnClickListener() {
@@ -41,7 +41,7 @@ public class SignInFragment extends Fragment {
     }
 
     public void generateSharedPrefWithUserName(String usernameEntered){
-        SharedPreferences namePreference = getActivity().getSharedPreferences(USER_NAME_PREFENCE_FILE, Context.MODE_PRIVATE);
+        SharedPreferences namePreference = PreferenceManager.getDefaultSharedPreferences(getActivity());
         Editor prefEditor = namePreference.edit();
         prefEditor.putString(USER_NAME_PREFERENCE, usernameEntered);
         prefEditor.apply();

@@ -9,12 +9,20 @@ import java.util.List;
  * Created by BFineRocks on 12/28/14.
  */
 public class Deck implements android.os.Parcelable {
-    private List<WordCard> myDeck;
+    private ArrayList<WordCard> myDeck;
     private String deckName;
 
     public Deck(String deckName){
         this.deckName = deckName;
         myDeck = new ArrayList<WordCard>();
+    }
+
+    public Deck(){
+
+    }
+
+    public String getDeckName(){
+        return deckName;
     }
 
     public void addWordCardToDeck(WordCard wordCard){
@@ -37,6 +45,7 @@ public class Deck implements android.os.Parcelable {
         return myDeck;
     }
 
+
     @Override
     public int describeContents() {
         return 0;
@@ -44,11 +53,14 @@ public class Deck implements android.os.Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeTypedList(myDeck);
+        dest.writeTypedList(this.myDeck);
+     //   dest.writeSerializable(this.myDeck);
         dest.writeString(this.deckName);
     }
 
     private Deck(Parcel in) {
+      //  this.myDeck = (ArrayList<WordCard>) in.readSerializable();
+        this.myDeck = new ArrayList<WordCard>();
         in.readTypedList(myDeck, WordCard.CREATOR);
         this.deckName = in.readString();
     }
