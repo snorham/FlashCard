@@ -20,6 +20,7 @@ import com.example.bfinerocks.flashcard.R;
 import com.example.bfinerocks.flashcard.adapters.WordCardCreatorCustomAdapter;
 import com.example.bfinerocks.flashcard.constants.ConstantsForReference;
 import com.example.bfinerocks.flashcard.firebase.FirebaseStorage;
+import com.example.bfinerocks.flashcard.fragments.WordCardEditDialog.WordCardEditDialogInterface;
 import com.example.bfinerocks.flashcard.fragments.WordEntryDialogFragment.WordCardCreatorDialogInterface;
 import com.example.bfinerocks.flashcard.models.Deck;
 import com.example.bfinerocks.flashcard.models.WordCard;
@@ -111,8 +112,15 @@ public class CreateNewDeckFragment extends Fragment implements WordCardCreatorDi
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        WordCard wordCard = (WordCard) adapterView.getItemAtPosition(i);
-        WordCardEditDialog wordCardEditDialog = WordCardEditDialog.newInstance(wordCard);
+        final int itemSelected = i;
+        WordCard wordCard = (WordCard) adapterView.getItemAtPosition(itemSelected);
+        WordCardEditDialog wordCardEditDialog = WordCardEditDialog.newInstance(wordCard, new WordCardEditDialogInterface() {
+            @Override
+            public void wordCardEditedByUser(WordCard wordCard) {
+                listOfWordCards.set(itemSelected, wordCard);
+            }
+        });
         wordCardEditDialog.show(getActivity().getFragmentManager(), "Editor");
     }
+
 }
