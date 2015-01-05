@@ -19,7 +19,7 @@
 
     <Button
         android:id="@id/save_button"
-        android:text="@string/btn_create_finished"
+        android:text="@string/btn_save"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

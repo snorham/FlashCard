@@ -20,6 +20,7 @@ import com.example.bfinerocks.flashcard.R;
 import com.example.bfinerocks.flashcard.adapters.WordCardCreatorCustomAdapter;
 import com.example.bfinerocks.flashcard.constants.ConstantsForReference;
 import com.example.bfinerocks.flashcard.firebase.FirebaseStorage;
+import com.example.bfinerocks.flashcard.fragments.WordCardEditDialog.WordCardEditDialogInterface;
 import com.example.bfinerocks.flashcard.fragments.WordEntryDialogFragment.WordCardCreatorDialogInterface;
 import com.example.bfinerocks.flashcard.models.Deck;
 import com.example.bfinerocks.flashcard.models.WordCard;
@@ -58,6 +59,7 @@ public class CreateNewDeckFragment extends Fragment implements WordCardCreatorDi
         listOfWordCards = new ArrayList<WordCard>();
         adapter = new WordCardCreatorCustomAdapter(getActivity(), R.layout.word_definition_item,listOfWordCards);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(this);
         saveListButton.setOnClickListener(this);
         showWordEntryDialogFragment();
     }
@@ -110,6 +112,16 @@ public class CreateNewDeckFragment extends Fragment implements WordCardCreatorDi
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+        final int itemSelected = i;
+        WordCard wordCard = (WordCard) adapterView.getItemAtPosition(itemSelected);
+        WordCardEditDialog wordCardEditDialog = WordCardEditDialog.newInstance(wordCard, new WordCardEditDialogInterface() {
+            @Override
+            public void wordCardEditedByUser(WordCard wordCard) {
+                listOfWordCards.set(itemSelected, wordCard);
+                adapter.notifyDataSetChanged();
+            }
+        });
+        wordCardEditDialog.show(getActivity().getFragmentManager(), ConstantsForReference.EDIT_DIALOG_FRAG_TAG);
     }
+
 }

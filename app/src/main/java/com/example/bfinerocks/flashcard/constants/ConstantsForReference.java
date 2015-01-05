@@ -8,4 +8,5 @@ public class ConstantsForReference {
     public static final String USER_NAME_PREFERENCE = "preferredUser";
     public static final String SELECTED_DECK_TO_REVIEW = "selectedDeck";
     public static final String DECK_TO_FLASH = "com.example.bfinerocks.flashcard.models.Deck";
+    public static final String EDIT_DIALOG_FRAG_TAG = "editDialogTag";
 }
