@@ -40,7 +40,7 @@ public class SignInFragment extends Fragment {
             return rootview;
         }
         else{
-                throw new IllegalStateException("SignInFragment must be created with an activity that implements FragmentTransitionInterface", e);
+                throw new IllegalStateException("SignInFragment must be created with an activity that implements FragmentTransitionInterface");
             }
     }
 

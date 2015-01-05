@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.bfinerocks.flashcard.R;
+import com.example.bfinerocks.flashcard.constants.ConstantsForReference;
 import com.example.bfinerocks.flashcard.fragments.FlashCardSettingsFragment;
 import com.example.bfinerocks.flashcard.fragments.HomepageFragment;
 import com.example.bfinerocks.flashcard.fragments.SignInFragment;
@@ -26,11 +27,13 @@ public class MainActivity extends Activity implements FragmentTransitionInterfac
         Firebase.setAndroidContext(getApplicationContext());
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
-        if(!sharedPreferences.contains(SignInFragment.USER_NAME_PREFERENCE)){
+        String userName = sharedPreferences.getString(ConstantsForReference.USER_NAME_PREFERENCE, "");
+        if(userName.isEmpty()){
             onFragmentChange(new SignInFragment());
         }
         else{
-            HomepageFragment homepageFragment = HomepageFragment.newInstance("bfine"); //todo get user name from pref file
+
+            HomepageFragment homepageFragment = HomepageFragment.newInstance(userName); 
             onFragmentChange(homepageFragment);
         }
 
