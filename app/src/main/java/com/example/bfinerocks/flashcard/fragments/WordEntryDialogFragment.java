@@ -64,7 +64,7 @@ public class WordEntryDialogFragment extends DialogFragment {
                 else{
                     sendNewWordCardToHostFragment(wordToDefine);
                 }
-                wordCardInterface.positiveClickNextWordCard();
+                wordCardInterface.positiveClickNextWordCard(); //todo can go use show?? call
 
                 //todo handle pos click to restart frag
 
@@ -80,7 +80,7 @@ public class WordEntryDialogFragment extends DialogFragment {
                 else{
                     sendNewWordCardToHostFragment(wordToDefine);
                 }
-                wordCardInterface.negativeClickNoMoreCards();
+                wordCardInterface.negativeClickNoMoreCards(); //todo can go use dismiss call
 
                 //todo handle neg click to dismiss frag
             }
