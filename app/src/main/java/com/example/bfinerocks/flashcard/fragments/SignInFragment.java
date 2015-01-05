@@ -13,14 +13,13 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.bfinerocks.flashcard.R;
+import com.example.bfinerocks.flashcard.constants.ConstantsForReference;
 import com.example.bfinerocks.flashcard.interfaces.FragmentTransitionInterface;
 
 /**
  * Created by BFineRocks on 12/17/14.
  */
 public class SignInFragment extends Fragment {
-    public static final String USER_NAME_PREFENCE_FILE = "userNamePreferenceFile";
-    public static final String USER_NAME_PREFERENCE = "preferredUser";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -47,7 +46,7 @@ public class SignInFragment extends Fragment {
     public void generateSharedPrefWithUserName(String usernameEntered){
         SharedPreferences namePreference = PreferenceManager.getDefaultSharedPreferences(getActivity());
         Editor prefEditor = namePreference.edit();
-        prefEditor.putString(USER_NAME_PREFERENCE, usernameEntered);
+        prefEditor.putString(ConstantsForReference.USER_NAME_PREFERENCE, usernameEntered);
         prefEditor.apply();
     }
 }
