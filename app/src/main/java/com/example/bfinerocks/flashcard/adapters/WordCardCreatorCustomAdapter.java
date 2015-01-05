@@ -90,32 +90,4 @@ public class WordCardCreatorCustomAdapter extends ArrayAdapter<WordCard> {
         return view;
     }
 
-/*    public TextWatcher updateWordCard(final EditText editTextChanged){
-        TextWatcher textWatcher = new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if(editTextChanged.getId() == R.id.word){
-                    wordCard.setWordSide(editTextChanged.getText().toString());
-                    Log.i("editTextChange", editable.toString());
-                }
-                else{
-                    wordCard.setDefinitionSide(editTextChanged.getText().toString());
-                    Log.i("editTextChange", editTextChanged.getText().toString());
-                }
-            }
-        };
-        return textWatcher;*/
-   // }
-
-
 }
