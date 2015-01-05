@@ -1,8 +1,7 @@
 package com.example.bfinerocks.flashcard.adapters;
 
 import android.content.Context;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +42,7 @@ public class WordCardCreatorCustomAdapter extends ArrayAdapter<WordCard> {
         }
         wordCard = getItem(position);
         if(wordCard != null){
+            Log.i("wordCard", "Word card not null");
             holder.wordEntered.setText(wordCard.getWordSide());
             holder.wordDefinition.setText(wordCard.getDefinitionSide());
         }
@@ -53,7 +53,7 @@ public class WordCardCreatorCustomAdapter extends ArrayAdapter<WordCard> {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(layoutResource, parent, false);
         holder.wordEntered = (EditText) view.findViewById(R.id.word);
-        holder.wordEntered.addTextChangedListener(new TextWatcher() {
+/*        holder.wordEntered.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
 
@@ -66,11 +66,12 @@ public class WordCardCreatorCustomAdapter extends ArrayAdapter<WordCard> {
 
             @Override
             public void afterTextChanged(Editable editable) {
+                Log.i("wordCard", "text change called");
                 wordCard.setWordSide(holder.wordDefinition.getText().toString());
             }
-        });
+        });*/
         holder.wordDefinition = (EditText) view.findViewById(R.id.definition);
-        holder.wordDefinition.addTextChangedListener(new TextWatcher() {
+/*        holder.wordDefinition.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
 
@@ -85,7 +86,7 @@ public class WordCardCreatorCustomAdapter extends ArrayAdapter<WordCard> {
             public void afterTextChanged(Editable editable) {
                 wordCard.setDefinitionSide(holder.wordDefinition.getText().toString());
             }
-        });
+        });*/
         view.setTag(holder);
         return view;
     }

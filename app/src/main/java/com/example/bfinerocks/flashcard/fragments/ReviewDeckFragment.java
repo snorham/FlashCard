@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -87,6 +88,9 @@ public class ReviewDeckFragment extends Fragment implements OnClickListener {
         if(deck != null){
             listOfWordCards = deck.getMyDeck();
             deckNameEditText.setText(deck.getDeckName());
+            Log.i("wordCard", deck.getWordCardFromDeck(0).getWordSide());
+            adapter.addAll(listOfWordCards);
+            adapter.notifyDataSetChanged();
         }
         else{
             throw new IllegalStateException("Must supply a selected Deck to ReviewDeckFragment");
