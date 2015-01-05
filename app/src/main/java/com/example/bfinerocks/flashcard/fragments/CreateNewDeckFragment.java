@@ -121,7 +121,7 @@ public class CreateNewDeckFragment extends Fragment implements WordCardCreatorDi
                 adapter.notifyDataSetChanged();
             }
         });
-        wordCardEditDialog.show(getActivity().getFragmentManager(), "Editor");
+        wordCardEditDialog.show(getActivity().getFragmentManager(), ConstantsForReference.EDIT_DIALOG_FRAG_TAG);
     }
 
 }
