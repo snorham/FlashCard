@@ -23,24 +23,25 @@ public class SignInFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootview = inflater.inflate(R.layout.fragment_signin, container, false);
-        final EditText userNameEntry = (EditText) rootview.findViewById(R.id.edtxt_user_name_entry);
-        Button signInDone = (Button) rootview.findViewById(R.id.btn_sign_in_done);
-        signInDone.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String userNameEntered = userNameEntry.getText().toString().trim();
-                generateSharedPrefWithUserName(userNameEntered);
-                try {
+        if(getActivity() instanceof FragmentTransitionInterface) {
+            View rootview = inflater.inflate(R.layout.fragment_signin, container, false);
+            final EditText userNameEntry = (EditText) rootview.findViewById(R.id.edtxt_user_name_entry);
+            Button signInDone = (Button) rootview.findViewById(R.id.btn_sign_in_done);
+            signInDone.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String userNameEntered = userNameEntry.getText().toString().trim();
+                    generateSharedPrefWithUserName(userNameEntered);
                     FragmentTransitionInterface fti = (FragmentTransitionInterface) getActivity();
                     HomepageFragment homepageFragment = HomepageFragment.newInstance(userNameEntered);
                     fti.onFragmentChange(homepageFragment);
-                }catch (ClassCastException e){
-                    throw new IllegalStateException("SignInFragment must be created with an activity that implements FragmentTransitionInterface", e);
                 }
+            });
+            return rootview;
+        }
+        else{
+                throw new IllegalStateException("SignInFragment must be created with an activity that implements FragmentTransitionInterface", e);
             }
-        });
-        return rootview;
     }
 
     public void generateSharedPrefWithUserName(String usernameEntered){
