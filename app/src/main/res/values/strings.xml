@@ -48,6 +48,7 @@
     <string name="color_yellow">Yellow</string>
     <string name="color_orange">Orange</string>
     <string name="color_white">White</string>
+    <string name="dialog_edit_header">Word Card Editor</string>
     <string name="dialog_edit_directions">Edit the word and/or the definition.</string>
     <string name="dialog_edit_word_header">Word:</string>
     <string name="dialog_edit_definition_header">Definition:</string>
