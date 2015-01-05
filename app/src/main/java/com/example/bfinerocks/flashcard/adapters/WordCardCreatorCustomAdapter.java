@@ -41,7 +41,6 @@ public class WordCardCreatorCustomAdapter extends ArrayAdapter<WordCard> {
         }
         wordCard = getItem(position);
         if(wordCard != null){
-            Log.i("wordCard", "Word card not null");
             holder.wordEntered.setText(wordCard.getWordSide());
             holder.wordDefinition.setText(wordCard.getDefinitionSide());
         }
