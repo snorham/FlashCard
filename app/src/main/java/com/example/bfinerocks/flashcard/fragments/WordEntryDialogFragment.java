@@ -5,12 +5,15 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 
 import com.example.bfinerocks.flashcard.R;
+import com.example.bfinerocks.flashcard.constants.ConstantsForPreferenceFile;
 import com.example.bfinerocks.flashcard.dictionaryapi.DefinitionParsing;
 import com.example.bfinerocks.flashcard.dictionaryapi.WordNikAPI;
 import com.example.bfinerocks.flashcard.interfaces.WordNikAPIInterface;
@@ -55,7 +58,12 @@ public class WordEntryDialogFragment extends DialogFragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 wordToDefine = wordText.getText().toString().trim();
-                sendNewWordCardToHostFragment(wordToDefine);
+                if(userPrefForAutoDefinition()){
+                    sendNewWordCardWithWithoutDefinition(wordToDefine);
+                }
+                else{
+                    sendNewWordCardToHostFragment(wordToDefine);
+                }
                 wordCardInterface.positiveClickNextWordCard();
 
                 //todo handle pos click to restart frag
@@ -66,7 +74,12 @@ public class WordEntryDialogFragment extends DialogFragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i){
                 wordToDefine = wordText.getText().toString().trim();
-                sendNewWordCardToHostFragment(wordToDefine);
+                if(userPrefForAutoDefinition()){
+                    sendNewWordCardWithWithoutDefinition(wordToDefine);
+                }
+                else{
+                    sendNewWordCardToHostFragment(wordToDefine);
+                }
                 wordCardInterface.negativeClickNoMoreCards();
 
                 //todo handle neg click to dismiss frag
@@ -102,6 +115,16 @@ public class WordEntryDialogFragment extends DialogFragment {
                 wordCardInterface.wordCardCreated(wordCard);
             }
         });
+    }
+
+    public void sendNewWordCardWithWithoutDefinition(String wordEntered){
+        WordCard wordCardWithOutDef = new WordCard(wordEntered);
+        wordCardInterface.wordCardCreated(wordCardWithOutDef);
+    }
+
+    public boolean userPrefForAutoDefinition(){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        return sharedPreferences.getBoolean(ConstantsForPreferenceFile.PREF_AUTO_DEF_KEY, false);
     }
 
 }

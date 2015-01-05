@@ -1,6 +1,8 @@
 package com.example.bfinerocks.flashcard.adapters;
 
 import android.content.Context;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +25,7 @@ public class WordCardCreatorCustomAdapter extends ArrayAdapter<WordCard> {
     }
 
     private int layoutResource;
+    private WordCard wordCard;
 
     public WordCardCreatorCustomAdapter(Context context, int resource, List<WordCard> objects) {
         super(context, resource, objects);
@@ -38,7 +41,7 @@ public class WordCardCreatorCustomAdapter extends ArrayAdapter<WordCard> {
         else{
             holder = (ViewHolder) convertView.getTag();
         }
-        WordCard wordCard = getItem(position);
+        wordCard = getItem(position);
         if(wordCard != null){
             holder.wordEntered.setText(wordCard.getWordSide());
             holder.wordDefinition.setText(wordCard.getDefinitionSide());
@@ -46,13 +49,73 @@ public class WordCardCreatorCustomAdapter extends ArrayAdapter<WordCard> {
         return convertView;
     }
 
-    private View convertTheView(ViewHolder holder, ViewGroup parent){
+    private View convertTheView(final ViewHolder holder, ViewGroup parent){
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(layoutResource, parent, false);
         holder.wordEntered = (EditText) view.findViewById(R.id.word);
+        holder.wordEntered.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                wordCard.setWordSide(holder.wordDefinition.getText().toString());
+            }
+        });
         holder.wordDefinition = (EditText) view.findViewById(R.id.definition);
+        holder.wordDefinition.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                wordCard.setDefinitionSide(holder.wordDefinition.getText().toString());
+            }
+        });
         view.setTag(holder);
         return view;
     }
+
+/*    public TextWatcher updateWordCard(final EditText editTextChanged){
+        TextWatcher textWatcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if(editTextChanged.getId() == R.id.word){
+                    wordCard.setWordSide(editTextChanged.getText().toString());
+                    Log.i("editTextChange", editable.toString());
+                }
+                else{
+                    wordCard.setDefinitionSide(editTextChanged.getText().toString());
+                    Log.i("editTextChange", editTextChanged.getText().toString());
+                }
+            }
+        };
+        return textWatcher;*/
+   // }
+
 
 }
