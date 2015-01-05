@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.bfinerocks.flashcard.R;
 import com.example.bfinerocks.flashcard.models.WordCard;
@@ -18,8 +18,8 @@ import java.util.List;
 public class WordCardCreatorCustomAdapter extends ArrayAdapter<WordCard> {
 
     private static class ViewHolder{
-        EditText wordEntered;
-        EditText wordDefinition;
+        TextView wordEntered;
+        TextView wordDefinition;
     }
 
     private int layoutResource;
@@ -50,9 +50,8 @@ public class WordCardCreatorCustomAdapter extends ArrayAdapter<WordCard> {
     private View convertTheView(final ViewHolder holder, ViewGroup parent){
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(layoutResource, parent, false);
-        holder.wordEntered = (EditText) view.findViewById(R.id.word);
-        holder.wordDefinition = (EditText) view.findViewById(R.id.definition);
-        holder.wordDefinition = (EditText) view.findViewById(R.id.definition);
+        holder.wordEntered = (TextView) view.findViewById(R.id.word);
+        holder.wordDefinition = (TextView) view.findViewById(R.id.definition);
         view.setTag(holder);
         return view;
     }
