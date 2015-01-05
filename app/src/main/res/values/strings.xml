@@ -27,5 +27,6 @@
     <string name="deck_list_header">Saved Decks</string>
     <string name="btn_back">Back</string>
     <string name="btn_next">Next</string>
+    <string name="menu_flash_stop_flash">Stop Flash Card</string>
 
 </resources>
