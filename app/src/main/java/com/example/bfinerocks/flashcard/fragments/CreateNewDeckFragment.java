@@ -118,6 +118,7 @@ public class CreateNewDeckFragment extends Fragment implements WordCardCreatorDi
             @Override
             public void wordCardEditedByUser(WordCard wordCard) {
                 listOfWordCards.set(itemSelected, wordCard);
+                adapter.notifyDataSetChanged();
             }
         });
         wordCardEditDialog.show(getActivity().getFragmentManager(), "Editor");
