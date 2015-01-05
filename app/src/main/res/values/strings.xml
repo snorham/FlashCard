@@ -28,5 +28,24 @@
     <string name="btn_back">Back</string>
     <string name="btn_next">Next</string>
     <string name="menu_flash_stop_flash">Stop Flash Card</string>
+    <string name="pref_category_heading">FlashCard App User Preferences</string>
+    <string name="pref_category_color_settings">Display and Color Settings</string>
+    <string name="pref_category_word_card_order_settings">Flash Card View Settings</string>
+    <string name="pref_category_word_card_creation_settings">Word Card Creator Settings</string>
+    <string name="pref_auto_definition_title">Definition Generator</string>
+    <string name="pref_auto_definition_summary">Do not auto generate definitions</string>
+    <string name="pref_random_order_title">Card Shuffle</string>
+    <string name="pref_random_order_summary">Display cards in random order</string>
+    <string name="pref_text_color_title">Select your text color</string>
+    <string name="pref_text_color_summary">Change the text color of your flash cards</string>
+    <string name="color_black">Black</string>
+    <string name="color_blue">Blue</string>
+    <string name="color_red">Red</string>
+    <string name="color_green">Green</string>
+    <string name="color_purple">Purple</string>
+    <string name="color_yellow">Yellow</string>
+    <string name="color_orange">Orange</string>
+    <string name="color_white">White</string>
+
 
 </resources>

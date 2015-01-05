@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.bfinerocks.flashcard.R;
+import com.example.bfinerocks.flashcard.fragments.FlashCardSettingsFragment;
 import com.example.bfinerocks.flashcard.fragments.HomepageFragment;
 import com.example.bfinerocks.flashcard.fragments.SignInFragment;
 import com.example.bfinerocks.flashcard.interfaces.FragmentTransitionInterface;
@@ -51,6 +52,9 @@ public class MainActivity extends Activity implements FragmentTransitionInterfac
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.container, new FlashCardSettingsFragment())
+                    .commit();
             return true;
         }
 

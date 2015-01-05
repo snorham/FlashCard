@@ -5,4 +5,5 @@
           android:title="@string/menu_flash_stop_flash"
           android:orderInCategory="100"
           android:showAsAction="always"/>
+
 </menu>

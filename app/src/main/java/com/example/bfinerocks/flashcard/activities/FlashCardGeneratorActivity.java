@@ -58,4 +58,5 @@ public class FlashCardGeneratorActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }

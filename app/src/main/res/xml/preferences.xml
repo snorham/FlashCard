@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="@string/pref_category_word_card_creation_settings">
+        <CheckBoxPreference
+            android:key="auto_define_preference"
+            android:title="@string/pref_auto_definition_title"
+            android:summary="@string/pref_auto_definition_summary"
+            android:defaultValue="false"/>
+
+        </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/pref_category_color_settings">
+        <ListPreference
+            android:key="text_color_preference"
+            android:title="@string/pref_text_color_title"
+            android:summary="@string/pref_text_color_summary"
+            android:entries="@array/text_color_entries"
+            android:entryValues="@array/text_color_values"
+            android:defaultValue=""/>
+        </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/pref_category_word_card_order_settings">
+        <CheckBoxPreference
+            android:key="random_order_preference"
+            android:title="@string/pref_random_order_title"
+            android:summary="@string/pref_random_order_summary"
+            android:defaultValue="false"/>
+
+        </PreferenceCategory>
+
+
+</PreferenceScreen>
