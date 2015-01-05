@@ -4,11 +4,11 @@ import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.bfinerocks.flashcard.R;
+import com.example.bfinerocks.flashcard.constants.ConstantsForReference;
 import com.example.bfinerocks.flashcard.fragments.FlashCardGeneratorFragment;
 import com.example.bfinerocks.flashcard.models.Deck;
 import com.firebase.client.Firebase;
@@ -23,12 +23,8 @@ public class FlashCardGeneratorActivity extends Activity {
         super.onCreate(savedInstanceState);
         Firebase.setAndroidContext(getApplicationContext());
         setContentView(R.layout.activity_flash_card_generator);
-
-
         Bundle bundle = getIntent().getExtras();
-
-        Log.i("deck", bundle.getParcelable("com.example.bfinerocks.flashcard.models.Deck").toString());
-        Deck deckToDisplay = bundle.getParcelable("com.example.bfinerocks.flashcard.models.Deck");
+        Deck deckToDisplay = bundle.getParcelable(ConstantsForReference.DECK_TO_FLASH);
         FragmentManager fragmentManager = getFragmentManager();
         FlashCardGeneratorFragment flashCardGeneratorFragment = FlashCardGeneratorFragment.newInstance(deckToDisplay);
         fragmentManager.beginTransaction()

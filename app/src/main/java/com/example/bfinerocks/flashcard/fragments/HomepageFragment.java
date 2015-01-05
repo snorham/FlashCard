@@ -117,7 +117,7 @@ public class HomepageFragment extends Fragment implements OnClickListener, OnIte
         Bundle bundle = new Bundle();
 /*        bundle.putParcelableArrayList("com.example.bfinerocks.flashcard.models.Deck",(ArrayList) deckSelected.getMyDeck());
         bundle.putString("title", deckSelected.getDeckName());*/
-       cardGeneratorIntent.putExtra("com.example.bfinerocks.flashcard.models.Deck", deckSelected);
+       cardGeneratorIntent.putExtra(ConstantsForReference.DECK_TO_FLASH, deckSelected);
        cardGeneratorIntent.putExtras(bundle);
         startActivity(cardGeneratorIntent);
 /*        FlashCardGeneratorFragment fg = new FlashCardGeneratorFragment();
