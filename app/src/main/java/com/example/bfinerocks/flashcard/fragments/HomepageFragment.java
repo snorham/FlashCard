@@ -114,12 +114,10 @@ public class HomepageFragment extends Fragment implements OnClickListener, OnIte
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         Deck deckSelected = (Deck) adapterView.getItemAtPosition(i);
         Intent cardGeneratorIntent = new Intent(getActivity(), FlashCardGeneratorActivity.class);
-
         Bundle bundle = new Bundle();
         cardGeneratorIntent.putExtra(ConstantsForReference.DECK_TO_FLASH, deckSelected);
         cardGeneratorIntent.putExtras(bundle);
         startActivity(cardGeneratorIntent);
-
     }
 
     @Override

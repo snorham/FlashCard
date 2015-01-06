@@ -2,7 +2,6 @@ package com.example.bfinerocks.flashcard.firebase;
 
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 
 import com.example.bfinerocks.flashcard.models.Deck;
 import com.example.bfinerocks.flashcard.models.WordCard;
@@ -110,7 +109,6 @@ public class FirebaseStorage {
             WordCard wordCard1 = new WordCard(word);
             wordCard1.setDefinitionSide(def);
             deck.addWordCardToDeck(wordCard1);
-//            Log.i("forLoop", deck.getWordCardFromDeck(i).getDefinitionSide());
         }
         return deck;
     }
@@ -119,7 +117,6 @@ public class FirebaseStorage {
         Message message = new Message();
         message.obj = deck;
         handler.sendMessage(message);
-        Log.i("mesSent", message.toString());
     }
 
 }
