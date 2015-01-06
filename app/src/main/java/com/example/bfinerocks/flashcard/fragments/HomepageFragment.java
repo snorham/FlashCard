@@ -54,7 +54,8 @@ public class HomepageFragment extends Fragment implements OnClickListener, OnIte
         View rootView = inflater.inflate(R.layout.fragment_homepage, container, false);
         TextView welcomeUser = (TextView) rootView.findViewById(R.id.homepage_welcome);
         listOfDecksSaved = (ListView) rootView.findViewById(R.id.homepage_listView);
-        listOfDecksSaved.addHeaderView(inflater.inflate(R.layout.deck_header_item, null));
+        View headerView = inflater.inflate(R.layout.deck_header_item, null, false);
+        listOfDecksSaved.addHeaderView(headerView, null, false);
         linkToCreateNewDeck = (TextView) rootView.findViewById(R.id.txt_create_new_deck);
         return rootView;
     }
