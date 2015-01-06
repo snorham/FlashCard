@@ -11,7 +11,6 @@ import java.util.List;
 public class Deck implements android.os.Parcelable {
     private ArrayList<WordCard> myDeck;
     private String deckName;
-    private String fireabaseID;
 
     public Deck(String deckName){
         this.deckName = deckName;
@@ -46,15 +45,6 @@ public class Deck implements android.os.Parcelable {
         return myDeck;
     }
 
-    public void setFireabaseID(String fireabaseID){
-        this.fireabaseID = fireabaseID;
-    }
-
-    public String getFireabaseID(){
-        return fireabaseID;
-    }
-
-
     @Override
     public int describeContents() {
         return 0;
@@ -63,12 +53,10 @@ public class Deck implements android.os.Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeTypedList(this.myDeck);
-     //   dest.writeSerializable(this.myDeck);
         dest.writeString(this.deckName);
     }
 
     private Deck(Parcel in) {
-      //  this.myDeck = (ArrayList<WordCard>) in.readSerializable();
         this.myDeck = new ArrayList<WordCard>();
         in.readTypedList(myDeck, WordCard.CREATOR);
         this.deckName = in.readString();

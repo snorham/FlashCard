@@ -2,12 +2,14 @@ package com.example.bfinerocks.flashcard.firebase;
 
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 import com.example.bfinerocks.flashcard.models.Deck;
 import com.example.bfinerocks.flashcard.models.WordCard;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.Firebase.CompletionListener;
 import com.firebase.client.FirebaseError;
 
 import java.util.HashMap;
@@ -53,15 +55,41 @@ public class FirebaseStorage {
     public void addNewDeckToFirebaseUserReference(String userName, Deck deck){
         createFirebaseReferenceWithUserNameForReference(userName);
         appendFirebaseReferenceWithDeckLevelReference();
+/*        Map<String, Object> deckMap = new HashMap<>();
+        deckMap.put(deck.getDeckName(), deck);
+        getReferenceToUsersDeckLevel().updateChildren(deckMap);*/
         getReferenceToUsersDeckLevel().push().setValue(deck);
 
     }
 
-/*    public void updateFirebaseWithUpdatedDeck(String userName, Deck deckUpdated){
+    public void updateFirebaseWithUpdatedDeck(String userName, Deck deckUpdated){
         createFirebaseReferenceWithUserNameForReference(userName);
         appendFirebaseReferenceWithDeckLevelReference();
-        getReferenceToUsersDeckLevel().updateChildren(deckUpdated);
-    }*/
+        getReferenceToUsersDeckLevel().child(deckUpdated.getFireabaseID()).removeValue(new CompletionListener() {
+            @Override
+            public void onComplete(FirebaseError firebaseError, Firebase firebase) {
+                if(firebaseError != null){
+                    Log.i("error", firebaseError.toString());
+                }
+                else{
+                    Log.i("success", firebase.toString());
+                }
+            }
+        });
+/*        Map<String, Object> deckMap = new HashMap<>();
+        deckMap.put("key", deckUpdated.getFireabaseID());
+        deckMap.put(deckUpdated.getDeckName(), deckUpdated.getMyDeck());
+        getReferenceToUsersDeckLevel().updateChildren(deckMap, new CompletionListener() {
+            @Override
+            public void onComplete(FirebaseError firebaseError, Firebase firebase) {
+                if(firebaseError != null){
+                Log.i("error", firebaseError.getMessage());}
+                else{
+                    Log.i("firebaseRef", firebase.toString());
+                }
+            }
+        });*/
+    }
 
     public void getUsersDecksFromFirebase(){
         getReferenceToUsersDeckLevel().addChildEventListener(new ChildEventListener() {
@@ -97,9 +125,12 @@ public class FirebaseStorage {
     }
 
     public Deck getDeckFromFirebase(DataSnapshot dataSnapshot){
+        String deckKey = dataSnapshot.getKey();
+        Log.i("key", deckKey);
         Map<String, Object> deckMap = (Map<String, Object>)dataSnapshot.getValue();
         String deckName = deckMap.get("deckName").toString();
         Deck deck = new Deck(deckName);
+        deck.setFireabaseID(deckKey);
         List<Object> list = (List<Object>) deckMap.get("myDeck");
 
         for(int i = 0; i < list.size(); i++){

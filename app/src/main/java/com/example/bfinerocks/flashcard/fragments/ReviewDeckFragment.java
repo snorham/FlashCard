@@ -14,7 +14,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.bfinerocks.flashcard.R;
 import com.example.bfinerocks.flashcard.adapters.WordCardCreatorCustomAdapter;
@@ -67,15 +66,8 @@ public class ReviewDeckFragment extends Fragment implements OnClickListener, OnI
 
     @Override
     public void onClick(View view) {
-        String deckName = deckNameEditText.getText().toString().trim();
-        if(deckName.isEmpty()){
-            Toast.makeText(getActivity(), R.string.toast_need_deck_name, Toast.LENGTH_SHORT).show();
-        }
-        else{
-            Deck deckOfCards = new Deck(deckName);
-            deckOfCards.addListOfWordCardsToDeck(listOfWordCards);
-            sendDeckToFirebase(deckOfCards);
-        }
+        Deck deck = new Deck(deckNameEditText.getText().toString());
+        sendDeckToFirebase(deck);
     }
 
 
@@ -83,7 +75,7 @@ public class ReviewDeckFragment extends Fragment implements OnClickListener, OnI
         FirebaseStorage firebaseStorage = new FirebaseStorage();
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         String userName = sharedPreferences.getString(ConstantsForReference.USER_NAME_PREFERENCE, "user");
-        firebaseStorage.addNewDeckToFirebaseUserReference(userName, deckOfCards);
+        firebaseStorage.updateFirebaseWithUpdatedDeck(userName, deckOfCards);
     }
 
     public void updateListViewWithSelectedDeck(){
@@ -109,6 +101,7 @@ public class ReviewDeckFragment extends Fragment implements OnClickListener, OnI
             public void wordCardEditedByUser(WordCard wordCard) {
                 listOfWordCards.set(itemSelected, wordCard);
                 adapter.notifyDataSetChanged();
+                Log.i("ListUpdated", listOfWordCards.get(itemSelected).getWordSide());
             }
         });
         wordCardEditDialog.show(getActivity().getFragmentManager(), ConstantsForReference.EDIT_DIALOG_FRAG_TAG);
