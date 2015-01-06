@@ -11,6 +11,7 @@ import java.util.List;
 public class Deck implements android.os.Parcelable {
     private ArrayList<WordCard> myDeck;
     private String deckName;
+    private String fireabaseID;
 
     public Deck(String deckName){
         this.deckName = deckName;
@@ -43,6 +44,14 @@ public class Deck implements android.os.Parcelable {
 
     public List<WordCard> getMyDeck(){
         return myDeck;
+    }
+
+    public void setFireabaseID(String fireabaseID){
+        this.fireabaseID = fireabaseID;
+    }
+
+    public String getFireabaseID(){
+        return fireabaseID;
     }
 
 

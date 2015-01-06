@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -18,6 +20,7 @@ import com.example.bfinerocks.flashcard.R;
 import com.example.bfinerocks.flashcard.adapters.WordCardCreatorCustomAdapter;
 import com.example.bfinerocks.flashcard.constants.ConstantsForReference;
 import com.example.bfinerocks.flashcard.firebase.FirebaseStorage;
+import com.example.bfinerocks.flashcard.fragments.WordCardEditDialog.WordCardEditDialogInterface;
 import com.example.bfinerocks.flashcard.models.Deck;
 import com.example.bfinerocks.flashcard.models.WordCard;
 
@@ -27,9 +30,8 @@ import java.util.List;
 /**
  * Created by BFineRocks on 12/22/14.
  */
-public class ReviewDeckFragment extends Fragment implements OnClickListener {
+public class ReviewDeckFragment extends Fragment implements OnClickListener, OnItemClickListener {
 
-    private static final String DIALOG_FRAG_TAG = "WordEntryDialog";
     public List<WordCard> listOfWordCards;
     private ListView listView;
     private WordCardCreatorCustomAdapter adapter;
@@ -58,6 +60,7 @@ public class ReviewDeckFragment extends Fragment implements OnClickListener {
         listOfWordCards = new ArrayList<WordCard>();
         adapter = new WordCardCreatorCustomAdapter(getActivity(), R.layout.word_definition_item,listOfWordCards);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(this);
         updateListViewWithSelectedDeck();
         saveListButton.setOnClickListener(this);
     }
@@ -95,5 +98,19 @@ public class ReviewDeckFragment extends Fragment implements OnClickListener {
         else{
             throw new IllegalStateException("Must supply a selected Deck to ReviewDeckFragment");
         }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+        final int itemSelected = position;
+        WordCard wordCard = (WordCard) adapterView.getItemAtPosition(itemSelected);
+        WordCardEditDialog wordCardEditDialog = WordCardEditDialog.newInstance(wordCard, new WordCardEditDialogInterface() {
+            @Override
+            public void wordCardEditedByUser(WordCard wordCard) {
+                listOfWordCards.set(itemSelected, wordCard);
+                adapter.notifyDataSetChanged();
+            }
+        });
+        wordCardEditDialog.show(getActivity().getFragmentManager(), ConstantsForReference.EDIT_DIALOG_FRAG_TAG);
     }
 }
