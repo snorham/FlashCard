@@ -135,7 +135,7 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
         String valueOfTextColor = sharedPreferences.getString(ConstantsForPreferenceFile.PREF_TEXT_COLOR_KEY, "");
         Log.i("textPref", valueOfTextColor);
         if(valueOfTextColor.equals(getString(R.string.color_black))){
-            cardText.setText(getResources().getColor(R.color.black));
+            cardText.setTextColor(getResources().getColor(R.color.black));
         }
         else if(valueOfTextColor.equals(getString(R.string.color_blue))){
             cardText.setTextColor(getResources().getColor(R.color.blue_base));
