@@ -134,8 +134,8 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         String valueOfTextColor = sharedPreferences.getString(ConstantsForPreferenceFile.PREF_TEXT_COLOR_KEY, "");
         Log.i("textPref", valueOfTextColor);
-        if(valueOfTextColor.equals(getString(R.string.color_black))){
-            cardText.setText(getResources().getColor(R.color.black));
+        if(valueOfTextColor.equals(getString(R.string.color_black)) || valueOfTextColor.isEmpty()){
+            cardText.setTextColor(getResources().getColor(R.color.black));
         }
         else if(valueOfTextColor.equals(getString(R.string.color_blue))){
             cardText.setTextColor(getResources().getColor(R.color.blue_base));
@@ -165,7 +165,7 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         String valueOfTextColor = sharedPreferences.getString(ConstantsForPreferenceFile.PREF_BACKGROUND_COLOR_KEY, "");
         Log.i("textPref", valueOfTextColor);
-        if(valueOfTextColor.equals(getString(R.string.color_black))){
+        if(valueOfTextColor.equals(getString(R.string.color_black)) || valueOfTextColor.isEmpty()){
             cardText.setBackgroundColor(getResources().getColor(R.color.black));
         }
         else if(valueOfTextColor.equals(getString(R.string.color_blue))){
