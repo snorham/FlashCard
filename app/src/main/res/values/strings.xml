@@ -52,7 +52,7 @@
     <string name="dialog_edit_directions">Edit the word and/or the definition.</string>
     <string name="dialog_edit_word_header">Word:</string>
     <string name="dialog_edit_definition_header">Definition:</string>
-    <string name="toast_deck_saved">You new Deck is saved</string>
+    <string name="toast_deck_saved">Save Complete</string>
 
 
 
