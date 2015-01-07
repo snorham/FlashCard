@@ -21,7 +21,7 @@ public class FlashCardSettingsFragment extends PreferenceFragment implements OnS
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        FlashCardTools.enableNavigationalHomeButton(getActivity());
+        FlashCardTools.enableNavigationalHomeButton(getActivity(), true);
     }
 
     @Override
