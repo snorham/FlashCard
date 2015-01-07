@@ -58,7 +58,7 @@ public class FirebaseStorage {
 
     }
 
-    public void updateFirebaseWithUpdatedDeck(String userName, final Deck deckUpdated){
+    public void updateFirebaseWithUpdatedDeck(String userName, Deck deckUpdated){
         Log.i("deckUpdatedSent", deckUpdated.getMyDeck().toString());
         createFirebaseReferenceWithUserNameForReference(userName);
         appendFirebaseReferenceWithDeckLevelReference();
