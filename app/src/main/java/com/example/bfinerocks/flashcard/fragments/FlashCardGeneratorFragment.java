@@ -1,7 +1,5 @@
 package com.example.bfinerocks.flashcard.fragments;
 
-import android.app.ActionBar;
-import android.app.Activity;
 import android.app.Fragment;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -21,6 +19,7 @@ import com.example.bfinerocks.flashcard.R;
 import com.example.bfinerocks.flashcard.constants.ConstantsForPreferenceFile;
 import com.example.bfinerocks.flashcard.models.Deck;
 import com.example.bfinerocks.flashcard.models.WordCard;
+import com.example.bfinerocks.flashcard.tools.FlashCardTools;
 
 import java.util.Random;
 
@@ -49,7 +48,7 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        enableNavigationalHomeButton(getActivity());
+        FlashCardTools.enableNavigationalHomeButton(getActivity());
     }
 
     @Override
@@ -217,15 +216,6 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
         }
         else if(valueOfTextColor.equals(getString(R.string.color_white))){
             cardText.setBackgroundColor(getResources().getColor(R.color.white));
-        }
-
-    }
-
-    private void enableNavigationalHomeButton(Activity parent) {
-        ActionBar ab = parent.getActionBar();
-        if (ab != null){
-            ab.setHomeButtonEnabled(true);
-            ab.setDisplayHomeAsUpEnabled(true);
         }
     }
 }
