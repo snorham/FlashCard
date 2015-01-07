@@ -58,7 +58,7 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         setCardDisplayRandom = sharedPreferences.getBoolean(ConstantsForPreferenceFile.PREF_RANDOM_ORDER_KEY, false);
         currentCard = 0;
-        displayNextCardOnScreen();
+        cardText.setText(getWordCardFromDeck().getWordSide());
         return rootView;
     }
 
@@ -92,13 +92,12 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
             cardText.setText(getWordCardFromDeck().getWordSide());
         }
         else {
-            if (currentCard <= numOfCardsInDeck) {
-                cardText.setText(getWordCardFromDeck().getWordSide());
+            if (currentCard < numOfCardsInDeck) {
                 currentCard++;
+                cardText.setText(getWordCardFromDeck().getWordSide());
             } else {
                 currentCard = 0;
                 cardText.setText(getWordCardFromDeck().getWordSide());
-                currentCard++;
             }
         }
     }
