@@ -1,11 +1,16 @@
 package com.example.bfinerocks.flashcard.fragments;
 
+import android.app.ActionBar;
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -39,6 +44,29 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
         FlashCardGeneratorFragment flashCardGeneratorFragment = new FlashCardGeneratorFragment();
         flashCardGeneratorFragment.setArguments(bundle);
         return flashCardGeneratorFragment;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        enableNavigationalHomeButton(getActivity());
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id){
+            case R.id.action_settings:
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.container, new FlashCardSettingsFragment())
+                        .addToBackStack(null)
+                        .commit();
+                return true;
+            case android.R.id.home:
+                getActivity().finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -191,5 +219,13 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
             cardText.setBackgroundColor(getResources().getColor(R.color.white));
         }
 
+    }
+
+    private void enableNavigationalHomeButton(Activity parent) {
+        ActionBar ab = parent.getActionBar();
+        if (ab != null){
+            ab.setHomeButtonEnabled(true);
+            ab.setDisplayHomeAsUpEnabled(true);
+        }
     }
 }
