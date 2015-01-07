@@ -8,11 +8,11 @@ import android.app.Activity;
  */
 public class FlashCardTools {
 
-    public static void enableNavigationalHomeButton(Activity parent) {
+    public static void enableNavigationalHomeButton(Activity parent, boolean enabled) {
         ActionBar ab = parent.getActionBar();
         if (ab != null){
-            ab.setHomeButtonEnabled(true);
-            ab.setDisplayHomeAsUpEnabled(true);
+            ab.setHomeButtonEnabled(enabled);
+            ab.setDisplayHomeAsUpEnabled(enabled);
         }
     }
 }
