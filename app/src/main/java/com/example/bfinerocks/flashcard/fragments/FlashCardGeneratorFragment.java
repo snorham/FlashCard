@@ -6,9 +6,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -19,7 +16,6 @@ import com.example.bfinerocks.flashcard.R;
 import com.example.bfinerocks.flashcard.constants.ConstantsForPreferenceFile;
 import com.example.bfinerocks.flashcard.models.Deck;
 import com.example.bfinerocks.flashcard.models.WordCard;
-import com.example.bfinerocks.flashcard.tools.FlashCardTools;
 
 import java.util.Random;
 
@@ -43,29 +39,6 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
         FlashCardGeneratorFragment flashCardGeneratorFragment = new FlashCardGeneratorFragment();
         flashCardGeneratorFragment.setArguments(bundle);
         return flashCardGeneratorFragment;
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        FlashCardTools.enableNavigationalHomeButton(getActivity());
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        switch (id){
-            case R.id.action_settings:
-                getFragmentManager().beginTransaction()
-                        .replace(R.id.container, new FlashCardSettingsFragment())
-                        .addToBackStack(null)
-                        .commit();
-                return true;
-            case android.R.id.home:
-                getActivity().finish();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override

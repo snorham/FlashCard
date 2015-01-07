@@ -6,6 +6,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -24,6 +27,7 @@ import com.example.bfinerocks.flashcard.fragments.WordCardEditDialog.WordCardEdi
 import com.example.bfinerocks.flashcard.fragments.WordEntryDialogFragment.WordCardCreatorDialogInterface;
 import com.example.bfinerocks.flashcard.models.Deck;
 import com.example.bfinerocks.flashcard.models.WordCard;
+import com.example.bfinerocks.flashcard.tools.FlashCardTools;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,8 +50,26 @@ public class CreateNewDeckFragment extends Fragment implements WordCardCreatorDi
     }
 
     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        FlashCardTools.enableNavigationalHomeButton(getActivity(), true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id){
+            case android.R.id.home:
+                getFragmentManager().popBackStack();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_create_and_review, container, false);
+        setHasOptionsMenu(true);
         deckNameEditText = (EditText) rootView.findViewById(R.id.edtxt_list_title);
         listView = (ListView) rootView.findViewById(R.id.list_view);
         saveListButton = (Button) rootView.findViewById(R.id.save_button);
