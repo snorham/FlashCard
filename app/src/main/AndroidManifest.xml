@@ -24,7 +24,8 @@
         </activity>
         <activity
             android:name=".activities.FlashCardGeneratorActivity"
-            android:label="@string/flash_card_generator_name">
+            android:label="@string/flash_card_generator_name"
+            android:parentActivityName=".activities.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.bfinerocks.flashcard.activities.MainActivity"/>
