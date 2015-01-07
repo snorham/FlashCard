@@ -36,6 +36,7 @@ public class ReviewDeckFragment extends Fragment implements OnClickListener, OnI
     private WordCardCreatorCustomAdapter adapter;
     private Button saveListButton;
     private EditText deckNameEditText;
+    private Deck deckToUpdate;
 
     public static ReviewDeckFragment newInstance(Deck deck){
         Bundle bundle = new Bundle();
@@ -66,8 +67,8 @@ public class ReviewDeckFragment extends Fragment implements OnClickListener, OnI
 
     @Override
     public void onClick(View view) {
-        Deck deck = new Deck(deckNameEditText.getText().toString());
-        sendDeckToFirebase(deck);
+        deckToUpdate.setDeckName(deckNameEditText.getText().toString());
+        sendDeckToFirebase(deckToUpdate);
     }
 
 
@@ -79,11 +80,11 @@ public class ReviewDeckFragment extends Fragment implements OnClickListener, OnI
     }
 
     public void updateListViewWithSelectedDeck(){
-        Deck deck = getArguments().getParcelable(ConstantsForReference.SELECTED_DECK_TO_REVIEW);
-        if(deck != null){
-            listOfWordCards = deck.getMyDeck();
-            deckNameEditText.setText(deck.getDeckName());
-            Log.i("wordCard", deck.getWordCardFromDeck(0).getWordSide());
+        deckToUpdate = getArguments().getParcelable(ConstantsForReference.SELECTED_DECK_TO_REVIEW);
+        if(deckToUpdate != null){
+            listOfWordCards = deckToUpdate.getMyDeck();
+            deckNameEditText.setText(deckToUpdate.getDeckName());
+            Log.i("wordCard", deckToUpdate.getWordCardFromDeck(0).getWordSide());
             adapter.addAll(listOfWordCards);
             adapter.notifyDataSetChanged();
         }

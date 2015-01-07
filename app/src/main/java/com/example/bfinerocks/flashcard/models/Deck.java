@@ -11,10 +11,12 @@ import java.util.List;
 public class Deck implements android.os.Parcelable {
     private ArrayList<WordCard> myDeck;
     private String deckName;
+    private String firebaseUID;
 
     public Deck(String deckName){
         this.deckName = deckName;
         myDeck = new ArrayList<WordCard>();
+        firebaseUID = "";
     }
 
     public Deck(){
@@ -23,6 +25,10 @@ public class Deck implements android.os.Parcelable {
 
     public String getDeckName(){
         return deckName;
+    }
+
+    public void setDeckName(String deckName){
+        this.deckName = deckName;
     }
 
     public void addWordCardToDeck(WordCard wordCard){
@@ -41,6 +47,14 @@ public class Deck implements android.os.Parcelable {
         myDeck.set(cardEditedNumber, editedWordCard);
     }
 
+    public void setFirebaseUID(String firebaseUID){
+        this.firebaseUID = firebaseUID;
+    }
+
+    public String getFirebaseUID(){
+        return firebaseUID;
+    }
+
     public List<WordCard> getMyDeck(){
         return myDeck;
     }
@@ -54,12 +68,14 @@ public class Deck implements android.os.Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeTypedList(this.myDeck);
         dest.writeString(this.deckName);
+        dest.writeString(this.firebaseUID);
     }
 
     private Deck(Parcel in) {
         this.myDeck = new ArrayList<WordCard>();
         in.readTypedList(myDeck, WordCard.CREATOR);
         this.deckName = in.readString();
+        this.firebaseUID = in.readString();
     }
 
     public static final Creator<Deck> CREATOR = new Creator<Deck>() {
