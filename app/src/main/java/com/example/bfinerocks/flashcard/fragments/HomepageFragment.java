@@ -113,8 +113,7 @@ public class HomepageFragment extends Fragment implements OnClickListener, OnIte
             FirebaseStorage firebaseStorage = new FirebaseStorage(uiHandler);
             firebaseStorage.createFirebaseReferenceWithUserNameForReference(userReference);
             firebaseStorage.appendFirebaseReferenceWithDeckLevelReference();
-               firebaseStorage.getUsersDecksFromFirebase();
-
+            firebaseStorage.getUsersDecksFromFirebase();
         }
     }
 
