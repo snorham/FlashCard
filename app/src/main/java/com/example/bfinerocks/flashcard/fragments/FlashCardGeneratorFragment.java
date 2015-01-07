@@ -54,11 +54,11 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
         backButton.setOnClickListener(this);
         nextButton = (Button) rootView.findViewById(R.id.btn_next);
         nextButton.setOnClickListener(this);
+        displayNextCardOnScreen();
+        currentCard = 0;
         displayWordSide = true;
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         setCardDisplayRandom = sharedPreferences.getBoolean(ConstantsForPreferenceFile.PREF_RANDOM_ORDER_KEY, false);
-        currentCard = 0;
-        displayNextCardOnScreen();
         return rootView;
     }
 
