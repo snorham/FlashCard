@@ -28,14 +28,8 @@ public class FlashCardSettingsFragment extends PreferenceFragment implements OnS
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id){
-            case R.id.action_settings:
-                getFragmentManager().beginTransaction()
-                        .replace(R.id.container, new FlashCardSettingsFragment())
-                        .addToBackStack(null)
-                        .commit();
-                return true;
             case android.R.id.home:
-                getActivity().finish();
+                getFragmentManager().popBackStack();
                 return true;
         }
         return super.onOptionsItemSelected(item);
