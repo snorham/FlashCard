@@ -26,6 +26,7 @@
     <string name="btn_done">Done</string>
     <string name="toast_need_deck_name">Oops! Looks like you forgot to name your Deck!</string>
     <string name="toast_make_changes">You can edit your words or definitions before saving</string>
+    <string name="changes_saved">Deck changes have been saved</string>
     <string name="deck_list_header">Saved Decks</string>
     <string name="btn_back">Back</string>
     <string name="btn_next">Next</string>

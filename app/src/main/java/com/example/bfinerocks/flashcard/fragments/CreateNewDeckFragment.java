@@ -117,11 +117,7 @@ public class CreateNewDeckFragment extends Fragment implements WordCardCreatorDi
         firebaseStorage.addNewDeckToFirebaseUserReference(userName, deckOfCards);
         saveListButton.setClickable(false);
         Toast.makeText(getActivity(), R.string.toast_deck_saved, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void positiveClickNextWordCard() {
-        showWordEntryDialogFragment();
+        getFragmentManager().popBackStackImmediate();
     }
 
     @Override
