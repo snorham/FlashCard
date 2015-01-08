@@ -27,6 +27,7 @@ import com.example.bfinerocks.flashcard.constants.ConstantsForReference;
 import com.example.bfinerocks.flashcard.firebase.FirebaseStorage;
 import com.example.bfinerocks.flashcard.interfaces.FragmentTransitionInterface;
 import com.example.bfinerocks.flashcard.models.Deck;
+import com.example.bfinerocks.flashcard.tools.FlashCardTools;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +57,7 @@ public class HomepageFragment extends Fragment implements OnClickListener, OnIte
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         menu.clear();
+        FlashCardTools.enableNavigationalHomeButton(getActivity(),false);
         inflater.inflate(R.menu.menu_main,menu);
     }
 
