@@ -53,6 +53,7 @@ public class ReviewDeckFragment extends Fragment implements OnClickListener, OnI
         deckNameEditText = (EditText) rootView.findViewById(R.id.edtxt_list_title);
         listView = (ListView) rootView.findViewById(R.id.list_view);
         saveListButton = (Button) rootView.findViewById(R.id.save_button);
+        saveListButton.setText(getString(R.string.btn_save_changes));
         return rootView;
     }
 
