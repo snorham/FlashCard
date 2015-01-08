@@ -190,6 +190,5 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
         else if(valueOfTextColor.equals(getString(R.string.color_white))){
             cardText.setBackgroundColor(getResources().getColor(R.color.white));
         }
-
     }
 }
