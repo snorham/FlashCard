@@ -48,7 +48,7 @@ public class WordEntryDialogFragment extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getActivity());
+        final AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View layoutView = inflater.inflate(R.layout.fragment_dialogue_word_entry, null);
         alertBuilder.setTitle(R.string.dialog_header);
@@ -64,8 +64,8 @@ public class WordEntryDialogFragment extends DialogFragment {
                 else{
                     sendNewWordCardToHostFragment(wordToDefine);
                 }
-                wordCardInterface.positiveClickNextWordCard(); //todo can go use show?? call
-
+                //wordCardInterface.positiveClickNextWordCard();
+                recreateDialogOnPositiveClick();
                 //todo handle pos click to restart frag
 
             }
@@ -125,6 +125,11 @@ public class WordEntryDialogFragment extends DialogFragment {
     public boolean userPrefForAutoDefinition(){
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         return sharedPreferences.getBoolean(ConstantsForPreferenceFile.PREF_AUTO_DEF_KEY, false);
+    }
+
+    public void recreateDialogOnPositiveClick(){
+        WordEntryDialogFragment wordEntryDialogFragment = newInstance(wordCardInterface);
+        wordEntryDialogFragment.show(getFragmentManager(), "show");
     }
 
 }
