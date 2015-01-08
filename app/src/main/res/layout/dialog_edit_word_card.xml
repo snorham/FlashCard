@@ -8,38 +8,63 @@
         android:id="@+id/edit_directions"
         android:text="@string/dialog_edit_directions"
         android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_margin="16dp"/>
 
     <TextView
         android:id="@+id/dialog_edit_word_header"
         android:text="@string/dialog_edit_word_header"
-        android:layout_below="@id/edit_directions"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_directions"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        />
 
     <EditText
         android:id="@+id/dialog_word_edit_field"
-        android:layout_toRightOf="@id/dialog_edit_word_header"
-        android:layout_alignBottom="@id/dialog_edit_word_header"
-        android:layout_alignLeft="@+id/dialog_edit_def_field"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dialog_edit_word_header"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="16dp"
+        android:singleLine="true"
+        android:scrollbars="horizontal"
+        />
 
     <TextView
         android:id="@+id/dialog_edit_def_header"
         android:text="@string/dialog_edit_definition_header"
-        android:layout_below="@id/dialog_edit_word_header"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dialog_word_edit_field"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        />
 
     <EditText
-        android:id="@id/dialog_edit_def_field"
-        android:layout_toRightOf="@id/dialog_edit_def_header"
-        android:layout_alignBottom="@id/dialog_edit_def_header"
+        android:id="@+id/dialog_edit_def_field"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        android:layout_below="@id/dialog_edit_def_header"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="16dp"/>
 
 </RelativeLayout>
