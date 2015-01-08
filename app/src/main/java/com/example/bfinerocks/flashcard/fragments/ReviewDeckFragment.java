@@ -71,6 +71,7 @@ public class ReviewDeckFragment extends Fragment implements OnClickListener, OnI
     public void onClick(View view) {
         deckToUpdate.setDeckName(deckNameEditText.getText().toString());
         sendDeckToFirebase(deckToUpdate);
+        Toast.makeText(getActivity(),"Changes to deck have been saved",Toast.LENGTH_SHORT).show();
     }
 
 
