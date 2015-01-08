@@ -121,11 +121,6 @@ public class CreateNewDeckFragment extends Fragment implements WordCardCreatorDi
     }
 
     @Override
-    public void positiveClickNextWordCard() {
-        showWordEntryDialogFragment();
-    }
-
-    @Override
     public void negativeClickNoMoreCards() {
         Toast.makeText(getActivity(), R.string.toast_make_changes, Toast.LENGTH_SHORT).show();
     }

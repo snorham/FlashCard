@@ -32,7 +32,6 @@ public class WordEntryDialogFragment extends DialogFragment {
     private EditText wordText;
 
     public interface WordCardCreatorDialogInterface {
-        public void positiveClickNextWordCard();
         public void negativeClickNoMoreCards();
         public void wordCardCreated(WordCard wordCard);
     }
@@ -48,7 +47,7 @@ public class WordEntryDialogFragment extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getActivity());
+        final AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View layoutView = inflater.inflate(R.layout.fragment_dialogue_word_entry, null);
         alertBuilder.setTitle(R.string.dialog_header);
@@ -64,9 +63,7 @@ public class WordEntryDialogFragment extends DialogFragment {
                 else{
                     sendNewWordCardToHostFragment(wordToDefine);
                 }
-                wordCardInterface.positiveClickNextWordCard(); //todo can go use show?? call
-
-                //todo handle pos click to restart frag
+                recreateDialogOnPositiveClick();
 
             }
         });
@@ -80,9 +77,7 @@ public class WordEntryDialogFragment extends DialogFragment {
                 else{
                     sendNewWordCardToHostFragment(wordToDefine);
                 }
-                wordCardInterface.negativeClickNoMoreCards(); //todo can go use dismiss call
-
-                //todo handle neg click to dismiss frag
+                wordCardInterface.negativeClickNoMoreCards();
             }
         });
         return alertBuilder.create();
@@ -125,6 +120,11 @@ public class WordEntryDialogFragment extends DialogFragment {
     public boolean userPrefForAutoDefinition(){
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         return sharedPreferences.getBoolean(ConstantsForPreferenceFile.PREF_AUTO_DEF_KEY, false);
+    }
+
+    public void recreateDialogOnPositiveClick(){
+        WordEntryDialogFragment wordEntryDialogFragment = newInstance(wordCardInterface);
+        wordEntryDialogFragment.show(getFragmentManager(), "show");
     }
 
 }
