@@ -32,6 +32,8 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
     private int numOfCardsInDeck;
     private boolean displayWordSide;
     private boolean setCardDisplayRandom;
+    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+
 
     public static FlashCardGeneratorFragment newInstance(Deck currentDeck){
         Bundle bundle = new Bundle();
@@ -57,7 +59,6 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
         displayNextCardOnScreen();
         currentCard = 0;
         displayWordSide = true;
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         setCardDisplayRandom = sharedPreferences.getBoolean(ConstantsForPreferenceFile.PREF_RANDOM_ORDER_KEY, false);
         currentCard = 0;
         cardText.setText(getWordCardFromDeck().getWordSide());
@@ -132,7 +133,6 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
         }
     }
     public void setTextColorBasedOnUserPreference(){
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         String valueOfTextColor = sharedPreferences.getString(ConstantsForPreferenceFile.PREF_TEXT_COLOR_KEY, "");
         Log.i("textPref", valueOfTextColor);
         if(valueOfTextColor.equals(getString(R.string.color_black)) || valueOfTextColor.isEmpty()){
@@ -163,7 +163,6 @@ public class FlashCardGeneratorFragment extends Fragment implements OnClickListe
     }
 
     public void setBackgroundColorBasedOnUserPreference(){
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         String valueOfTextColor = sharedPreferences.getString(ConstantsForPreferenceFile.PREF_BACKGROUND_COLOR_KEY, "");
         Log.i("textPref", valueOfTextColor);
         if(valueOfTextColor.equals(getString(R.string.color_black)) || valueOfTextColor.isEmpty()){
