@@ -80,6 +80,7 @@ public class ReviewDeckFragment extends Fragment implements OnClickListener, OnI
         firebaseStorage.updateFirebaseWithUpdatedDeck(userName, deckOfCards);
         saveListButton.setClickable(false);
         Toast.makeText(getActivity(), R.string.toast_deck_saved, Toast.LENGTH_SHORT).show();
+        getFragmentManager().popBackStackImmediate();
     }
 
     public void updateListViewWithSelectedDeck(){
