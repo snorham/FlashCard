@@ -32,7 +32,6 @@ public class WordEntryDialogFragment extends DialogFragment {
     private EditText wordText;
 
     public interface WordCardCreatorDialogInterface {
-        public void positiveClickNextWordCard();
         public void negativeClickNoMoreCards();
         public void wordCardCreated(WordCard wordCard);
     }
@@ -64,9 +63,7 @@ public class WordEntryDialogFragment extends DialogFragment {
                 else{
                     sendNewWordCardToHostFragment(wordToDefine);
                 }
-                //wordCardInterface.positiveClickNextWordCard();
                 recreateDialogOnPositiveClick();
-                //todo handle pos click to restart frag
 
             }
         });
@@ -80,9 +77,7 @@ public class WordEntryDialogFragment extends DialogFragment {
                 else{
                     sendNewWordCardToHostFragment(wordToDefine);
                 }
-                wordCardInterface.negativeClickNoMoreCards(); //todo can go use dismiss call
-
-                //todo handle neg click to dismiss frag
+                wordCardInterface.negativeClickNoMoreCards();
             }
         });
         return alertBuilder.create();
