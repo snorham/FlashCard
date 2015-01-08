@@ -75,6 +75,7 @@ public class ReviewDeckFragment extends Fragment implements OnClickListener, OnI
         deckNameEditText = (EditText) rootView.findViewById(R.id.edtxt_list_title);
         listView = (ListView) rootView.findViewById(R.id.list_view);
         saveListButton = (Button) rootView.findViewById(R.id.save_button);
+        saveListButton.setText(getString(R.string.btn_save_changes));
         return rootView;
     }
 
@@ -94,14 +95,13 @@ public class ReviewDeckFragment extends Fragment implements OnClickListener, OnI
         sendDeckToFirebase(deckToUpdate);
     }
 
-
     public void sendDeckToFirebase(Deck deckOfCards){
         FirebaseStorage firebaseStorage = new FirebaseStorage();
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         String userName = sharedPreferences.getString(ConstantsForReference.USER_NAME_PREFERENCE, "user");
         firebaseStorage.updateFirebaseWithUpdatedDeck(userName, deckOfCards);
         saveListButton.setClickable(false);
-        Toast.makeText(getActivity(), R.string.toast_deck_saved, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(),getString(R.string.changes_saved),Toast.LENGTH_SHORT).show();
         getFragmentManager().popBackStackImmediate();
     }
 

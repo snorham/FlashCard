@@ -14,6 +14,8 @@
     <string name="txt_create_new_deck">Click to Create a New Deck</string>
     <string name="homepage_instructions">Select a deck to start flash card generator or edit the cards</string>
     <string name="btn_save">Save</string>
+    <string name="btn_edit_card">Edit Card</string>
+    <string name="btn_save_changes">Save Changes</string>
     <string name="hint_create_new_list">Enter the name of your new deck</string>
     <string name="hint_word">word</string>
     <string name="hint_definition">definition</string>
@@ -24,6 +26,7 @@
     <string name="btn_done">Done</string>
     <string name="toast_need_deck_name">Oops! Looks like you forgot to name your Deck!</string>
     <string name="toast_make_changes">You can edit your words or definitions before saving</string>
+    <string name="changes_saved">Deck changes have been saved</string>
     <string name="deck_list_header">Saved Decks</string>
     <string name="btn_back">Back</string>
     <string name="btn_next">Next</string>
