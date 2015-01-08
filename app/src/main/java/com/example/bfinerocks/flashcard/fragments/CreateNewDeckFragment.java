@@ -115,6 +115,8 @@ public class CreateNewDeckFragment extends Fragment implements WordCardCreatorDi
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         String userName = sharedPreferences.getString(ConstantsForReference.USER_NAME_PREFERENCE, "user");
         firebaseStorage.addNewDeckToFirebaseUserReference(userName, deckOfCards);
+        saveListButton.setClickable(false);
+        Toast.makeText(getActivity(), R.string.toast_deck_saved, Toast.LENGTH_SHORT).show();
     }
 
     @Override

@@ -14,6 +14,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.bfinerocks.flashcard.R;
 import com.example.bfinerocks.flashcard.adapters.WordCardCreatorCustomAdapter;
@@ -77,6 +78,8 @@ public class ReviewDeckFragment extends Fragment implements OnClickListener, OnI
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         String userName = sharedPreferences.getString(ConstantsForReference.USER_NAME_PREFERENCE, "user");
         firebaseStorage.updateFirebaseWithUpdatedDeck(userName, deckOfCards);
+        saveListButton.setClickable(false);
+        Toast.makeText(getActivity(), R.string.toast_deck_saved, Toast.LENGTH_SHORT).show();
     }
 
     public void updateListViewWithSelectedDeck(){
