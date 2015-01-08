@@ -48,7 +48,7 @@ public class WordCardEditDialog extends DialogFragment {
         final EditText definitionEditField = (EditText) layout.findViewById(R.id.dialog_edit_def_field);
         definitionEditField.setText(definitionToEdit);
         builder.setView(layout);
-        builder.setPositiveButton(R.string.btn_save, new OnClickListener() {
+        builder.setPositiveButton(R.string.btn_edit_card, new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 wordToEdit = wordEditField.getText().toString();
