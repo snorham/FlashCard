@@ -42,6 +42,7 @@ public class HomepageFragment extends Fragment implements OnClickListener, OnIte
     private List<Deck> listOfDecks;
     private DeckListCustomAdapter deckAdapter;
     private ListView listOfDecksSaved;
+    private String userReference;
 
 
     public static HomepageFragment newInstance(String user){
@@ -110,7 +111,7 @@ public class HomepageFragment extends Fragment implements OnClickListener, OnIte
     }
 
     public void getUpdatedSavedDeckFromFirebase(){
-        String userReference = getArguments().getString(ConstantsForReference.USER_FIREBASE_REFERENCE);
+            userReference = getArguments().getString(ConstantsForReference.USER_FIREBASE_REFERENCE);
             if(userReference != null){
             FirebaseStorage firebaseStorage = new FirebaseStorage(uiHandler);
             firebaseStorage.createFirebaseReferenceWithUserNameForReference(userReference);
@@ -148,10 +149,14 @@ public class HomepageFragment extends Fragment implements OnClickListener, OnIte
 
     @Override
     public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-/*        Deck deckSelected = (Deck) adapterView.getItemAtPosition(i);
-        FragmentTransitionInterface fti = (FragmentTransitionInterface) getActivity();
+        Deck deckSelected = (Deck) adapterView.getItemAtPosition(i);
+/*        FragmentTransitionInterface fti = (FragmentTransitionInterface) getActivity();
         ReviewDeckFragment reviewDeckFragment = ReviewDeckFragment.newInstance(deckSelected);
         fti.onFragmentChange(reviewDeckFragment);*/
+
+        FirebaseStorage fs = new FirebaseStorage();
+        fs.deleteDeckFromFirebase(userReference, deckSelected);
+
         return false;
     }
 }
