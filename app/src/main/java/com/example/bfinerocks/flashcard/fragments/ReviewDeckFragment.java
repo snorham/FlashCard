@@ -1,5 +1,6 @@
 package com.example.bfinerocks.flashcard.fragments;
 
+import android.app.DialogFragment;
 import android.app.Fragment;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ import com.example.bfinerocks.flashcard.adapters.WordCardCreatorCustomAdapter;
 import com.example.bfinerocks.flashcard.constants.ConstantsForReference;
 import com.example.bfinerocks.flashcard.firebase.FirebaseStorage;
 import com.example.bfinerocks.flashcard.fragments.WordCardEditDialog.WordCardEditDialogInterface;
+import com.example.bfinerocks.flashcard.fragments.WordEntryDialogFragment.WordCardCreatorDialogInterface;
 import com.example.bfinerocks.flashcard.models.Deck;
 import com.example.bfinerocks.flashcard.models.WordCard;
 import com.example.bfinerocks.flashcard.tools.FlashCardTools;
@@ -34,7 +36,7 @@ import java.util.List;
 /**
  * Created by BFineRocks on 12/22/14.
  */
-public class ReviewDeckFragment extends Fragment implements OnClickListener, OnItemClickListener {
+public class ReviewDeckFragment extends Fragment implements OnClickListener, OnItemClickListener, WordCardCreatorDialogInterface {
 
     public List<WordCard> listOfWordCards;
     private ListView listView;
@@ -42,6 +44,7 @@ public class ReviewDeckFragment extends Fragment implements OnClickListener, OnI
     private Button saveListButton;
     private EditText deckNameEditText;
     private Deck deckToUpdate;
+    private View headerView;
 
     public static ReviewDeckFragment newInstance(Deck deck){
         Bundle bundle = new Bundle();
@@ -76,6 +79,7 @@ public class ReviewDeckFragment extends Fragment implements OnClickListener, OnI
         listView = (ListView) rootView.findViewById(R.id.list_view);
         saveListButton = (Button) rootView.findViewById(R.id.save_button);
         saveListButton.setText(getString(R.string.btn_save_changes));
+        headerView = inflater.inflate(R.layout.item_word_card_list_header, null, true);
         return rootView;
     }
 
@@ -85,14 +89,23 @@ public class ReviewDeckFragment extends Fragment implements OnClickListener, OnI
         adapter = new WordCardCreatorCustomAdapter(getActivity(), R.layout.word_definition_item,listOfWordCards);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
+        headerView.setOnClickListener(this);
+        listView.addHeaderView(headerView);
         updateListViewWithSelectedDeck();
         saveListButton.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        deckToUpdate.setDeckName(deckNameEditText.getText().toString());
-        sendDeckToFirebase(deckToUpdate);
+        switch (view.getId()) {
+            case R.id.save_button:
+                deckToUpdate.setDeckName(deckNameEditText.getText().toString());
+                sendDeckToFirebase(deckToUpdate);
+                break;
+            case R.id.word_card_list_header:
+                showWordEntryDialogFragment();
+                break;
+        }
     }
 
     public void sendDeckToFirebase(Deck deckOfCards){
@@ -132,5 +145,21 @@ public class ReviewDeckFragment extends Fragment implements OnClickListener, OnI
             }
         });
         wordCardEditDialog.show(getActivity().getFragmentManager(), ConstantsForReference.EDIT_DIALOG_FRAG_TAG);
+    }
+
+    public void showWordEntryDialogFragment(){
+        DialogFragment wordEntryFragment = WordEntryDialogFragment.newInstance(this);
+        wordEntryFragment.show(getActivity().getFragmentManager(), ConstantsForReference.DIALOG_FRAG_TAG);
+    }
+
+    @Override
+    public void negativeClickNoMoreCards() {
+        //
+    }
+
+    @Override
+    public void wordCardCreated(WordCard wordCard) {
+        listOfWordCards.add(wordCard);
+        adapter.notifyDataSetChanged();
     }
 }

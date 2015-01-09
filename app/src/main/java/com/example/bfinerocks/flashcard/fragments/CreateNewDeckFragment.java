@@ -37,7 +37,6 @@ import java.util.List;
  */
 public class CreateNewDeckFragment extends Fragment implements WordCardCreatorDialogInterface, OnClickListener, OnItemClickListener {
 
-    private static final String DIALOG_FRAG_TAG = "WordEntryDialog";
     public List<WordCard> listOfWordCards;
     private ListView listView;
     private WordCardCreatorCustomAdapter adapter;
@@ -92,7 +91,7 @@ public class CreateNewDeckFragment extends Fragment implements WordCardCreatorDi
 
     public void showWordEntryDialogFragment(){
         DialogFragment wordEntryFragment = WordEntryDialogFragment.newInstance(this);
-        wordEntryFragment.show(getActivity().getFragmentManager(), DIALOG_FRAG_TAG);
+        wordEntryFragment.show(getActivity().getFragmentManager(), ConstantsForReference.DIALOG_FRAG_TAG);
     }
 
     public void updateAdapterWithNewCards(WordCard wordCard){

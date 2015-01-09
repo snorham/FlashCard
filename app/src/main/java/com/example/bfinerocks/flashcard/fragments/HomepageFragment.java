@@ -37,7 +37,6 @@ import java.util.List;
  */
 public class HomepageFragment extends Fragment implements OnClickListener, OnItemClickListener, OnItemLongClickListener{
 
-   // private static final String USER_FIREBASE_REFERENCE = "firebase_user_ref";
     private TextView linkToCreateNewDeck;
     private Handler uiHandler;
     private List<Deck> listOfDecks;
