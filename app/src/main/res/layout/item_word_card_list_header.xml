@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
+              android:id="@+id/word_card_list_header"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/word_card_list_header"
-        android:text=""
+        android:text="@string/word_card_list_header_line1"
         android:textSize="@dimen/txt_medium"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:text="@string/word_card_list_header_line2"
+        android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
