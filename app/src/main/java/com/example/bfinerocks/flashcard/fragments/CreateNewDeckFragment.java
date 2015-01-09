@@ -104,14 +104,14 @@ public class CreateNewDeckFragment extends Fragment implements WordCardCreatorDi
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.save_button:
-            String deckName = deckNameEditText.getText().toString().trim();
-            if (deckName.isEmpty()) {
-                Toast.makeText(getActivity(), R.string.toast_need_deck_name, Toast.LENGTH_SHORT).show();
-            } else {
-                Deck deckOfCards = new Deck(deckName);
-                deckOfCards.addListOfWordCardsToDeck(listOfWordCards);
-                sendDeckToFirebase(deckOfCards);
-            }
+                String deckName = deckNameEditText.getText().toString().trim();
+                if (deckName.isEmpty()) {
+                    Toast.makeText(getActivity(), R.string.toast_need_deck_name, Toast.LENGTH_SHORT).show();
+                } else {
+                    Deck deckOfCards = new Deck(deckName);
+                    deckOfCards.addListOfWordCardsToDeck(listOfWordCards);
+                    sendDeckToFirebase(deckOfCards);
+                }
                 break;
             case R.id.word_card_list_header:
                 showWordEntryDialogFragment();
