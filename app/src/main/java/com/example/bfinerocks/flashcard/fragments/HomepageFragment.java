@@ -1,6 +1,8 @@
 package com.example.bfinerocks.flashcard.fragments;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -35,13 +37,15 @@ import java.util.List;
 /**
  * Created by BFineRocks on 12/17/14.
  */
-public class HomepageFragment extends Fragment implements OnClickListener, OnItemClickListener, OnItemLongClickListener{
+public class HomepageFragment extends Fragment implements OnClickListener, OnItemClickListener, OnItemLongClickListener, DialogInterface.OnClickListener{
 
     private TextView linkToCreateNewDeck;
     private Handler uiHandler;
     private List<Deck> listOfDecks;
     private DeckListCustomAdapter deckAdapter;
     private ListView listOfDecksSaved;
+    private String userReference;
+    private Deck deckSelected;
 
 
     public static HomepageFragment newInstance(String user){
@@ -110,7 +114,7 @@ public class HomepageFragment extends Fragment implements OnClickListener, OnIte
     }
 
     public void getUpdatedSavedDeckFromFirebase(){
-        String userReference = getArguments().getString(ConstantsForReference.USER_FIREBASE_REFERENCE);
+            userReference = getArguments().getString(ConstantsForReference.USER_FIREBASE_REFERENCE);
             if(userReference != null){
             FirebaseStorage firebaseStorage = new FirebaseStorage(uiHandler);
             firebaseStorage.createFirebaseReferenceWithUserNameForReference(userReference);
@@ -148,10 +152,35 @@ public class HomepageFragment extends Fragment implements OnClickListener, OnIte
 
     @Override
     public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Deck deckSelected = (Deck) adapterView.getItemAtPosition(i);
-        FragmentTransitionInterface fti = (FragmentTransitionInterface) getActivity();
-        ReviewDeckFragment reviewDeckFragment = ReviewDeckFragment.newInstance(deckSelected);
-        fti.onFragmentChange(reviewDeckFragment);
-        return false;
+        deckSelected = (Deck) adapterView.getItemAtPosition(i);
+        displayEditOrDeleteDialog();
+        return true;
+    }
+
+    public void displayEditOrDeleteDialog(){
+        AlertDialog.Builder editDialog = new AlertDialog.Builder(getActivity());
+        editDialog.setTitle(R.string.dialog_edit_definition_header);
+        editDialog.setMessage(R.string.dialog_delete_directions);
+        editDialog.setPositiveButton(R.string.dialog_delete_edit_btn, this);
+        editDialog.setNeutralButton(R.string.dialog_delete_delete_btn, this);
+        editDialog.setNegativeButton(R.string.dialog_delete_cancel_btn, this);
+        editDialog.show();
+    }
+
+    @Override
+    public void onClick(DialogInterface dialog, int which) {
+        switch (which){
+            case DialogInterface.BUTTON_POSITIVE:
+                FragmentTransitionInterface fti = (FragmentTransitionInterface) getActivity();
+                ReviewDeckFragment reviewDeckFragment = ReviewDeckFragment.newInstance(deckSelected);
+                fti.onFragmentChange(reviewDeckFragment);
+                break;
+            case DialogInterface.BUTTON_NEUTRAL:
+                FirebaseStorage firebaseStorage = new FirebaseStorage();
+                firebaseStorage.deleteDeckFromFirebase(userReference, deckSelected);
+                break;
+            case DialogInterface.BUTTON_NEGATIVE:
+                break;
+        }
     }
 }

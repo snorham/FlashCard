@@ -64,6 +64,12 @@ public class FirebaseStorage {
         getReferenceToUsersDeckLevel().child(deckUpdated.getFirebaseUID()).setValue(deckUpdated);
     }
 
+    public void deleteDeckFromFirebase(String userName, Deck deckToDelete){
+        createFirebaseReferenceWithUserNameForReference(userName);
+        appendFirebaseReferenceWithDeckLevelReference();
+        getReferenceToUsersDeckLevel().child(deckToDelete.getFirebaseUID()).removeValue();
+    }
+
     public void getUsersDecksFromFirebase(){
         getReferenceToUsersDeckLevel().addChildEventListener(new ChildEventListener() {
             @Override
@@ -77,14 +83,16 @@ public class FirebaseStorage {
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                 if(dataSnapshot != null){
-                   // sendMessageToUIHandler(getDeckFromFirebase(dataSnapshot));
-                    Log.i("data", dataSnapshot.toString());
+                    sendMessageToUIHandler(getDeckFromFirebase(dataSnapshot));
+                    Log.i("dataChanged", dataSnapshot.toString());
                 }
             }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
-
+                if(dataSnapshot != null){
+                    sendMessageToUIHandler(getDeckFromFirebase(dataSnapshot));
+                    Log.i("dataRemoved", dataSnapshot.toString());}
             }
 
             @Override
