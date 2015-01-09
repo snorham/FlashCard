@@ -56,6 +56,8 @@
     <string name="dialog_edit_word_header">Word:</string>
     <string name="dialog_edit_definition_header">Definition:</string>
     <string name="toast_deck_saved">Save Complete</string>
+    <string name="word_card_list_header_line1">Word Card List</string>
+    <string name="word_card_list_header_line2">Click to add new Word Card</string>
 
 
 
