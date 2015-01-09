@@ -50,7 +50,7 @@ public class WordEntryDialogFragment extends DialogFragment {
         final AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View layoutView = inflater.inflate(R.layout.fragment_dialogue_word_entry, null);
-        alertBuilder.setTitle(R.string.dialog_header);
+        alertBuilder.setTitle(R.string.dialog_card_builder_header);
         alertBuilder.setView(layoutView);
         wordText = (EditText) layoutView.findViewById(R.id.word_to_define);
         alertBuilder.setPositiveButton(R.string.btn_next_word, new OnClickListener() {

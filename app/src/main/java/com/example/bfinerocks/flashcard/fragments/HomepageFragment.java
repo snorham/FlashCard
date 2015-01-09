@@ -1,5 +1,6 @@
 package com.example.bfinerocks.flashcard.fragments;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -158,5 +159,10 @@ public class HomepageFragment extends Fragment implements OnClickListener, OnIte
         fs.deleteDeckFromFirebase(userReference, deckSelected);
 
         return false;
+    }
+
+    public void displayEditOrDeleteDialog(){
+        AlertDialog.Builder editDialog = new AlertDialog.Builder(getActivity());
+
     }
 }
