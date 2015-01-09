@@ -43,6 +43,7 @@ public class CreateNewDeckFragment extends Fragment implements WordCardCreatorDi
     private WordCardCreatorCustomAdapter adapter;
     private Button saveListButton;
     private EditText deckNameEditText;
+    private View headerView;
 
     public static CreateNewDeckFragment newInstance(){
 
@@ -73,6 +74,7 @@ public class CreateNewDeckFragment extends Fragment implements WordCardCreatorDi
         deckNameEditText = (EditText) rootView.findViewById(R.id.edtxt_list_title);
         listView = (ListView) rootView.findViewById(R.id.list_view);
         saveListButton = (Button) rootView.findViewById(R.id.save_button);
+        headerView = inflater.inflate(R.layout.item_word_card_list_header, null, true);
         return rootView;
     }
 
@@ -82,7 +84,8 @@ public class CreateNewDeckFragment extends Fragment implements WordCardCreatorDi
         adapter = new WordCardCreatorCustomAdapter(getActivity(), R.layout.word_definition_item,listOfWordCards);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
-        listView.addHeaderView(View.inflate(getActivity(), R.layout.item_word_card_list_header, null));
+        headerView.setOnClickListener(this);
+        listView.addHeaderView(headerView);
         saveListButton.setOnClickListener(this);
         showWordEntryDialogFragment();
     }
@@ -99,14 +102,20 @@ public class CreateNewDeckFragment extends Fragment implements WordCardCreatorDi
 
     @Override
     public void onClick(View view) {
-        String deckName = deckNameEditText.getText().toString().trim();
-        if(deckName.isEmpty()){
-            Toast.makeText(getActivity(), R.string.toast_need_deck_name, Toast.LENGTH_SHORT).show();
-        }
-        else{
-            Deck deckOfCards = new Deck(deckName);
-            deckOfCards.addListOfWordCardsToDeck(listOfWordCards);
-            sendDeckToFirebase(deckOfCards);
+        switch (view.getId()) {
+            case R.id.save_button:
+            String deckName = deckNameEditText.getText().toString().trim();
+            if (deckName.isEmpty()) {
+                Toast.makeText(getActivity(), R.string.toast_need_deck_name, Toast.LENGTH_SHORT).show();
+            } else {
+                Deck deckOfCards = new Deck(deckName);
+                deckOfCards.addListOfWordCardsToDeck(listOfWordCards);
+                sendDeckToFirebase(deckOfCards);
+            }
+                break;
+            case R.id.word_card_list_header:
+                showWordEntryDialogFragment();
+                break;
         }
     }
 
