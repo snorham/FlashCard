@@ -82,6 +82,7 @@ public class CreateNewDeckFragment extends Fragment implements WordCardCreatorDi
         adapter = new WordCardCreatorCustomAdapter(getActivity(), R.layout.word_definition_item,listOfWordCards);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
+        listView.addHeaderView(View.inflate(getActivity(), R.layout.item_word_card_list_header, null));
         saveListButton.setOnClickListener(this);
         showWordEntryDialogFragment();
     }
