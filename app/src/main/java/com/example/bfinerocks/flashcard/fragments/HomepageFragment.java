@@ -148,10 +148,10 @@ public class HomepageFragment extends Fragment implements OnClickListener, OnIte
 
     @Override
     public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Deck deckSelected = (Deck) adapterView.getItemAtPosition(i);
+/*        Deck deckSelected = (Deck) adapterView.getItemAtPosition(i);
         FragmentTransitionInterface fti = (FragmentTransitionInterface) getActivity();
         ReviewDeckFragment reviewDeckFragment = ReviewDeckFragment.newInstance(deckSelected);
-        fti.onFragmentChange(reviewDeckFragment);
+        fti.onFragmentChange(reviewDeckFragment);*/
         return false;
     }
 }

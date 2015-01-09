@@ -64,6 +64,12 @@ public class FirebaseStorage {
         getReferenceToUsersDeckLevel().child(deckUpdated.getFirebaseUID()).setValue(deckUpdated);
     }
 
+    public void deleteDeckFromFirebase(String userName, Deck deckToDelete){
+        createFirebaseReferenceWithUserNameForReference(userName);
+        appendFirebaseReferenceWithDeckLevelReference();
+        getReferenceToUsersDeckLevel().child(deckToDelete.getFirebaseUID()).removeValue();
+    }
+
     public void getUsersDecksFromFirebase(){
         getReferenceToUsersDeckLevel().addChildEventListener(new ChildEventListener() {
             @Override
